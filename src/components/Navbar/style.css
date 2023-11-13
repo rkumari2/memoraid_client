@@ -5,20 +5,19 @@
 }
 
 #navbar-cont {
-    background-color: aquamarine;
+    background-color: var(--bg);
     margin: 0;
     width: 20%;
     height: 85vh;
     display: flex;
     flex-direction: column;
-    justify-content: space-evenly;
+    justify-content: start;
     align-items: start;
+    border-right: 2px solid var(--white);
 }
 
 #logo {
-    /* background-color: blue; */
     margin-left: 50px;
-    /* height: 50px; */
 }
 
 #logo img {
@@ -26,11 +25,32 @@
 }
 
 #links {
-    background-color: burlywood;
     display: flex;
     flex-direction: column;
     margin-left: 50px;
     justify-content: space-between;
-    height: 40%;
+    align-items: center;
+    height: 30%;
     width: 60%;
+    margin-top: 50px;
 }
+
+.navlink {
+    color: var(--white);
+    text-decoration: none;
+    font-size: 20px;
+}
+
+#login-btn-navbar {
+    margin-left: 50px;
+    margin-top: 80px;
+    width: 60%;
+    text-align: center;
+}
+
+#login-btn-text {
+    color: var(--bg);
+    font-size: 20px;
+    text-decoration: none;
+}
+

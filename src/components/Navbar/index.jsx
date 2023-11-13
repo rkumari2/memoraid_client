@@ -11,10 +11,15 @@ const Navbar = () => {
         </div>
 
         <div id="links">
-            <NavLink to='/'> Home </NavLink>
-            <NavLink to='/subjects'> Subjects </NavLink>
-            <NavLink to='/settings'> Settings </NavLink>
-            <NavLink to='/login'> Log In </NavLink>
+            <NavLink className='navlink' to='/'> Home </NavLink>
+            <NavLink className='navlink' to='/subjects'> Subjects </NavLink>
+            <NavLink className='navlink' to='/settings'> Settings </NavLink>
+        </div>
+
+        <div id='login-btn-navbar'>
+          <button className='button'>
+            <NavLink id='login-btn-text' to='/login'> Log In </NavLink>
+          </button>
         </div>
     </nav>
     <Outlet/>
