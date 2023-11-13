@@ -1,4 +1,4 @@
-#page {
+.page {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -13,7 +13,7 @@
     flex-direction: column;
     justify-content: start;
     align-items: start;
-    border-right: 2px solid var(--white);
+    border-right: 1px solid var(--white);
 }
 
 #logo {
@@ -38,7 +38,7 @@
 .navlink {
     color: var(--white);
     text-decoration: none;
-    font-size: 20px;
+    font-size: 15px;
 }
 
 #login-btn-navbar {
@@ -50,7 +50,16 @@
 
 #login-btn-text {
     color: var(--bg);
-    font-size: 20px;
+    font-size: 15px;
     text-decoration: none;
 }
 
+@media screen and (max-width: 1024px) {
+    .navlink {
+        font-size: 15px;
+    }
+    
+    #login-btn-text {
+        font-size: 15px;
+    }
+}

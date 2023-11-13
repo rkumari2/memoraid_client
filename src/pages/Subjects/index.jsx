@@ -1,8 +1,9 @@
 import React from 'react'
+import './style.css'
 
 const Subjects = () => {
   return (
-    <div><h1>Subjects Page</h1></div>
+    <div className='page-layout'><h1>Subjects Page</h1></div>
   )
 }
 

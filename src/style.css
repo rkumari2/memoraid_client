@@ -30,11 +30,11 @@ body {
     height: 50px;
     color: var(--bg);
     border: none;
-    font-size: 20px;
+    font-size: 15px;
     text-decoration: none;
 }
 
 .hyperlink {
-    font-size: 20px;
+    font-size: 15px;
     color: var(--white);
 }

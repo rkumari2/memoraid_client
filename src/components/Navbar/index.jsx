@@ -4,7 +4,7 @@ import './style.css'
 
 const Navbar = () => {
   return (
-    <div id='page'>
+    <div className='page'>
       <nav id='navbar-cont'> 
         <div id="logo">
           <img src="logo.svg" alt="" />
