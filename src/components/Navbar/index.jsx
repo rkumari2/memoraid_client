@@ -11,14 +11,14 @@ const Navbar = () => {
         </div>
 
         <div id="links">
-            <NavLink className='navlink' to='/'> Home </NavLink>
-            <NavLink className='navlink' to='/subjects'> Subjects </NavLink>
-            <NavLink className='navlink' to='/settings'> Settings </NavLink>
+            <NavLink className='navlink' to='/'> HOME </NavLink>
+            <NavLink className='navlink' to='/subjects'> SUBJECTS </NavLink>
+            <NavLink className='navlink' to='/settings'> SETTINGS </NavLink>
         </div>
 
         <div id='login-btn-navbar'>
           <button className='button'>
-            <NavLink id='login-btn-text' to='/login'> Log In </NavLink>
+            <NavLink id='login-btn-text' to='/login'> LOG IN </NavLink>
           </button>
         </div>
     </nav>

@@ -2,4 +2,35 @@
     /* background-color: aqua; */
     height: 100vh;
     width: 80%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.tagline-home-page {
+    /* background-color: antiquewhite; */
+    width: 100%;
+    text-align: center;
+    font-size: 25px;
+    color: var(--pink);
+}
+
+.intro-paragraph {
+    /* background-color: aqua; */
+    color: var(--white);
+    width: 70%;
+    text-align: center;
+    font-size: 18px;
+}
+
+.buttons-section {
+    /* background-color: aquamarine; */
+    height: 100px;
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 50px;
 }
