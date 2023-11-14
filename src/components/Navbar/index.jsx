@@ -1,8 +1,18 @@
-import React from 'react'
-import { NavLink, Outlet } from 'react-router-dom'
+import React, { useEffect } from 'react'
+import { Link, NavLink, Outlet } from 'react-router-dom'
+import { useAuth } from '../../authContext'
 import './style.css'
 
 const Navbar = () => {
+
+  const { isLoggedIn, setIsLoggedIn, logout, responseToken } = useAuth()
+
+  const handleLogout = async (e) => {
+    e.preventDefault()
+    await logout()
+    alert('logout successful')
+  }
+
   return (
     <div className='page'>
       <nav id='navbar-cont'> 
@@ -17,9 +27,10 @@ const Navbar = () => {
         </div>
 
         <div id='login-btn-navbar'>
-          <button className='button'>
+          { isLoggedIn ? (<NavLink className='navlink' 
+              onClick={handleLogout} > Log Out </NavLink>) : (<button className='button'>
             <NavLink id='login-btn-text' to='/login'> LOG IN </NavLink>
-          </button>
+          </button>) }
         </div>
     </nav>
     <Outlet/>

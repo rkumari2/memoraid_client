@@ -50,7 +50,8 @@ export function AuthProvider({ children }) {
             }
 
         } catch (err) {
-            alert('Wrong Credentials')   
+            alert('Wrong Credentials') 
+            localStorage.removeItem('token');  
         }
     }
 
@@ -73,7 +74,7 @@ export function AuthProvider({ children }) {
     }, [responseToken])
 
     return (
-        <AuthContext.Provider value={{ isRegistered, setIsRegistered, isLoggedIn, register, login, logout}}>
+        <AuthContext.Provider value={{ isRegistered, setIsRegistered, isLoggedIn, setIsLoggedIn, register, login, logout, responseToken}}>
             {children}
         </AuthContext.Provider>
     )
