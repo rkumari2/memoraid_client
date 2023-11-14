@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { useAuth } from '../../authContext'
 import { useNavigate } from 'react-router-dom'
+import './style.css'
 
 const Register = () => {
   
@@ -46,13 +47,14 @@ const Register = () => {
 
   return (
     <div className='page-layout'>
-      <div>
-        <h1>Welcome to Memoraid</h1>
+      <div id='form-cont'>
+        <h1>Register</h1>
         <form onSubmit={handleSubmit}>
 
           <input 
             type="text"
             name='name' required
+            className='input-field'
             value={inputName}
             onChange={handleNameInput}
             placeholder='Name'
@@ -61,6 +63,7 @@ const Register = () => {
           <input 
             type="text"
             name='email' required
+            className='input-field'
             value={inputEmail}
             onChange={handleEmailInput}
             placeholder='Email'
@@ -69,12 +72,13 @@ const Register = () => {
           <input 
             type="password"
             name='password' required
+            className='input-field'
             value={inputPassword}
             onChange={handlePasswordInput}
             placeholder='Password' 
           />
 
-          <button type='submit'> Sign Up </button>
+          <button type='submit' className='button'> Sign Up </button>
         </form>
       </div>
     </div>
