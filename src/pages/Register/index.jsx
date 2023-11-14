@@ -4,7 +4,7 @@ import { useNavigate } from 'react-router-dom'
 
 const Register = () => {
   
-  const { isRegistered, register } = useAuth()
+  const { isRegistered, setIsRegistered, register } = useAuth()
   const [ inputName, setInputName ] = useState('')
   const [ inputEmail, setInputEmail ] = useState('')
   const [ inputPassword, setInputPassword ] = useState('')
@@ -38,6 +38,8 @@ const Register = () => {
       setInputPassword('')
       alert('Signed Up successfully!')
       navigate('/login')
+
+      setIsRegistered(false)
     }
   }, [isRegistered])
 
