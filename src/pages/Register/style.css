@@ -1,7 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Saira:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
 
 #form-cont {
-    background-color: antiquewhite;
+    /* background-color: antiquewhite; */
     /* height: 50%; */
     width: 50%;
     display: flex;
@@ -12,13 +12,13 @@
 
 #form-cont h1 {
     color: var(--white);
-    background-color: aquamarine;
+    /* background-color: aquamarine; */
     margin: 0;
     font-size: 30px;
 }
 
 #form-cont form {
-    background-color: aqua;
+    /* background-color: aqua; */
     display: flex;
     flex-direction: column;
     /* height: 300px; */
@@ -45,5 +45,15 @@
 
 .input-field:focus {
     border: 3px solid var(--pink);
+}
+
+.redirection-txt {
+    font-size: 13px;
+    margin-top: 20px;
+    color: var(--white);
+}
+
+.redirection-txt a {
+    color: var(--pink);
 }
 

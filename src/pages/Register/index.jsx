@@ -78,7 +78,10 @@ const Register = () => {
             placeholder='Password' 
           />
 
-          <button type='submit' className='button'> Sign Up </button>
+          <button type='submit' className='button'> SIGN UP </button>
+
+          <p className='redirection-txt'> Already have an account? <a href="/login"> LOG IN </a></p>
+
         </form>
       </div>
     </div>
