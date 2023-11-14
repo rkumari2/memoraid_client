@@ -28,7 +28,7 @@ export function AuthProvider({ children }) {
             }
 
         } catch (err) {
-            alert('Wrong Credentials')
+            alert('Error signing up')
         }
     }
 
