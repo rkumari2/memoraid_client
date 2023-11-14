@@ -27,8 +27,8 @@ const Navbar = () => {
         </div>
 
         <div id='login-btn-navbar'>
-          { isLoggedIn ? (<NavLink className='navlink' 
-              onClick={handleLogout} > Log Out </NavLink>) : (<button className='button'>
+          { isLoggedIn ? (<NavLink className='navlink' id='logout-link'
+              onClick={handleLogout} > LOG OUT </NavLink>) : (<button className='button'>
             <NavLink id='login-btn-text' to='/login'> LOG IN </NavLink>
           </button>) }
         </div>

@@ -54,6 +54,11 @@
     text-decoration: none;
 }
 
+#logout-link {
+    color: var(--pink);
+    text-decoration: underline;
+}
+
 @media screen and (max-width: 1024px) {
     .navlink {
         font-size: 15px;
