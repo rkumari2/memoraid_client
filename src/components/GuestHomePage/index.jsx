@@ -1,7 +1,15 @@
 import React from 'react'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 
 const GuestHomePage = () => {
+
+  const navigate = useNavigate()
+
+  const handleClick = async (e) => {
+    e.preventDefault()
+    navigate('/login')
+  }
+
   return (
     <>
       <div className='tagline-home-page'>
@@ -13,7 +21,7 @@ const GuestHomePage = () => {
       </div>
 
       <div className='buttons-section'>
-        <button className='button'>LOG IN</button>
+        <button className='button' onClick={handleClick}>LOG IN</button>
         <Link className='hyperlink' to='/register'>SIGN UP</Link>
       </div>
     </>

@@ -13,6 +13,7 @@ const App = () => {
         <Route path='/settings' element={<Pages.Settings/>}/>
         <Route path='/login' element={<Pages.Login/>}/>
         <Route path='/register' element={<Pages.Register/>}/>
+        <Route path='/progress' element={<Pages.Progress/>}/>
       </Route>
     </Routes>
   )

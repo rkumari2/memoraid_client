@@ -18,6 +18,7 @@
 
 #logo {
     margin-left: 50px;
+    cursor: pointer;
 }
 
 #logo img {
