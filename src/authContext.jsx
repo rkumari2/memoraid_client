@@ -40,14 +40,19 @@ export function AuthProvider({ children }) {
                 password: inputPassword
             })
 
+            // console.log('line 43 authcontext response', response.data.user)
+
             if (response.status === 200) {
                 setIsLoggedIn(true)
                 setResponseToken(response.data)
-
                 localStorage.setItem('token', response.data.token)
+                console.log ('line 49 authcontext', responseToken)
+
             } else {
                 alert ('Unable to Log In')
             }
+
+            console.log ('line 55 authcontext', responseToken)
 
         } catch (err) {
             alert('Wrong Credentials') 
@@ -71,6 +76,7 @@ export function AuthProvider({ children }) {
     }
 
     useEffect(() => {
+        console.log ('line 79 authcontext', responseToken)
     }, [responseToken])
 
     return (

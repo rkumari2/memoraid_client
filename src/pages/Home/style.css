@@ -34,3 +34,39 @@
     justify-content: space-between;
     margin-top: 50px;
 }
+
+.logged-in-home-page-cont {
+    /* background-color: antiquewhite; */
+    height: 80%;
+    width: 80%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    color: var(--white);
+}
+
+.logged-in-home-page-cont h1 {
+    font-size: 40px;
+}
+
+.options-section {
+    /* background-color: aqua; */
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    margin-top: 30px;
+}
+
+.option {
+    background-color: var(--pink);
+    height: 250px;
+    width: 25%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    text-align: center;
+    color: var(--bg);
+}
