@@ -40,8 +40,6 @@ export function AuthProvider({ children }) {
                 password: inputPassword
             })
 
-            // console.log('line 43 authcontext response', response.data.user)
-
             if (response.status === 200) {
                 setIsLoggedIn(true)
                 setResponseToken(response.data)
@@ -76,8 +74,12 @@ export function AuthProvider({ children }) {
     }
 
     useEffect(() => {
-        console.log ('line 79 authcontext', responseToken)
-    }, [responseToken])
+        // const token = localStorage.getItem('token');
+        // if (token) {
+        //     setIsLoggedIn(true);
+        //     setResponseToken(token);
+        // }
+    }, []);
 
     return (
         <AuthContext.Provider value={{ isRegistered, setIsRegistered, isLoggedIn, setIsLoggedIn, register, login, logout, responseToken}}>
