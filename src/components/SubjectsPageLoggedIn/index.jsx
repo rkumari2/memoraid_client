@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import Search from '../Search'
+import SubjectCard from '../SubjectCard'
 
 const SubjectsPageLoggedIn = () => {
 
@@ -39,7 +40,7 @@ const SubjectsPageLoggedIn = () => {
       <Search handleHideSubject={handleHideSubject} handleShowSubject={handleShowSubject} handleSearch={handleSearch} resetSearch={resetSearch} />
 
       <div>
-        {showSubject && !searching ? (<h1>Hi</h1>) : null}
+        {showSubject && !searching ? (<SubjectCard/>) : null}
 
         {(searching || finalSearchResults.length > 0) && (
           <ul>
