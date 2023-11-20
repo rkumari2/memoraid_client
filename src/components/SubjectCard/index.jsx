@@ -37,7 +37,7 @@ const SubjectCard = () => {
         <div>
             <ul>
                 {results.map((item) => (
-                    <li>
+                    <li key={item.div}>
                         <div>
                             <h3> {item.subject} </h3>
                         </div>

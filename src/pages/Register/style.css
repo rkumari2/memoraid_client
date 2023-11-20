@@ -44,7 +44,7 @@
 }
 
 .input-field:focus {
-    border: 3px solid var(--pink);
+    outline: 3px solid var(--pink);
 }
 
 .redirection-txt {

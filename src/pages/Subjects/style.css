@@ -1,11 +1,35 @@
 .subjects-cont {
     /* background-color: antiquewhite; */
-    border: 3px solid white;
-    height: 80%;
-    width: 80%;
+    border: 3px solid red;
+    height: 85%;
+    width: 90%;
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
+    justify-content: safe;
     color: var(--white);
+    /* margin-top: 5rem; */
+}
+
+.search {
+    /* background-color: brown; */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: auto;
+}
+
+#search-input {
+    margin-top: 0;
+}
+
+#search-btn {
+    height: 32px;
+    margin-left: 5px;
+}
+
+#clear-btn {
+    height: 32px;
+    margin-left: 5px;
+    width: 32px;
 }

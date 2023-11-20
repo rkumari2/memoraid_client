@@ -35,7 +35,7 @@ const SubjectsPageLoggedIn = () => {
 
   return (
     <div className='subjects-cont'>
-      <h1> Subjects </h1>
+      <h1> SUBJECTS </h1>
 
       <Search handleHideSubject={handleHideSubject} handleShowSubject={handleShowSubject} handleSearch={handleSearch} resetSearch={resetSearch} />
 

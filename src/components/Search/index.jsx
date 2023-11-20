@@ -4,16 +4,16 @@ import { useAuth } from '../../authContext'
 
 const Search = ({ handleHideSubject, handleShowSubject, handleSearch, resetSearch }) => {
 
-    const [ inputText, setInputText ] = useState('')
-    const [ results, setResults ] = useState([])
-    const [ showOutput, setShowOutput ] = useState(false)
+    const [inputText, setInputText] = useState('')
+    const [results, setResults] = useState([])
+    const [showOutput, setShowOutput] = useState(false)
 
     const { responseToken } = useAuth()
 
-    console.log ('user_id is:', responseToken)
+    console.log('user_id is:', responseToken)
 
     useEffect(() => {
-        
+
         const fetchData = async () => {
             try {
                 const response = await axios.get(`https://memoraide-server.onrender.com/subjects/${responseToken.user_id}`)
@@ -25,7 +25,7 @@ const Search = ({ handleHideSubject, handleShowSubject, handleSearch, resetSearc
                     console.log('responseData is:', responseData)
 
                     if (Array.isArray(responseData)) {
-                        setResults (responseData)
+                        setResults(responseData)
                     } else {
                         console.log('data is not an array', responseData)
                     }
@@ -46,9 +46,9 @@ const Search = ({ handleHideSubject, handleShowSubject, handleSearch, resetSearc
     const handleButtonClick = (e) => {
         e.preventDefault()
         const filteredResults = results.filter(
-            (result) => 
-            result.subject &&
-            result.subject.toLowerCase().includes(inputText.toLowerCase())
+            (result) =>
+                result.subject &&
+                result.subject.toLowerCase().includes(inputText.toLowerCase())
         )
 
         if (filteredResults.length > 0) {
@@ -70,27 +70,25 @@ const Search = ({ handleHideSubject, handleShowSubject, handleSearch, resetSearc
         }
     }
 
-  return (
-    <div>
-        <div>
-            <form>
-                <label>
-                    <input 
-                        type="text" 
+    return (
+        <>
+            <form className='search'>
+                    <input
+                        className='input-field'
+                        id='search-input'
+                        type="text"
                         value={inputText}
                         onChange={handleInputChange}
                         placeholder='Search for a subject'
                     />
 
                     {inputText && (
-                        <button onClick={handleClearClick}> X </button>
+                        <button className='button' id='clear-btn' onClick={handleClearClick}> X </button>
                     )}
-                </label>
-                <button onClick={handleButtonClick}>Submit</button>
+                <button className='button' id='search-btn' onClick={handleButtonClick}>Submit</button>
             </form>
-        </div>
-    </div>
-  )
+        </>
+    )
 }
 
 export default Search
