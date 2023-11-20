@@ -5,6 +5,8 @@ const UserHomePage = () => {
 
   const { responseToken, isLoggedIn } = useAuth()
 
+  // console.log('home page responseToken', responseToken)
+
   return (
     <div className='logged-in-home-page-cont'>
       { isLoggedIn && responseToken.user ? (<h1> Hello, {responseToken.user} </h1>) : (<h1>Welcome!</h1>)}

@@ -43,8 +43,9 @@ export function AuthProvider({ children }) {
             if (response.status === 200) {
                 setIsLoggedIn(true)
                 setResponseToken(response.data)
-                localStorage.setItem('token', response.data.token)
-                console.log ('line 49 authcontext', responseToken)
+                // localStorage.setItem('token', response.data.token)
+                localStorage.setItem('tokenData', JSON.stringify(response.data))
+                // console.log ('line 49 authcontext', responseToken)
 
             } else {
                 alert ('Unable to Log In')
@@ -54,7 +55,7 @@ export function AuthProvider({ children }) {
 
         } catch (err) {
             alert('Wrong Credentials') 
-            localStorage.removeItem('token');  
+            localStorage.removeItem('tokenData');  
         }
     }
 
@@ -64,7 +65,7 @@ export function AuthProvider({ children }) {
             
             await axios.delete(`https://memoraide-server.onrender.com/users/tokens/${responseToken.token_id}`)
 
-            localStorage.removeItem('token')
+            localStorage.removeItem('tokenData')
             setResponseToken(null)
             setIsLoggedIn(false)
 
@@ -73,12 +74,19 @@ export function AuthProvider({ children }) {
         }
     }
 
+    // useEffect(() => {
+    //     if (localStorage.getItem('token')) {
+    //         setIsLoggedIn(true)
+    //     }
+    // }, []);
+
     useEffect(() => {
-        // const token = localStorage.getItem('token');
-        // if (token) {
-        //     setIsLoggedIn(true);
-        //     setResponseToken(token);
-        // }
+        const storedTokenData = localStorage.getItem('tokenData');
+        if (storedTokenData) {
+            const parsedTokenData = JSON.parse(storedTokenData);
+            setIsLoggedIn(true);
+            setResponseToken(parsedTokenData);
+        }
     }, []);
 
     return (

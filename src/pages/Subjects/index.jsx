@@ -13,8 +13,7 @@ const Subjects = () => {
     <div className='page-layout'>
 
       {isLoggedIn ? (<SubjectsPageLoggedIn/>) : (
-        // <button className='button'> LOG IN </button>
-        <SubjectsPageLoggedIn/>
+        <button className='button'> LOG IN </button>
       )}
 
     </div>
