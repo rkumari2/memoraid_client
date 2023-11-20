@@ -1,13 +1,15 @@
 import axios from 'axios'
 import React, { useEffect, useState } from 'react'
 import { useAuth } from '../../authContext'
+import { Navigate, useNavigate } from 'react-router-dom'
 
 const SubjectCard = () => {
 
     const { responseToken } = useAuth()
 
-
     const [ results, setResults ] = useState([])
+
+    const navigate = useNavigate()
 
     useEffect(() => {
 
@@ -32,20 +34,22 @@ const SubjectCard = () => {
         fetchData()
     }, [])
 
+    const handleSubjectClick = () => {
+        navigate('/cards')
+    }
+
   return (
-    <div>
-        <div>
-            <ul>
-                {results.map((item) => (
-                    <li key={item.div}>
-                        <div>
-                            <h3> {item.subject} </h3>
-                        </div>
+    <>
+        <ul className='subjectsOutput-cont'>
+            { results.length === 0 && (<h1>You don't have any subjects</h1>)}
+
+            {results.map((item) => (
+                    <li key={item.div} className='subject-card' onClick={handleSubjectClick}>
+                            <p> {item.subject} </p>
                     </li>
-                ))}
-            </ul>
-        </div>
-    </div>
+            ))}
+        </ul>
+    </>
   )
 }
 

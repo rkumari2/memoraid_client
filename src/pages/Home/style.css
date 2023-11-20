@@ -1,13 +1,3 @@
-.page-layout {
-    /* background-color: aqua; */
-    height: 100vh;
-    width: 80%;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-}
-
 .tagline-home-page {
     /* background-color: antiquewhite; */
     width: 100%;

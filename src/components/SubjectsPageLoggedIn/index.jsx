@@ -43,12 +43,10 @@ const SubjectsPageLoggedIn = () => {
         {showSubject && !searching ? (<SubjectCard/>) : null}
 
         {(searching || finalSearchResults.length > 0) && (
-          <ul>
-            {finalSearchResults.map((result, index) => (
-              <li key={index}>
-                <div>
-                  <h3>{result.subject}</h3>
-                </div>
+          <ul className='subjectsOutput-cont'>
+            {finalSearchResults.map((result) => (
+              <li key={result.id} className='subject-card'>
+                  <p>{result.subject}</p>
               </li>
             ))}
           </ul>
