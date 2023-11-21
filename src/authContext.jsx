@@ -66,6 +66,7 @@ export function AuthProvider({ children }) {
             await axios.delete(`https://memoraide-server.onrender.com/users/tokens/${responseToken.token_id}`)
 
             localStorage.removeItem('tokenData')
+            localStorage.removeItem('selectedSubjectId')
             setResponseToken(null)
             setIsLoggedIn(false)
 

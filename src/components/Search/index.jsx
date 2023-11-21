@@ -10,7 +10,7 @@ const Search = ({ handleHideSubject, handleShowSubject, handleSearch, resetSearc
 
     const { responseToken } = useAuth()
 
-    console.log('user_id is:', responseToken)
+    // console.log('user_id is:', responseToken)
 
     useEffect(() => {
 
@@ -18,11 +18,11 @@ const Search = ({ handleHideSubject, handleShowSubject, handleSearch, resetSearc
             try {
                 const response = await axios.get(`https://memoraide-server.onrender.com/subjects/${responseToken.user_id}`)
 
-                console.log('response is:', response)
+                // console.log('response is:', response)
 
                 if (response.status === 200) {
                     const responseData = response.data
-                    console.log('responseData is:', responseData)
+                    // console.log('responseData is:', responseData)
 
                     if (Array.isArray(responseData)) {
                         setResults(responseData)

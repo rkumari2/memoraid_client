@@ -12,9 +12,9 @@ const SubjectCard = () => {
     const [ showAddOverlay, setShowAddOverlay ] = useState(false)
     const [ subject, setSubject ] = useState('')
     // const [ selectedSubjectId, setSelectedSubjectId ] = useState(null)
-    const { setSelectedSubjectId } = useSubject()
+    const { selectedSubjectId, setSelectedSubjectId } = useSubject()
 
-    const navigate = useNavigate()
+    const navigate = useNavigate()  
 
     const handleShowOverlay = () => {
         setShowAddOverlay(true)
@@ -79,11 +79,15 @@ const SubjectCard = () => {
 
     const handleSubjectClick = (id) => {
         setSelectedSubjectId(id)
-        console.log(id)
         navigate('/flashcards')
     }
 
-    console.log('results', results)
+    useEffect(() => {
+        if (selectedSubjectId) {
+            localStorage.setItem('selectedSubjectId', selectedSubjectId);
+        }
+    }, [selectedSubjectId]);
+    
 
   return (
     <>
