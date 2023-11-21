@@ -40,7 +40,7 @@ const SubjectCard = () => {
                 }
 
                 if (newSubject && Object.keys(newSubject).length > 0) {
-                    setResults((prevResults) => [...prevResults, newSubject])
+                    setResults((prevResults) => [newSubject, ...prevResults])
                     handleHideOverlay()
                 } else {
                     console.error('Invalid new task data in the API response.')
