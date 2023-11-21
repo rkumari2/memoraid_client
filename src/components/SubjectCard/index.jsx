@@ -23,6 +23,11 @@ const SubjectCard = () => {
     }
 
     const handleAddNew = async () => {
+        if (subject.trim() === '') {
+            alert('Subject cannot be empty');
+            return;
+        }
+
         try {
             const response = await axios.post(`https://memoraide-server.onrender.com/subjects/${responseToken.user_id}/new`, {
                 subject: subject
@@ -85,22 +90,26 @@ const SubjectCard = () => {
             ))}
         </ul>
 
-        <button onClick={handleShowOverlay}> + </button>
+        <button className='button' id='add-subject-btn' onClick={handleShowOverlay}> + </button>
 
-        <div id='add-overlay' style={{ display: showAddOverlay ? 'block' : 'none'}}>
+        <div className='overlay-bg' style={{ display: showAddOverlay ? 'flex' : 'none'}}>
 
             {showAddOverlay && (
-                <div>
+                <div className='overlay'>
+                    <div id='cancel-sect'>
+                        <button className='button' id='cancel-btn' onClick={handleHideOverlay}> X </button>
+                    </div>
                     <h2> ADD A NEW SUBJECT </h2>
-                    <div>
+                    <div className='search'>
                         <input 
+                            className='input-field'
+                            id='subject-input'
                             type="text"
                             placeholder='Subject'
                             value={subject}
                             onChange={(e) => setSubject(e.target.value)}
                         />
-                        <button onClick={handleAddNew}> Add </button>
-                        <button onClick={handleHideOverlay}> Cancel </button>
+                        <button className='button' id='add-btn' onClick={handleAddNew}> Add </button>
                     </div>
                 </div>
             )}

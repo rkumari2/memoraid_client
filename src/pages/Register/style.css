@@ -33,20 +33,6 @@
     margin-top: 40px;
 }
 
-.input-field {
-    margin-top: 40px;
-    width: 90%;
-    height: 30px;
-    outline: none;
-    border: none;
-    padding-left: 10px;
-    font-family: 'Saira', sans-serif;
-}
-
-.input-field:focus {
-    outline: 3px solid var(--pink);
-}
-
 .redirection-txt {
     font-size: 13px;
     margin-top: 20px;
