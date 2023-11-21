@@ -1,7 +1,8 @@
 import axios from 'axios'
 import React, { useEffect, useState } from 'react'
 import { useAuth } from '../../authContext'
-import { Navigate, useNavigate } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
+import { useSubject } from '../../subjectContext'
 
 const SubjectCard = () => {
 
@@ -10,6 +11,8 @@ const SubjectCard = () => {
     const [ results, setResults ] = useState([])
     const [ showAddOverlay, setShowAddOverlay ] = useState(false)
     const [ subject, setSubject ] = useState('')
+    // const [ selectedSubjectId, setSelectedSubjectId ] = useState(null)
+    const { setSelectedSubjectId } = useSubject()
 
     const navigate = useNavigate()
 
@@ -74,9 +77,13 @@ const SubjectCard = () => {
         fetchData()
     }, [])
 
-    const handleSubjectClick = () => {
-        navigate('/cards')
+    const handleSubjectClick = (id) => {
+        setSelectedSubjectId(id)
+        console.log(id)
+        navigate('/flashcards')
     }
+
+    console.log('results', results)
 
   return (
     <>
@@ -84,9 +91,9 @@ const SubjectCard = () => {
             { results.length === 0 && (<h1>You don't have any subjects</h1>)}
 
             {results.map((item) => (
-                    <li key={item.div} className='subject-card' onClick={handleSubjectClick}>
-                            <p> {item.subject} </p>
-                    </li>
+                <li key={item.div} className='subject-card' onClick={() => handleSubjectClick(item.id)}>
+                        <p> {item.subject} </p>
+                </li>
             ))}
         </ul>
 
