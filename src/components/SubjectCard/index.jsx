@@ -12,7 +12,7 @@ const SubjectCard = () => {
     const [ showAddOverlay, setShowAddOverlay ] = useState(false)
     const [ subject, setSubject ] = useState('')
     // const [ selectedSubjectId, setSelectedSubjectId ] = useState(null)
-    const { selectedSubjectId, setSelectedSubjectId } = useSubject()
+    const { selectedSubjectId, setSelectedSubjectId, selectedSubjectName, setSelectedSubjectName } = useSubject()
 
     const navigate = useNavigate()  
 
@@ -77,16 +77,20 @@ const SubjectCard = () => {
         fetchData()
     }, [])
 
-    const handleSubjectClick = (id) => {
-        setSelectedSubjectId(id)
-        navigate('/flashcards')
-    }
+    const handleSubjectClick = (id, name) => {
+        localStorage.setItem('selectedSubjectId', id);
+        localStorage.setItem('selectedSubjectName', name);
+        setSelectedSubjectId(id);
+        setSelectedSubjectName(name);
+        navigate('/flashcards');
+    }    
 
     useEffect(() => {
-        if (selectedSubjectId) {
-            localStorage.setItem('selectedSubjectId', selectedSubjectId);
+        if (selectedSubjectId && selectedSubjectName) {
+            localStorage.setItem('selectedSubjectId', selectedSubjectId)
+            localStorage.setItem('selectedSubjectName', selectedSubjectName)
         }
-    }, [selectedSubjectId]);
+    }, [selectedSubjectId, selectedSubjectName]);
     
 
   return (
@@ -95,7 +99,7 @@ const SubjectCard = () => {
             { results.length === 0 && (<h1>You don't have any subjects</h1>)}
 
             {results.map((item) => (
-                <li key={item.div} className='subject-card' onClick={() => handleSubjectClick(item.id)}>
+                <li key={item.id} className='subject-card' onClick={() => handleSubjectClick(item.id, item.subject)}>
                         <p> {item.subject} </p>
                 </li>
             ))}

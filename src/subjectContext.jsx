@@ -6,10 +6,13 @@ export const useSubject = () => useContext(SubjectContext);
 
 export const SubjectProvider = ({ children }) => {
     const [selectedSubjectId, setSelectedSubjectId] = useState(null);
+    const [selectedSubjectName, setSelectedSubjectName] = useState(null)
 
     const value = {
         selectedSubjectId,
-        setSelectedSubjectId
+        setSelectedSubjectId,
+        selectedSubjectName,
+        setSelectedSubjectName
     };
 
     return (

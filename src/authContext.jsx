@@ -67,6 +67,7 @@ export function AuthProvider({ children }) {
 
             localStorage.removeItem('tokenData')
             localStorage.removeItem('selectedSubjectId')
+            localStorage.removeItem('selectedSubjectName')
             setResponseToken(null)
             setIsLoggedIn(false)
 
