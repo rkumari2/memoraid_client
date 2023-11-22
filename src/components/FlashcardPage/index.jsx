@@ -1,12 +1,18 @@
 import React, { useEffect, useState } from 'react'
 import { useSubject } from '../../subjectContext'
 import axios from 'axios'
+import { useAuth } from '../../authContext'
 
 const FlashcardPage = () => {
 
     const { selectedSubjectId, selectedSubjectName, setSelectedSubjectName } = useSubject()
 
+    const { responseToken } = useAuth()
+    console.log('user_id is:', responseToken.user_id)
+
+
     const [results, setResults] = useState([])
+    const [scoreResults, setScoreResults] = useState([])
     const [revealAnswer, setRevealAnswer] = useState(false)
     const [totalQuestions, setTotalQuestions] = useState(0)
     const [rightAnswers, setRightAnswers] = useState(0)
@@ -84,12 +90,45 @@ const FlashcardPage = () => {
         fetchData(selectedSubjectId)
     }
 
+    const handleCreateScoreCard = async (newPercentage) => {
+        try {
+            const response = await axios.post(`http://localhost:3000/scores/${responseToken.user_id}/new`, {
+                // user_id: responseToken.id,     
+                date: currentDate, 
+                totalScore: parseInt(newPercentage, 10),
+                rightAnswer: parseInt(rightAnswers, 10),
+                totalQuestions: parseInt(totalQuestions, 10),
+                subject: selectedSubjectName
+            }) 
+            console.log (response)
+            if (response.status === 201) {
+                const newScore = {
+                    id: response.data.id,
+                    user_id: responseToken.user_id, 
+                    date: currentDate, 
+                    totalScore: finalPercentage, 
+                    rightAnswer: rightAnswers,
+                    totalQuestions: totalQuestions,
+                    subject: selectedSubjectName
+                }
+
+                if (newScore && Object.keys(newScore).length > 0) {
+                    setScoreResults((prevResults) => [ newScore, ...prevResults])
+                } else {
+                    console.error('Invalid new score data in the API response.')
+                }
+            }
+        } catch (err) {
+            console.error('Error adding new score:', err)
+        }
+    }
+
     const handleEndButton = () => {
         const percentage = (rightAnswers / totalQuestions) * 100
         setFinalPercentage(percentage)
+        console.log('percentage is', finalPercentage)
         setIsEndClicked(true)
-
-
+        handleCreateScoreCard(percentage)
     }
 
     const handleRestart = () => {
