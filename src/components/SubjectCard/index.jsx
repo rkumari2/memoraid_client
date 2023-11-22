@@ -46,7 +46,7 @@ const SubjectCard = () => {
                     setResults((prevResults) => [newSubject, ...prevResults])
                     handleHideOverlay()
                 } else {
-                    console.error('Invalid new task data in the API response.')
+                    console.error('Invalid new subject data in the API response.')
                 }
             }
         } catch (err) {

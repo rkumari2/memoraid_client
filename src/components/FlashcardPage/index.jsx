@@ -2,14 +2,15 @@ import React, { useEffect, useState } from 'react'
 import { useSubject } from '../../subjectContext'
 import axios from 'axios'
 import { useAuth } from '../../authContext'
+import { useNavigate } from 'react-router-dom'
 
 const FlashcardPage = () => {
 
     const { selectedSubjectId, selectedSubjectName, setSelectedSubjectName } = useSubject()
 
     const { responseToken } = useAuth()
-    console.log('user_id is:', responseToken.user_id)
 
+    const navigate = useNavigate()
 
     const [results, setResults] = useState([])
     const [scoreResults, setScoreResults] = useState([])
@@ -19,20 +20,17 @@ const FlashcardPage = () => {
     const [wrongAnswers, setWrongAnswers] = useState(0)
     const [isEndClicked, setIsEndClicked] = useState(false)
     const [finalPercentage, setFinalPercentage] = useState(0)
+    const [showAddOverlay, setShowAddOverlay] = useState(false)
+    const [question, setQuestion] = useState('')
+    const [answer, setAnswer] = useState('')
+    const [newCard, setNewCard] = useState([])
 
     const today = new Date()
     const month = today.getMonth()+1
     const year = today.getFullYear()
     const day = today.getDate()
     const currentDate = day + '/' + month + '/' + year
-    // console.log('date', currentDate)
-
-    // console.log('flashcard page id of subject:', selectedSubjectId)
-
-    // console.log('right answers', rightAnswers)
-    // console.log('total questions', totalQuestions)
-    // console.log(isEndClicked)
-
+    
     useEffect(() => {
         const storedSubjectId = parseInt(localStorage.getItem('selectedSubjectId'), 10);
         if (storedSubjectId) {
@@ -42,33 +40,20 @@ const FlashcardPage = () => {
         }
     }, [])
 
-    // const storedSubjectName = localStorage.getItem('storedSubjectName')
-    // console.log('line 31 flashcard', storedSubjectName)
-
     const fetchData = async (storedSubjectId) => {
         try {
             const response = await axios.get(`https://memoraide-server.onrender.com/flashcards/subjects/${storedSubjectId}/random`)
-
-            // console.log('response from flashcard page is:', response)
 
             if (response.status === 200) {
                 const responseData = response.data
                 setResults([responseData])
                 setRevealAnswer(false);
-
-                // if (Array.isArray(responseData)) {
-                //     setResults(responseData)
-                //     console.log('responseData:', results)
-                // } else {
-                //     console.log('data is not an array', responseData)
-                // }
-
             }
+
         } catch (err) {
             console.log('Error fetching data', err)
         }
     }
-
 
     const handleShowAnswer = () => {
         setRevealAnswer(true)
@@ -92,15 +77,14 @@ const FlashcardPage = () => {
 
     const handleCreateScoreCard = async (newPercentage) => {
         try {
-            const response = await axios.post(`http://localhost:3000/scores/${responseToken.user_id}/new`, {
-                // user_id: responseToken.id,     
+            const response = await axios.post(`https://memoraide-server.onrender.com/scores/${responseToken.user_id}/new`, {
                 date: currentDate, 
                 totalScore: parseInt(newPercentage, 10),
                 rightAnswer: parseInt(rightAnswers, 10),
                 totalQuestions: parseInt(totalQuestions, 10),
                 subject: selectedSubjectName
             }) 
-            console.log (response)
+
             if (response.status === 201) {
                 const newScore = {
                     id: response.data.id,
@@ -118,13 +102,14 @@ const FlashcardPage = () => {
                     console.error('Invalid new score data in the API response.')
                 }
             }
+
         } catch (err) {
             console.error('Error adding new score:', err)
         }
     }
 
     const handleEndButton = () => {
-        const percentage = (rightAnswers / totalQuestions) * 100
+        const percentage = (((rightAnswers / totalQuestions) * 100.).toFixed(1))
         setFinalPercentage(percentage)
         console.log('percentage is', finalPercentage)
         setIsEndClicked(true)
@@ -140,7 +125,52 @@ const FlashcardPage = () => {
         setIsEndClicked(false)
         const storedSubjectName = localStorage.getItem('selectedSubjectName');
         setSelectedSubjectName(storedSubjectName)
-        // fetchData(selectedSubjectId)
+    }
+
+    const handleViewSubjects = () => {
+        navigate('/subjects')
+    }
+
+    const handleShowOverlay = () => {
+        setShowAddOverlay(true)
+    }
+
+    const handleHideOverlay = () => {
+        setShowAddOverlay(false)
+        setQuestion('')
+        setAnswer('')
+    }
+
+    const handleAddNew = async (storedSubjectId) => {
+        if ((question.trim() === '') && (answer.trim() === '')) {
+            alert('You must enter a question and an answer')
+            return;
+        }
+
+        try {
+            const response = await axios.post(`https://memoraide-server.onrender.com/flashcards/subjects/${storedSubjectId}/new`, {
+                question: question,
+                answer: answer
+            })
+            if (response.status === 201) {
+                const newFlashcard = {
+                    id: response.data.id,
+                    question: question,
+                    answer: answer, 
+                    subject_id: storedSubjectId
+                }
+
+                if (newFlashcard && Object.keys(newFlashcard).length > 0) {
+                    setNewCard((prevResults) => [newFlashcard, ...prevResults])
+                    handleHideOverlay()
+                } else {
+                    console.error('Invalid new flashcard data in the API response.')
+                }
+            }
+
+        } catch (err) {
+            console.error('Error adding new flashcard:', err)
+        }
     }
 
     return (
@@ -150,30 +180,66 @@ const FlashcardPage = () => {
             {isEndClicked ? (
                 <div>
                     <h1> your final score is {finalPercentage}%, you did {rightAnswers} questions correct out of {totalQuestions} </h1>
-                    <button onClick={handleRestart}> Start again </button>
+                    <button onClick={handleRestart}> Start Again </button>
+                    <button onClick={handleViewSubjects}> View Subjects </button>
                 </div>
             ) : (
                 <div>
                     <ul>
-                        {results.length === 0 && (<h2> No Flashcards </h2>)}
+                        {results.length === 0 ? (<h2> No Flashcards </h2>) : (
+                            <div>
+                                {revealAnswer ? (
+                                    <div onClick={handleHideAnswer}> {results.map((item) => (
+                                        <h3 key={item.id}> {item.answer} </h3>
+                                    ))} </div>
+                                ) : (
+                                    <div onClick={handleShowAnswer}> {results.map((item) => (
+                                        <h3 key={item.id}> {item.question} </h3>
+                                    ))} </div>
+                                )}
+            
+                                <button onClick={handleRightAnswer}>right</button>
+                                <button onClick={handleWrongAnswer}>wrong</button>
+                                <button onClick={handleEndButton}>end</button>
+                            </div>
+                        )}
                     </ul>
-
-                    {revealAnswer ? (
-                        <div onClick={handleHideAnswer}> {results.map((item) => (
-                            <h3 key={item.id}> {item.answer} </h3>
-                        ))} </div>
-                    ) : (
-                        <div onClick={handleShowAnswer}> {results.map((item) => (
-                            <h3 key={item.id}> {item.question} </h3>
-                        ))} </div>
-                    )}
-
-                    <button onClick={handleRightAnswer}>right</button>
-                    <button onClick={handleWrongAnswer}>wrong</button>
-                    <button onClick={handleEndButton}>end</button>
-
                 </div>
             )}
+
+            <button className='button' id='add-subject-btn' onClick={handleShowOverlay}> + </button>  
+
+            <div className='overlay-bg' style={{ display: showAddOverlay ? 'flex' : 'none'}}>
+
+            {showAddOverlay && (
+                <div className='overlay'>
+                    <div id='cancel-sect'>
+                        <button className='button' id='cancel-btn' onClick={handleHideOverlay}> X </button>
+                    </div>
+                    <h2> ADD A NEW FLASHCARD </h2>
+                    <div className='search'>
+                        <input 
+                            className='input-field'
+                            id='subject-input'
+                            type="text"
+                            placeholder='Question'
+                            value={question}
+                            onChange={(e) => setQuestion(e.target.value)}
+                        />
+                        <input 
+                            className='input-field'
+                            id='subject-input'
+                            type="text"
+                            placeholder='Answer'
+                            value={answer}
+                            onChange={(e) => setAnswer(e.target.value)}
+                        />
+                        <button className='button' id='add-btn' onClick={handleAddNew}> Add </button>
+                    </div>
+                </div>
+            )}
+
+            </div>  
         </>
     )
 }
