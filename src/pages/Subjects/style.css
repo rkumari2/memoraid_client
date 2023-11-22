@@ -10,6 +10,7 @@
     color: var(--white);
     /* margin-top: 5rem; */
     overflow-y: auto;
+    margin-top: 20px;
 }
 
 .search {

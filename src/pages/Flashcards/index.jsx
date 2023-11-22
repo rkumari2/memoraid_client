@@ -1,13 +1,16 @@
-import React, { useEffect, useState } from 'react'
-import { useSubject } from '../../subjectContext'
-import axios from 'axios'
+import React from 'react'
 import { FlashcardPage } from '../../components'
+import { useAuth } from '../../authContext'
+import './style.css'
 
 const Flashcards = () => {
 
+    const { isLoggedIn } = useAuth()
+
     return (
         <div className='page-layout'>
-            <FlashcardPage/>
+            
+            {isLoggedIn ? (<FlashcardPage/>) : (<h1> Please Login first </h1>)}
         </div>
     )
 }

@@ -175,8 +175,8 @@ const FlashcardPage = () => {
     }
 
     return (
-        <>
-            <h1>{selectedSubjectName} Flashcards!</h1>
+        <div className='flashcards-cont'>
+            <h1>{(selectedSubjectName).toUpperCase()} FLASHCARDS </h1>
 
             {isEndClicked ? (
                 <div>
@@ -185,26 +185,45 @@ const FlashcardPage = () => {
                     <button onClick={handleViewSubjects}> View Subjects </button>
                 </div>
             ) : (
-                <div>
-                    <ul>
+                <div className='card-cont'>
+                    <ul className='flashcardOutput-cont'>
                         {results.length === 0 ? (<h2> No Flashcards </h2>) : (
-                            <div>
+                            <div className='actual-card-cont'>
                                 {revealAnswer ? (
-                                    <div onClick={handleHideAnswer}> {results.map((item) => (
-                                        <h3 key={item.id}> {item.answer} </h3>
+                                    <div className='flashcard' onClick={handleHideAnswer}> {results.map((item) => (
+                                        <>
+                                        <div className='flashcard-type'>
+                                            <p> ANSWER </p>
+                                        </div>
+
+                                        <div className='flashcard-content'>
+                                            <p key={item.id}> {item.answer} </p>
+                                        </div> 
+                                        </>
                                     ))} </div>
                                 ) : (
-                                    <div onClick={handleShowAnswer}> {results.map((item) => (
-                                        <h3 key={item.id}> {item.question} </h3>
+                                    <div className='flashcard' onClick={handleShowAnswer}> {results.map((item) => (
+                                        <>
+                                        <div className='flashcard-type'>
+                                            <p> QUESTION </p>
+                                        </div>
+
+                                        <div className='flashcard-content'>
+                                            <p key={item.id}> {item.question} </p>
+                                        </div>
+                                        </>
                                     ))} </div>
                                 )}
-            
-                                <button onClick={handleRightAnswer}>right</button>
-                                <button onClick={handleWrongAnswer}>wrong</button>
-                                <button onClick={handleEndButton}>end</button>
                             </div>
                         )}
                     </ul>
+
+                    <div className='buttons-cont'>
+                        <button className='button' onClick={handleRightAnswer}>right</button>
+                        <button className='button' onClick={handleWrongAnswer}>wrong</button>
+                        <button className='button' onClick={handleEndButton}>end</button>
+                    </div>
+
                 </div>
             )}
 
@@ -241,7 +260,7 @@ const FlashcardPage = () => {
             )}
 
             </div>  
-        </>
+        </div>
     )
 }
 
