@@ -141,14 +141,14 @@ const FlashcardPage = () => {
         setAnswer('')
     }
 
-    const handleAddNew = async (storedSubjectId) => {
-        if ((question.trim() === '') && (answer.trim() === '')) {
+    const handleAddNew = async () => {
+        if ((question.trim() === '') || (answer.trim() === '')) {
             alert('You must enter a question and an answer')
             return;
         }
 
         try {
-            const response = await axios.post(`https://memoraide-server.onrender.com/flashcards/subjects/${storedSubjectId}/new`, {
+            const response = await axios.post(`https://memoraide-server.onrender.com/flashcards/subjects/${selectedSubjectId}/new`, {
                 question: question,
                 answer: answer
             })
@@ -157,12 +157,13 @@ const FlashcardPage = () => {
                     id: response.data.id,
                     question: question,
                     answer: answer, 
-                    subject_id: storedSubjectId
+                    subject_id: selectedSubjectId
                 }
 
                 if (newFlashcard && Object.keys(newFlashcard).length > 0) {
                     setNewCard((prevResults) => [newFlashcard, ...prevResults])
                     handleHideOverlay()
+                    fetchData(selectedSubjectId)
                 } else {
                     console.error('Invalid new flashcard data in the API response.')
                 }
