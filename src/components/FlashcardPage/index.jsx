@@ -192,19 +192,19 @@ const FlashcardPage = () => {
                                 {revealAnswer ? (
                                     <div className='flashcard' onClick={handleHideAnswer}> {results.map((item) => (
                                         <>
-                                        <div className='flashcard-type'>
+                                        <div key={item.id} className='flashcard-type'>
                                             <p> ANSWER </p>
                                         </div>
 
                                         <div className='flashcard-content'>
-                                            <p key={item.id}> {item.answer} </p>
+                                            <p> {item.answer} </p>
                                         </div> 
                                         </>
                                     ))} </div>
                                 ) : (
                                     <div className='flashcard' onClick={handleShowAnswer}> {results.map((item) => (
                                         <>
-                                        <div className='flashcard-type'>
+                                        <div key={item.id} className='flashcard-type'>
                                             <p> QUESTION </p>
                                         </div>
 
