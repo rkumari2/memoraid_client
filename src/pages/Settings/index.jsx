@@ -12,19 +12,43 @@ const Settings = () => {
 
   const handleBgChange = (color) => {
     dispatch(actions.setBgColor(color));
+    localStorage.setItem('bgColor', color);
   };
 
   const handleSpacingChange = (spacing) => {
     dispatch(actions.setLetterSpacing(spacing));
+    localStorage.setItem('spacing', spacing);
   };
 
   const handleLineHeightChange = (lineSpacing) => {
     dispatch(actions.setLineSpacing(lineSpacing));
+    localStorage.setItem('lineSpacing', lineSpacing);
   }
 
   const handleFontSizeChange = (size) => {
     dispatch(actions.setFontSize(size))
+    localStorage.setItem('size', size);
   }
+
+  useEffect(() => {
+    const savedBgColor = localStorage.getItem('bgColor');
+    const savedSpacing = localStorage.getItem('spacing');
+    const savedLineSpacing = localStorage.getItem('lineSpacing');
+    const savedSize = localStorage.getItem('size');
+
+    if (savedBgColor) {
+      handleBgChange(savedBgColor);
+    }
+    if (savedSpacing) {
+      handleSpacingChange(savedSpacing);
+    }
+    if (savedLineSpacing) {
+      handleLineHeightChange(savedLineSpacing);
+    }
+    if (savedSize) {
+      handleFontSizeChange(savedSize);
+    }
+  }, []);
 
   useEffect(() => {
     // document.body.style.backgroundColor = bgColor;
@@ -47,7 +71,7 @@ const Settings = () => {
           {/* font size */}
           <div>
           <h3> Change font size </h3>
-          <div id='accessibility-question'>
+          <div>
             <div >
               <input
                 type="radio"

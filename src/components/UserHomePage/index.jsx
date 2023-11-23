@@ -6,7 +6,8 @@ const UserHomePage = () => {
 
   const { responseToken, isLoggedIn } = useAuth()
 
-  const { bgColor } = useSelector(state => state.accessibility);
+  // const { bgColor } = useSelector(state => state.accessibility);
+  const { bgColor, spacing, lineSpacing, size } = useSelector((state) => state.accessibility);
 
   console.log('bgColor:', bgColor)
 
@@ -19,7 +20,7 @@ const UserHomePage = () => {
       <p>Let's make today a productive study day.</p>
 
       <div className='options-section'>
-        <div className='option' style={{ backgroundColor: bgColor }}>
+        <div className='option' style={{ backgroundColor: bgColor, letterSpacing: spacing, lineHeight: lineSpacing, fontSize: size }}>
           <h2>View Your Subjects</h2>
           <p>See all your flashcard decks organized by subject. Review, edit or add new decks.</p>
         </div>

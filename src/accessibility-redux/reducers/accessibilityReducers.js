@@ -1,8 +1,8 @@
 const initState = {
-    bgColor: '#ffffff', 
-    spacing: '0.05rem', 
-    lineSpacing: '1.5rem', 
-    size: '15px'
+    bgColor: localStorage.getItem('bgColor'), 
+    spacing: localStorage.getItem('spacing'), 
+    lineSpacing: localStorage.getItem('lineSpacing'), 
+    size: localStorage.getItem('size')
 }
 
 
