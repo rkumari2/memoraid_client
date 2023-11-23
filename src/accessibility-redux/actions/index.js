@@ -1,8 +1,8 @@
-export const setBgColor = (element, color) => {
+export const setBgColor = (color) => {
     return (dispatch) => {
         dispatch({
             type: 'SET_BG_COLOR',
-            payload: {element, color}
+            payload: color
         })
     }
 }

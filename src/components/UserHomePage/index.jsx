@@ -19,7 +19,7 @@ const UserHomePage = () => {
       <p>Let's make today a productive study day.</p>
 
       <div className='options-section'>
-        <div className='option' style={{ backgroundColor: bgColor.questionColor }}>
+        <div className='option' style={{ backgroundColor: bgColor }}>
           <h2>View Your Subjects</h2>
           <p>See all your flashcard decks organized by subject. Review, edit or add new decks.</p>
         </div>

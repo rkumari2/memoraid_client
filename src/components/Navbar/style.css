@@ -39,7 +39,7 @@
 .navlink {
     color: var(--white);
     text-decoration: none;
-    font-size: 15px;
+    /* font-size: 15px; */
 }
 
 #login-btn-navbar {

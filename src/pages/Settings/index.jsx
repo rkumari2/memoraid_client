@@ -10,8 +10,8 @@ const Settings = () => {
 
   const dispatch = useDispatch();
 
-  const handleBgChange = (element, color) => {
-    dispatch(actions.setBgColor(element, color));
+  const handleBgChange = (color) => {
+    dispatch(actions.setBgColor(color));
   };
 
   const handleSpacingChange = (spacing) => {
@@ -28,9 +28,9 @@ const Settings = () => {
 
   useEffect(() => {
     // document.body.style.backgroundColor = bgColor;
-    const questionElement = document.getElementById('accessibility-question')
-    if(questionElement) {
-      questionElement.style.backgroundColor = bgColor.questionColor
+    const element = document.getElementById('accessibility-question')
+    if(element) {
+      element.style.backgroundColor = bgColor
     }
     document.body.style.letterSpacing = spacing;
     document.body.style.lineHeight = lineSpacing;
@@ -167,11 +167,10 @@ const Settings = () => {
             <div>
               <input
                 type="radio"
-                id="color-white"
                 name="background-color"
                 value="#ffffff"
                 checked={bgColor === '#ffffff'}
-                onChange={() => handleBgChange('questionColor', '#ffffff')}
+                onChange={() => handleBgChange('#ffffff')}
               />
               <label htmlFor="color-white"> White </label>
             </div>
@@ -183,7 +182,7 @@ const Settings = () => {
                 name="background-color"
                 value="#C1E7FF"
                 checked={bgColor === '#C1E7FF'}
-                onChange={() => handleBgChange('questionColor', '#C1E7FF')}
+                onChange={() => handleBgChange('#C1E7FF')}
               />
               <label htmlFor="color-blue"> Blue </label>
             </div>
@@ -195,7 +194,7 @@ const Settings = () => {
                 name="background-color"
                 value="#FCFFC1"
                 checked={bgColor === '#FCFFC1'}
-                onChange={() => handleBgChange('questionColor', '#FCFFC1')}
+                onChange={() => handleBgChange('#FCFFC1')}
               />
               <label htmlFor="color-yellow"> Yellow </label>
             </div>
@@ -207,7 +206,7 @@ const Settings = () => {
                 name="background-color"
                 value="#D8FFC1"
                 checked={bgColor === '#D8FFC1'}
-                onChange={() => handleBgChange('questionColor', '#D8FFC1')}
+                onChange={() => handleBgChange('#D8FFC1')}
               />
               <label htmlFor="color-green"> Green </label>
             </div> */}
@@ -219,7 +218,7 @@ const Settings = () => {
                 name="background-color"
                 value="#FFD4EA"
                 checked={bgColor === '#FFD4EA'}
-                onChange={() => handleBgChange('questionColor', '#FFD4EA')}
+                onChange={() => handleBgChange('#FFD4EA')}
               />
               <label htmlFor="color-pink"> Pink </label>
             </div> */}
@@ -231,7 +230,7 @@ const Settings = () => {
                 name="background-color"
                 value="#FFDDB5"
                 checked={bgColor === '#FFDDB5'}
-                onChange={() => handleBgChange('questionColor', '#FFDDB5')}
+                onChange={() => handleBgChange('#FFDDB5')}
               />
               <label htmlFor="color-orange"> Orange </label>
             </div>
