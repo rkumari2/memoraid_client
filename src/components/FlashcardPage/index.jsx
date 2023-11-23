@@ -23,11 +23,11 @@ const FlashcardPage = () => {
     const [finalPercentage, setFinalPercentage] = useState(0)
 
     const today = new Date()
-    const month = today.getMonth() + 1
+    const month = today.getMonth()+1
     const year = today.getFullYear()
     const day = today.getDate()
     const currentDate = day + '/' + month + '/' + year
-
+    
     useEffect(() => {
         const storedSubjectId = parseInt(localStorage.getItem('selectedSubjectId'), 10);
         if (storedSubjectId) {
@@ -75,26 +75,26 @@ const FlashcardPage = () => {
     const handleCreateScoreCard = async (newPercentage) => {
         try {
             const response = await axios.post(`https://memoraide-server.onrender.com/scores/${responseToken.user_id}/new`, {
-                date: currentDate,
+                date: currentDate, 
                 totalScore: parseInt(newPercentage, 10),
                 rightAnswer: parseInt(rightAnswers, 10),
                 totalQuestions: parseInt(totalQuestions, 10),
                 subject: selectedSubjectName
-            })
+            }) 
 
             if (response.status === 201) {
                 const newScore = {
                     id: response.data.id,
-                    user_id: responseToken.user_id,
-                    date: currentDate,
-                    totalScore: finalPercentage,
+                    user_id: responseToken.user_id, 
+                    date: currentDate, 
+                    totalScore: finalPercentage, 
                     rightAnswer: rightAnswers,
                     totalQuestions: totalQuestions,
                     subject: selectedSubjectName
                 }
 
                 if (newScore && Object.keys(newScore).length > 0) {
-                    setScoreResults((prevResults) => [newScore, ...prevResults])
+                    setScoreResults((prevResults) => [ newScore, ...prevResults])
                 } else {
                     console.error('Invalid new score data in the API response.')
                 }
@@ -146,25 +146,25 @@ const FlashcardPage = () => {
                                 {revealAnswer ? (
                                     <div className='flashcard' onClick={handleHideAnswer}> {results.map((item) => (
                                         <>
-                                            <div key={item.id} className='flashcard-type'>
-                                                <p> ANSWER </p>
-                                            </div>
+                                        <div key={item.id} className='flashcard-type'>
+                                            <p> ANSWER </p>
+                                        </div>
 
-                                            <div className='flashcard-content'>
-                                                <p> {item.answer} </p>
-                                            </div>
+                                        <div className='flashcard-content'>
+                                            <p> {item.answer} </p>
+                                        </div> 
                                         </>
                                     ))} </div>
                                 ) : (
                                     <div className='flashcard' onClick={handleShowAnswer}> {results.map((item) => (
                                         <>
-                                            <div key={item.id} className='flashcard-type'>
-                                                <p> QUESTION </p>
-                                            </div>
+                                        <div key={item.id} className='flashcard-type'>
+                                            <p> QUESTION </p>
+                                        </div>
 
-                                            <div className='flashcard-content'>
-                                                <p key={item.id}> {item.question} </p>
-                                            </div>
+                                        <div className='flashcard-content'>
+                                            <p key={item.id}> {item.question} </p>
+                                        </div>
                                         </>
                                     ))} </div>
                                 )}
@@ -181,7 +181,7 @@ const FlashcardPage = () => {
                 </div>
             )}
 
-            <AddFlashcardBtn />
+            <AddFlashcardBtn/>
 
         </div>
     )

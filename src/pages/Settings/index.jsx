@@ -1,9 +1,249 @@
-import React from 'react'
+import React, { useEffect } from 'react'
+import { useSelector, useDispatch } from 'react-redux';
+// import * as actions from '../../actions/accessibility';
+import * as actions from '../../accessibility-redux/actions'
 import './style.css'
 
 const Settings = () => {
+
+  const { bgColor, spacing, lineSpacing, size } = useSelector((state) => state.accessibility);
+
+  const dispatch = useDispatch();
+
+  const handleBgChange = (element, color) => {
+    dispatch(actions.setBgColor(element, color));
+  };
+
+  const handleSpacingChange = (spacing) => {
+    dispatch(actions.setLetterSpacing(spacing));
+  };
+
+  const handleLineHeightChange = (lineSpacing) => {
+    dispatch(actions.setLineSpacing(lineSpacing));
+  }
+
+  const handleFontSizeChange = (size) => {
+    dispatch(actions.setFontSize(size))
+  }
+
+  useEffect(() => {
+    // document.body.style.backgroundColor = bgColor;
+    const questionElement = document.getElementById('accessibility-question')
+    if(questionElement) {
+      questionElement.style.backgroundColor = bgColor.questionColor
+    }
+    document.body.style.letterSpacing = spacing;
+    document.body.style.lineHeight = lineSpacing;
+    document.body.style.fontSize = size;
+  }, [bgColor, spacing, lineSpacing, size]);
+
   return (
-    <div className='page-layout'> <h1> Settings Page </h1></div>
+    <div className='page-layout'>
+      <div className='flashcards-cont'>
+        <h1> SETTINGS </h1>
+
+        <div>
+
+          {/* font size */}
+          <div>
+          <h3> Change font size </h3>
+          <div id='accessibility-question'>
+            <div >
+              <input
+                type="radio"
+                name='font-size'
+                value='15px'
+                checked={size === '15px'}
+                onChange={() => handleFontSizeChange('15px')} />
+              <label htmlFor="15px font size"> Small </label>
+            </div>
+
+            <div>
+              <input
+                type="radio"
+                name='font-size'
+                value='17px'
+                checked={size === '17px'}
+                onChange={() => handleFontSizeChange('17px')} />
+              <label htmlFor="17px font size"> Medium </label>
+            </div>
+
+            <div>
+              <input
+                type="radio"
+                name='font-size'
+                value='20px'
+                checked={size === '20px'}
+                onChange={() => handleFontSizeChange('20px')} />
+              <label htmlFor="20px font size"> Large </label>
+            </div>
+          </div>
+          </div>
+
+          {/* line height */}
+          <div>
+          <h3>Change line height</h3>
+          <div id="radio-cont">
+            <div>
+              <input
+                type="radio"
+                name='line-height'
+                value='1.5rem'
+                checked={lineSpacing === '1.5rem'}
+                onChange={() => handleLineHeightChange('1.5rem')} />
+              <label htmlFor=" 1.5rem height"> Small </label>
+            </div>
+
+            <div>
+              <input
+                type="radio"
+                id='1.75rem'
+                name='line-height'
+                value='1.75rem'
+                checked={lineSpacing === '1.75rem'}
+                onChange={() => handleLineHeightChange('1.75rem')} />
+              <label htmlFor="1.75rem height"> Medium </label>
+            </div>
+
+            <div>
+              <input
+                type="radio"
+                id='2rem'
+                name='line-height'
+                value='2rem'
+                checked={lineSpacing === '2rem'}
+                onChange={() => handleLineHeightChange('2rem')} />
+              <label htmlFor="2rem height"> Large </label>
+            </div>
+          </div>
+        </div>
+
+        {/* letter spacing */}
+        <div id='letter-spacing'>
+          <h3>Change letter spacing</h3>
+          <div id="radio-cont">
+            <div>
+              <input
+                type="radio"
+                id="0.1rem"
+                name="letter-spacing"
+                value="0.05rem"
+                checked={spacing === '0.05rem'}
+                onChange={() => handleSpacingChange('0.05rem')}
+              />
+              <label htmlFor="0.05 spacing"> Small </label>
+            </div>
+
+            <div>
+              <input
+                type="radio"
+                id="0.15rem"
+                name="letter-spacing"
+                value="0.1rem"
+                checked={spacing === '0.1rem'}
+                onChange={() => handleSpacingChange('0.1rem')}
+              />
+              <label htmlFor="0.1 spacing"> Medium </label>
+            </div>
+
+            <div>
+              <input
+                type="radio"
+                id="0.2rem"
+                name="letter-spacing"
+                value="0.15rem"
+                checked={spacing === '0.15rem'}
+                onChange={() => handleSpacingChange('0.15rem')}
+              />
+              <label htmlFor="0.15 spacing"> Large </label>
+            </div>
+          </div>
+        </div>
+
+        {/* background color */}
+        <div id='bg-color'>
+          <h3>Change the background color</h3>
+          <div id="radio-cont">
+            <div>
+              <input
+                type="radio"
+                id="color-white"
+                name="background-color"
+                value="#ffffff"
+                checked={bgColor === '#ffffff'}
+                onChange={() => handleBgChange('questionColor', '#ffffff')}
+              />
+              <label htmlFor="color-white"> White </label>
+            </div>
+
+            <div>
+              <input
+                type="radio"
+                id="color-blue"
+                name="background-color"
+                value="#C1E7FF"
+                checked={bgColor === '#C1E7FF'}
+                onChange={() => handleBgChange('questionColor', '#C1E7FF')}
+              />
+              <label htmlFor="color-blue"> Blue </label>
+            </div>
+
+            <div>
+              <input
+                type="radio"
+                id="color-yellow"
+                name="background-color"
+                value="#FCFFC1"
+                checked={bgColor === '#FCFFC1'}
+                onChange={() => handleBgChange('questionColor', '#FCFFC1')}
+              />
+              <label htmlFor="color-yellow"> Yellow </label>
+            </div>
+
+            {/* <div>
+              <input
+                type="radio"
+                id="color-green"
+                name="background-color"
+                value="#D8FFC1"
+                checked={bgColor === '#D8FFC1'}
+                onChange={() => handleBgChange('questionColor', '#D8FFC1')}
+              />
+              <label htmlFor="color-green"> Green </label>
+            </div> */}
+
+            {/* <div>
+              <input
+                type="radio"
+                id="color-pink"
+                name="background-color"
+                value="#FFD4EA"
+                checked={bgColor === '#FFD4EA'}
+                onChange={() => handleBgChange('questionColor', '#FFD4EA')}
+              />
+              <label htmlFor="color-pink"> Pink </label>
+            </div> */}
+
+            <div>
+              <input
+                type="radio"
+                id="color-orange"
+                name="background-color"
+                value="#FFDDB5"
+                checked={bgColor === '#FFDDB5'}
+                onChange={() => handleBgChange('questionColor', '#FFDDB5')}
+              />
+              <label htmlFor="color-orange"> Orange </label>
+            </div>
+          </div>
+        </div>
+
+
+        </div>
+
+      </div>
+
+    </div>
   )
 }
 

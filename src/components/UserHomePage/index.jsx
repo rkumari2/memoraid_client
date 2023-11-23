@@ -1,9 +1,14 @@
 import React from 'react'
 import { useAuth } from '../../authContext'
+import { useSelector } from 'react-redux';
 
 const UserHomePage = () => {
 
   const { responseToken, isLoggedIn } = useAuth()
+
+  const { bgColor } = useSelector(state => state.accessibility);
+
+  console.log('bgColor:', bgColor)
 
   // console.log('home page responseToken', responseToken)
 
@@ -14,7 +19,7 @@ const UserHomePage = () => {
       <p>Let's make today a productive study day.</p>
 
       <div className='options-section'>
-        <div className='option'>
+        <div className='option' style={{ backgroundColor: bgColor.questionColor }}>
           <h2>View Your Subjects</h2>
           <p>See all your flashcard decks organized by subject. Review, edit or add new decks.</p>
         </div>
