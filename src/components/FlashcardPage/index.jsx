@@ -3,6 +3,7 @@ import { useSubject } from '../../subjectContext'
 import axios from 'axios'
 import { useAuth } from '../../authContext'
 import { useNavigate } from 'react-router-dom'
+import AddFlashcardBtn from '../AddFlashcardBtn'
 
 const FlashcardPage = () => {
 
@@ -20,17 +21,13 @@ const FlashcardPage = () => {
     const [wrongAnswers, setWrongAnswers] = useState(0)
     const [isEndClicked, setIsEndClicked] = useState(false)
     const [finalPercentage, setFinalPercentage] = useState(0)
-    const [showAddOverlay, setShowAddOverlay] = useState(false)
-    const [question, setQuestion] = useState('')
-    const [answer, setAnswer] = useState('')
-    const [newCard, setNewCard] = useState([])
 
     const today = new Date()
-    const month = today.getMonth()+1
+    const month = today.getMonth() + 1
     const year = today.getFullYear()
     const day = today.getDate()
     const currentDate = day + '/' + month + '/' + year
-    
+
     useEffect(() => {
         const storedSubjectId = parseInt(localStorage.getItem('selectedSubjectId'), 10);
         if (storedSubjectId) {
@@ -78,26 +75,26 @@ const FlashcardPage = () => {
     const handleCreateScoreCard = async (newPercentage) => {
         try {
             const response = await axios.post(`https://memoraide-server.onrender.com/scores/${responseToken.user_id}/new`, {
-                date: currentDate, 
+                date: currentDate,
                 totalScore: parseInt(newPercentage, 10),
                 rightAnswer: parseInt(rightAnswers, 10),
                 totalQuestions: parseInt(totalQuestions, 10),
                 subject: selectedSubjectName
-            }) 
+            })
 
             if (response.status === 201) {
                 const newScore = {
                     id: response.data.id,
-                    user_id: responseToken.user_id, 
-                    date: currentDate, 
-                    totalScore: finalPercentage, 
+                    user_id: responseToken.user_id,
+                    date: currentDate,
+                    totalScore: finalPercentage,
                     rightAnswer: rightAnswers,
                     totalQuestions: totalQuestions,
                     subject: selectedSubjectName
                 }
 
                 if (newScore && Object.keys(newScore).length > 0) {
-                    setScoreResults((prevResults) => [ newScore, ...prevResults])
+                    setScoreResults((prevResults) => [newScore, ...prevResults])
                 } else {
                     console.error('Invalid new score data in the API response.')
                 }
@@ -131,49 +128,6 @@ const FlashcardPage = () => {
         navigate('/subjects')
     }
 
-    const handleShowOverlay = () => {
-        setShowAddOverlay(true)
-    }
-
-    const handleHideOverlay = () => {
-        setShowAddOverlay(false)
-        setQuestion('')
-        setAnswer('')
-    }
-
-    const handleAddNew = async () => {
-        if ((question.trim() === '') || (answer.trim() === '')) {
-            alert('You must enter a question and an answer')
-            return;
-        }
-
-        try {
-            const response = await axios.post(`https://memoraide-server.onrender.com/flashcards/subjects/${selectedSubjectId}/new`, {
-                question: question,
-                answer: answer
-            })
-            if (response.status === 201) {
-                const newFlashcard = {
-                    id: response.data.id,
-                    question: question,
-                    answer: answer, 
-                    subject_id: selectedSubjectId
-                }
-
-                if (newFlashcard && Object.keys(newFlashcard).length > 0) {
-                    setNewCard((prevResults) => [newFlashcard, ...prevResults])
-                    handleHideOverlay()
-                    fetchData(selectedSubjectId)
-                } else {
-                    console.error('Invalid new flashcard data in the API response.')
-                }
-            }
-
-        } catch (err) {
-            console.error('Error adding new flashcard:', err)
-        }
-    }
-
     return (
         <div className='flashcards-cont'>
             <h1>{(selectedSubjectName).toUpperCase()} FLASHCARDS </h1>
@@ -192,25 +146,25 @@ const FlashcardPage = () => {
                                 {revealAnswer ? (
                                     <div className='flashcard' onClick={handleHideAnswer}> {results.map((item) => (
                                         <>
-                                        <div key={item.id} className='flashcard-type'>
-                                            <p> ANSWER </p>
-                                        </div>
+                                            <div key={item.id} className='flashcard-type'>
+                                                <p> ANSWER </p>
+                                            </div>
 
-                                        <div className='flashcard-content'>
-                                            <p> {item.answer} </p>
-                                        </div> 
+                                            <div className='flashcard-content'>
+                                                <p> {item.answer} </p>
+                                            </div>
                                         </>
                                     ))} </div>
                                 ) : (
                                     <div className='flashcard' onClick={handleShowAnswer}> {results.map((item) => (
                                         <>
-                                        <div key={item.id} className='flashcard-type'>
-                                            <p> QUESTION </p>
-                                        </div>
+                                            <div key={item.id} className='flashcard-type'>
+                                                <p> QUESTION </p>
+                                            </div>
 
-                                        <div className='flashcard-content'>
-                                            <p key={item.id}> {item.question} </p>
-                                        </div>
+                                            <div className='flashcard-content'>
+                                                <p key={item.id}> {item.question} </p>
+                                            </div>
                                         </>
                                     ))} </div>
                                 )}
@@ -227,39 +181,8 @@ const FlashcardPage = () => {
                 </div>
             )}
 
-            <button className='button' id='add-subject-btn' onClick={handleShowOverlay}> + </button>  
+            <AddFlashcardBtn />
 
-            <div className='overlay-bg' style={{ display: showAddOverlay ? 'flex' : 'none'}}>
-
-            {showAddOverlay && (
-                <div className='overlay'>
-                    <div id='cancel-sect'>
-                        <button className='button' id='cancel-btn' onClick={handleHideOverlay}> X </button>
-                    </div>
-                    <h2> ADD A NEW FLASHCARD </h2>
-                    <div className='search'>
-                        <input 
-                            className='input-field'
-                            id='subject-input'
-                            type="text"
-                            placeholder='Question'
-                            value={question}
-                            onChange={(e) => setQuestion(e.target.value)}
-                        />
-                        <input 
-                            className='input-field'
-                            id='subject-input'
-                            type="text"
-                            placeholder='Answer'
-                            value={answer}
-                            onChange={(e) => setAnswer(e.target.value)}
-                        />
-                        <button className='button' id='add-btn' onClick={handleAddNew}> Add </button>
-                    </div>
-                </div>
-            )}
-
-            </div>  
         </div>
     )
 }
