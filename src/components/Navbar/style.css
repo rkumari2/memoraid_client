@@ -6,6 +6,7 @@
 
 #navbar-cont {
     background-color: var(--bg);
+    /* background-color: aqua; */
     margin: 0;
     width: 20%;
     height: 85vh;
@@ -17,12 +18,12 @@
 }
 
 #logo {
-    margin-left: 50px;
+    margin-left: 20px;
     cursor: pointer;
 }
 
 #logo img {
-    width: 80%;
+    width: 100%;
 }
 
 #links {
@@ -33,7 +34,7 @@
     align-items: center;
     height: 30%;
     width: 60%;
-    margin-top: 50px;
+    margin-top: 80px;
 }
 
 .navlink {
@@ -44,7 +45,7 @@
 
 #login-btn-navbar {
     margin-left: 50px;
-    margin-top: 80px;
+    margin-top: 100px;
     width: 60%;
     text-align: center;
 }

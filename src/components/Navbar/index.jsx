@@ -24,7 +24,7 @@ const Navbar = () => {
     <div className='page'>
       <nav id='navbar-cont'> 
         <div id="logo" onClick={handleLogoClick}>
-          <img src="logo.svg" alt="" />
+          <img src="logo3.png" alt="logo" />
         </div>
 
         <div id="links">

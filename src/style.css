@@ -1,13 +1,16 @@
-@import url('https://fonts.googleapis.com/css2?family=Saira:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+/* @import url('https://fonts.googleapis.com/css2?family=Saira:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap'); */
+
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,300;1,400;1,500;1,600;1,700;1,800&display=swap');
 
 :root {
-    --bg: #101527;
-    --pink: #FF95BB;
+    --bg: #22242e;
+    --pink: #d6ff89;
     --white: #ffffff; 
+    --light-yellow: #efffd0; 
 }
 
 * {
-    font-family: 'Saira', sans-serif;
+    font-family: 'Open Sans', sans-serif;
 }
 
 body {
@@ -33,6 +36,7 @@ body {
     font-size: 15px;
     text-decoration: none;
     cursor: pointer;
+    border-radius: 2px;
 }
 
 .hyperlink {
@@ -59,10 +63,21 @@ body {
     outline: none;
     border: none;
     padding-left: 10px;
-    font-family: 'Saira', sans-serif;
+    font-family: 'Open Sans', sans-serif;
     border: 1px solid var(--pink);
+    border-radius: 2px;
 }
 
 .input-field:focus {
     outline: 3px solid var(--pink);
+}
+
+.bg-image {
+    position: absolute;
+    height: 30%;
+    top: 4vh;
+    right: 4vw;
+    transform: rotate(15deg);
+    z-index: -1;
+    opacity: 0.2;
 }

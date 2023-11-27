@@ -50,7 +50,7 @@
 }
 
 .option {
-    background-color: var(--pink);
+    background-color: var(--light-yellow);
     height: 250px;
     width: 25%;
     display: flex;
@@ -58,5 +58,7 @@
     align-items: center;
     flex-direction: column;
     text-align: center;
-    color: var(--bg);
+    /* color: var(--bg); */
+    color: var(--pink);
 }
+
