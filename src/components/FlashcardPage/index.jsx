@@ -4,10 +4,15 @@ import axios from 'axios'
 import { useAuth } from '../../authContext'
 import { useNavigate } from 'react-router-dom'
 import AddFlashcardBtn from '../AddFlashcardBtn'
+import { BsFillHandThumbsUpFill, BsFillHandThumbsDownFill } from "react-icons/bs";
+import { MdCancel } from "react-icons/md";
+import { useSelector } from 'react-redux';
 
 const FlashcardPage = () => {
 
     const { selectedSubjectId, selectedSubjectName, setSelectedSubjectName } = useSubject()
+
+    const { bgColor, spacing, lineSpacing, size } = useSelector((state) => state.accessibility);
 
     const { responseToken } = useAuth()
 
@@ -130,7 +135,7 @@ const FlashcardPage = () => {
 
     return (
         <div className='flashcards-cont'>
-            <h1>{(selectedSubjectName).toUpperCase()} FLASHCARDS </h1>
+            <h1> <span className='highlight'> {selectedSubjectName} </span> Flashcards </h1>
 
             {isEndClicked ? (
                 <div>
@@ -144,10 +149,10 @@ const FlashcardPage = () => {
                         {results.length === 0 ? (<h2> No Flashcards </h2>) : (
                             <div className='actual-card-cont'>
                                 {revealAnswer ? (
-                                    <div className='flashcard' onClick={handleHideAnswer}> {results.map((item) => (
+                                    <div className='flashcard' id='accessibility' style={{backgroundColor: bgColor}} onClick={handleHideAnswer}> {results.map((item) => (
                                         <>
                                         <div key={item.id} className='flashcard-type'>
-                                            <p> ANSWER </p>
+                                            <h3> ANSWER </h3>
                                         </div>
 
                                         <div className='flashcard-content'>
@@ -156,10 +161,10 @@ const FlashcardPage = () => {
                                         </>
                                     ))} </div>
                                 ) : (
-                                    <div className='flashcard' onClick={handleShowAnswer}> {results.map((item) => (
+                                    <div className='flashcard' id='accessibility' style={{backgroundColor: bgColor}} onClick={handleShowAnswer}> {results.map((item) => (
                                         <>
                                         <div key={item.id} className='flashcard-type'>
-                                            <p> QUESTION </p>
+                                            <h3> QUESTION </h3>
                                         </div>
 
                                         <div className='flashcard-content'>
@@ -173,9 +178,26 @@ const FlashcardPage = () => {
                     </ul>
 
                     <div className='buttons-cont'>
-                        <button className='button' onClick={handleRightAnswer}>right</button>
-                        <button className='button' onClick={handleWrongAnswer}>wrong</button>
-                        <button className='button' onClick={handleEndButton}>end</button>
+                        <div className='flashcard-actions'>
+                            <div onClick={handleRightAnswer} className='flashcard-icon' > 
+                                <BsFillHandThumbsUpFill id='thumbs-up' /> 
+                            </div>
+                            <h3> {rightAnswers} </h3>
+                        </div>
+
+                        <div className='flashcard-actions' >
+                            <div onClick={handleEndButton} className='flashcard-icon' > 
+                                <MdCancel id='finish' />
+                            </div>
+                            <p> Finish </p>
+                        </div>
+
+                        <div className='flashcard-actions'>
+                            <div onClick={handleWrongAnswer} className='flashcard-icon' > 
+                                <BsFillHandThumbsDownFill id='thumbs-down' /> 
+                            </div>
+                            <h3> {wrongAnswers} </h3>
+                        </div>
                     </div>
 
                 </div>

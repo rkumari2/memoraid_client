@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import { useSubject } from '../../subjectContext'
 import axios from 'axios'
+import { IoMdClose, IoMdAdd } from "react-icons/io";
 
 const AddFlashcardBtn = () => {
 
@@ -56,17 +57,17 @@ const AddFlashcardBtn = () => {
 
     return (
         <>
-            <button className='button' id='add-subject-btn' onClick={handleShowOverlay}> + </button>
+            <button className='button' id='add-subject-btn' onClick={handleShowOverlay}> <IoMdAdd className='icon'/> </button>
 
             <div className='overlay-bg' style={{ display: showAddOverlay ? 'flex' : 'none' }}>
 
                 {showAddOverlay && (
                     <div className='overlay'>
                         <div id='cancel-sect'>
-                            <button className='button' id='cancel-btn' onClick={handleHideOverlay}> X </button>
+                            <button className='button' id='cancel-btn' onClick={handleHideOverlay}> <IoMdClose className='icon' /> </button>
                         </div>
                         <h2> ADD A NEW FLASHCARD </h2>
-                        <div className='search'>
+                        <div className='search' >
                             <input
                                 className='input-field'
                                 id='subject-input'
@@ -83,7 +84,7 @@ const AddFlashcardBtn = () => {
                                 value={answer}
                                 onChange={(e) => setAnswer(e.target.value)}
                             />
-                            <button className='button' id='add-btn' onClick={handleAddNew}> Add </button>
+                            <button className='button' id='add-btn' onClick={handleAddNew}> ADD </button>
                         </div>
                     </div>
                 )}
