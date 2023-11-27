@@ -13,7 +13,7 @@ const GuestHomePage = () => {
   return (
     <>
       <div className='tagline-home-page'>
-        <h1> LEARN. RECALL. MASTER. </h1>
+        <h1> Learn. Recall. Master. </h1>
       </div>
 
       <div className='intro-paragraph'>

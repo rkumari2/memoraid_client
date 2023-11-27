@@ -76,10 +76,10 @@ const Settings = () => {
               <input
                 type="radio"
                 name='font-size'
-                value='15px'
-                checked={size === '15px'}
-                onChange={() => handleFontSizeChange('15px')} />
-              <label htmlFor="15px font size"> Small </label>
+                value='16px'
+                checked={size === '16px'}
+                onChange={() => handleFontSizeChange('16px')} />
+              <label htmlFor="16px font size"> Small </label>
             </div>
 
             <div>

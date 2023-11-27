@@ -52,7 +52,7 @@
 
 #login-btn-text {
     color: var(--bg);
-    font-size: 15px;
+    font-size: 16px;
     text-decoration: none;
 }
 
@@ -63,10 +63,10 @@
 
 @media screen and (max-width: 1024px) {
     .navlink {
-        font-size: 15px;
+        font-size: 16px;
     }
     
     #login-btn-text {
-        font-size: 15px;
+        font-size: 16px;
     }
 }
