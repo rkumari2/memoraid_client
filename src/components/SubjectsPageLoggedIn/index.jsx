@@ -1,8 +1,11 @@
 import React, { useState } from 'react'
 import Search from '../Search'
 import SubjectCard from '../SubjectCard'
+import { useSelector } from 'react-redux';
 
 const SubjectsPageLoggedIn = () => {
+
+  const { bgColor } = useSelector((state) => state.accessibility);
 
   const [ showSubject, setShowSubject ] = useState(true)
   const [ finalSearchResults, SetFinalSearchResults ] = useState([])
@@ -35,17 +38,17 @@ const SubjectsPageLoggedIn = () => {
 
   return (
     <div className='subjects-cont'>
-      <h1> SUBJECTS </h1>
+      <h1> Topics </h1>
 
       <Search handleHideSubject={handleHideSubject} handleShowSubject={handleShowSubject} handleSearch={handleSearch} resetSearch={resetSearch} />
 
       <div>
-        {showSubject && !searching ? (<SubjectCard/>) : null}
+        {showSubject && !searching ? (<SubjectCard />) : null}
 
         {(searching || finalSearchResults.length > 0) && (
           <ul className='subjectsOutput-cont'>
             {finalSearchResults.map((result) => (
-              <li key={result.id} className='subject-card'>
+              <li key={result.id} className='subject-card' id='accessibility' style={{backgroundColor: bgColor}}>
                   <p>{result.subject}</p>
               </li>
             ))}

@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from 'react'
 import axios from 'axios'
 import { useAuth } from '../../authContext'
+import { IoMdClose } from "react-icons/io";
+
 
 const Search = ({ handleHideSubject, handleShowSubject, handleSearch, resetSearch }) => {
 
@@ -83,9 +85,9 @@ const Search = ({ handleHideSubject, handleShowSubject, handleSearch, resetSearc
                     />
 
                     {inputText && (
-                        <button className='button' id='clear-btn' onClick={handleClearClick}> X </button>
+                        <button className='button' id='clear-btn' onClick={handleClearClick}> <IoMdClose className='icon' /> </button>
                     )}
-                <button className='button' id='search-btn' onClick={handleButtonClick}>Submit</button>
+                <button className='button' id='search-btn' onClick={handleButtonClick}>SUBMIT</button>
             </form>
         </>
     )

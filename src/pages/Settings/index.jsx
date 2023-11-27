@@ -52,7 +52,7 @@ const Settings = () => {
 
   useEffect(() => {
     // document.body.style.backgroundColor = bgColor;
-    const element = document.getElementById('accessibility-question')
+    const element = document.getElementById('accessibility')
     if(element) {
       element.style.backgroundColor = bgColor
     }
@@ -188,6 +188,39 @@ const Settings = () => {
         <div id='bg-color'>
           <h3>Change the background color</h3>
           <div id="radio-cont">
+          <div>
+              <input
+                type="radio"
+                name="background-color"
+                value="#efffd0"
+                checked={bgColor === '#efffd0'}
+                onChange={() => handleBgChange('#efffd0')}
+              />
+              <label htmlFor="default colour"> Default </label>
+          </div>
+
+          <div>
+              <input
+                type="radio"
+                name="background-color"
+                value="#B987DC"
+                checked={bgColor === '#B987DC'}
+                onChange={() => handleBgChange('#B987DC')}
+              />
+              <label htmlFor="purple"> Purple </label>
+          </div>
+
+          {/* <div>
+              <input
+                type="radio"
+                name="background-color"
+                value="#BD987DC"
+                checked={bgColor === '#BD987DC'}
+                onChange={() => handleBgChange('#BD987DC')}
+              />
+              <label htmlFor="purple colour"> Purple </label>
+          </div> */}
+
             <div>
               <input
                 type="radio"
@@ -204,9 +237,9 @@ const Settings = () => {
                 type="radio"
                 id="color-blue"
                 name="background-color"
-                value="#C1E7FF"
-                checked={bgColor === '#C1E7FF'}
-                onChange={() => handleBgChange('#C1E7FF')}
+                value="#96ADFC"
+                checked={bgColor === '#96ADFC'}
+                onChange={() => handleBgChange('#96ADFC')}
               />
               <label htmlFor="color-blue"> Blue </label>
             </div>
@@ -214,13 +247,37 @@ const Settings = () => {
             <div>
               <input
                 type="radio"
+                id="color-blue"
+                name="background-color"
+                value="#DBE1F1"
+                checked={bgColor === '#DBE1F1'}
+                onChange={() => handleBgChange('#DBE1F1')}
+              />
+              <label htmlFor="color-blue"> Blue-Grey </label>
+            </div>
+
+            <div>
+              <input
+                type="radio"
                 id="color-yellow"
                 name="background-color"
-                value="#FCFFC1"
-                checked={bgColor === '#FCFFC1'}
-                onChange={() => handleBgChange('#FCFFC1')}
+                value="#F8FD89"
+                checked={bgColor === '#F8FD89'}
+                onChange={() => handleBgChange('#F8FD89')}
               />
               <label htmlFor="color-yellow"> Yellow </label>
+            </div>
+
+            <div>
+              <input
+                type="radio"
+                id="color-peach"
+                name="background-color"
+                value="#EDD1B0"
+                checked={bgColor === '#EDD1B0'}
+                onChange={() => handleBgChange('#EDD1B0')}
+              />
+              <label htmlFor="color-peach"> Peach </label>
             </div>
 
             {/* <div>
@@ -252,9 +309,9 @@ const Settings = () => {
                 type="radio"
                 id="color-orange"
                 name="background-color"
-                value="#FFDDB5"
-                checked={bgColor === '#FFDDB5'}
-                onChange={() => handleBgChange('#FFDDB5')}
+                value="#EDDD6E"
+                checked={bgColor === '#EDDD6E'}
+                onChange={() => handleBgChange('#EDDD6E')}
               />
               <label htmlFor="color-orange"> Orange </label>
             </div>

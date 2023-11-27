@@ -4,8 +4,11 @@ import { useAuth } from '../../authContext'
 import { useNavigate } from 'react-router-dom'
 import { useSubject } from '../../subjectContext'
 import AddSubjectBtn from '../AddSubjectBtn'
+import { useSelector } from 'react-redux';
 
 const SubjectCard = () => {
+
+    const { bgColor, spacing, lineSpacing, size } = useSelector((state) => state.accessibility);
 
     const { responseToken } = useAuth()
 
@@ -60,7 +63,9 @@ const SubjectCard = () => {
                 {results.length === 0 && (<h1>You don't have any subjects</h1>)}
 
                 {results.map((item) => (
-                    <li key={item.id} className='subject-card' onClick={() => handleSubjectClick(item.id, item.subject)}>
+                    <li key={item.id} className='subject-card' 
+                    id='accessibility' style={{backgroundColor: bgColor}}
+                    onClick={() => handleSubjectClick(item.id, item.subject)}>
                         <p> {item.subject} </p>
                     </li>
                 ))}

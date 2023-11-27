@@ -11,6 +11,7 @@
 
 * {
     font-family: 'Open Sans', sans-serif;
+    line-height: 1.5rem;
 }
 
 body {
@@ -84,4 +85,8 @@ body {
 
 .highlight {
     color: var(--pink);
+}
+
+.icon {
+    font-size: 25px;
 }

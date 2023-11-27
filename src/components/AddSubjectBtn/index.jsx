@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import axios from 'axios'
 import { useAuth } from '../../authContext'
+import { IoMdClose, IoMdAdd } from "react-icons/io";
 
 const AddSubjectBtn = ({ setResults, results }) => {
     const [showAddOverlay, setShowAddOverlay] = useState(false)
@@ -49,16 +50,16 @@ const AddSubjectBtn = ({ setResults, results }) => {
 
     return (
         <>
-            <button className='button' id='add-subject-btn' onClick={handleShowOverlay}> + </button>
+            <button className='button' id='add-subject-btn' onClick={handleShowOverlay}> <IoMdAdd className='icon' /> </button>
 
             <div className='overlay-bg' style={{ display: showAddOverlay ? 'flex' : 'none' }}>
 
                 {showAddOverlay && (
                     <div className='overlay'>
                         <div id='cancel-sect'>
-                            <button className='button' id='cancel-btn' onClick={handleHideOverlay}> X </button>
+                            <button className='button' id='cancel-btn' onClick={handleHideOverlay}> <IoMdClose className='icon' /> </button>
                         </div>
-                        <h2> ADD A NEW SUBJECT </h2>
+                        <h2> ADD A NEW TOPIC </h2>
                         <div className='search'>
                             <input
                                 className='input-field'
@@ -68,7 +69,7 @@ const AddSubjectBtn = ({ setResults, results }) => {
                                 value={subject}
                                 onChange={(e) => setSubject(e.target.value)}
                             />
-                            <button className='button' id='add-btn' onClick={handleAddNew}> Add </button>
+                            <button className='button' id='add-btn' onClick={handleAddNew}> ADD </button>
                         </div>
                     </div>
                 )}
