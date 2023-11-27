@@ -50,7 +50,8 @@
 }
 
 .option {
-    background-color: var(--light-yellow);
+    /* background-color: var(--light-yellow); */
+    /* border: 1px solid var(--pink); */
     height: 250px;
     width: 25%;
     display: flex;
@@ -62,3 +63,7 @@
     color: var(--pink);
 }
 
+#option-box img {
+    height: 80%;
+    /* border: 1px solid red; */
+}

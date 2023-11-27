@@ -10,25 +10,24 @@ const UserHomePage = () => {
 
   return (
     <div className='logged-in-home-page-cont'>
-      { isLoggedIn && responseToken.user ? (<h1> Hello, {responseToken.user} </h1>) : (<h1>Welcome!</h1>)}
+      { isLoggedIn && responseToken.user ? (<h1> Hello, <span className='highlight'> {responseToken.user} </span> </h1>) : (<h1>Welcome!</h1>)}
 
       <p>Let's make today a productive study day.</p>
 
       <div className='options-section'>
-        <div className='option' id='subjects-option'>
-          {/* <img src="subjects.png" alt="subjects option background image" /> */}
+        <div className='option' id='option-box'>
+          <img src="subjects.png" alt="" />
           <h2>View Your Topics</h2>
-          {/* <p>See all your flashcard decks organized by subject. Review, edit or add new decks.</p> */}
         </div>
 
-        <div className='option' id='progress-option'>
+        <div className='option' id='option-box'>
+          <img src="progress.png" alt="" />
           <h2>View Your Progress</h2>
-          {/* <p>lorem ipsum etc etc etc etc</p> */}
         </div>
 
-        <div className='option' id='settings-option'>
+        <div className='option' id='option-box'>
+          <img src="accessibility.png" alt="" />
           <h2>View Your Settings</h2>
-          {/* <p>Customize text size and more to optimise Memoraid for your learning needs.</p> */}
         </div>
       </div>
       
