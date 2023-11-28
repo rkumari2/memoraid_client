@@ -4,8 +4,10 @@ import axios from 'axios'
 import { useAuth } from '../../authContext'
 import { useNavigate } from 'react-router-dom'
 import AddFlashcardBtn from '../AddFlashcardBtn'
-import { BsFillHandThumbsUpFill, BsFillHandThumbsDownFill } from "react-icons/bs";
+import { BsFillHandThumbsUpFill, BsFillHandThumbsDownFill, BsRocketTakeoffFill } from "react-icons/bs";
 import { MdCancel } from "react-icons/md";
+import { FaCirclePlay } from "react-icons/fa6";
+import { PiBooksFill } from "react-icons/pi";
 import { useSelector } from 'react-redux';
 
 const FlashcardPage = () => {
@@ -133,15 +135,45 @@ const FlashcardPage = () => {
         navigate('/subjects')
     }
 
+    const handleViewScores = () => {
+        navigate('/scores')
+    }
+
     return (
         <div className='flashcards-cont'>
             <h1> <span className='highlight'> {selectedSubjectName} </span> Flashcards </h1>
 
             {isEndClicked ? (
-                <div>
-                    <h1> your final score is {finalPercentage}%, you did {rightAnswers} questions correct out of {totalQuestions} </h1>
-                    <button onClick={handleRestart}> Start Again </button>
-                    <button onClick={handleViewSubjects}> View Subjects </button>
+                <div className='final-score-cont'>
+                    <h1> Well Done <span className='highlight'> {responseToken.user} </span>! </h1>
+                    {/* <img src="well-done.png" alt="moving forward graphic" /> */}
+                    <div className='score-cont'>
+                        <h2> Your final score is <span className='highlight'> {finalPercentage}% </span>.</h2> 
+                        <h2> You did <span className='highlight'> {rightAnswers} </span>questions correct out of <span className='highlight'> {totalQuestions}</span>.</h2>
+                    </div>
+                    
+                    <div className='score-page-btns'>
+                        <div className='flashcard-actions'>
+                            <div onClick={handleRestart} className='flashcard-icon' > 
+                                <FaCirclePlay /> 
+                            </div>
+                            <p> Restart </p>
+                        </div>
+
+                        <div className='flashcard-actions'>
+                            <div onClick={handleViewScores} className='flashcard-icon' > 
+                                <BsRocketTakeoffFill /> 
+                            </div>
+                            <p> View Scores </p>
+                        </div>
+
+                        <div className='flashcard-actions'>
+                            <div onClick={handleViewSubjects} className='flashcard-icon' > 
+                                <PiBooksFill /> 
+                            </div>
+                            <p> View Topics </p>
+                        </div>
+                    </div>
                 </div>
             ) : (
                 <div className='card-cont'>
