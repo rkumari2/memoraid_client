@@ -63,16 +63,18 @@ const Settings = () => {
 
   return (
     <div className='page-layout'>
-      <div className='flashcards-cont'>
-        <h1> SETTINGS </h1>
+    <img className='bg-image' src="favicon.png" alt="light bulb graphic" />
 
-        <div>
+      <div className='settings-cont'>
+        <h1> Settings </h1>
+
+        <div className='settings-output-cont'>
 
           {/* font size */}
-          <div>
-          <h3> Change font size </h3>
-          <div>
-            <div >
+          <div className='setting-box'>
+          <h2> Font size </h2>
+          <div className='radio-btns-cont'>
+            <div>
               <input
                 type="radio"
                 name='font-size'
@@ -105,9 +107,9 @@ const Settings = () => {
           </div>
 
           {/* line height */}
-          <div>
-          <h3>Change line height</h3>
-          <div id="radio-cont">
+          <div className='setting-box'>
+          <h2>Line height</h2>
+          <div className='radio-btns-cont'>
             <div>
               <input
                 type="radio"
@@ -143,10 +145,10 @@ const Settings = () => {
         </div>
 
         {/* letter spacing */}
-        <div id='letter-spacing'>
-          <h3>Change letter spacing</h3>
-          <div id="radio-cont">
-            <div>
+        <div className='setting-box'>
+          <h2>Letter spacing</h2>
+            <div className='radio-btns-cont'>
+              <div>
               <input
                 type="radio"
                 id="0.1rem"
@@ -181,13 +183,13 @@ const Settings = () => {
               />
               <label htmlFor="0.15 spacing"> Large </label>
             </div>
-          </div>
+            </div>
         </div>
 
         {/* background color */}
-        <div id='bg-color'>
-          <h3>Change the background color</h3>
-          <div id="radio-cont">
+        <div className='setting-box'>
+          <h2>Background color</h2>
+          <div className='radio-btns-cont'>
           <div>
               <input
                 type="radio"
