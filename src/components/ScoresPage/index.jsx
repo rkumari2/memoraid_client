@@ -1,16 +1,17 @@
 import React, { useEffect, useState } from 'react'
 import axios from 'axios'
 import LoadingAnimation from '../LoadingAnimation'
+import { useSelector } from 'react-redux'
 
 
 const ScoresPage = () => {
+
+  const { bgColor } = useSelector((state) => state.accessibility);
 
   const [ results, setResults ] = useState([])
   const [ isLoading, setIsLoading ] = useState(true)
 
   const storedToken = JSON.parse(localStorage.getItem('tokenData'))
-
-  console.log('line 13:', storedToken)
 
   useEffect(() => {
 
@@ -37,16 +38,17 @@ const ScoresPage = () => {
   }, [])
 
   return (
+    <>
+
     <div className='scores-cont'>
-        <h1> PROGRESS </h1>
+        <h1> Progress </h1>
         
         <div className='scoresOutput-cont'>
           { results.length === 0 && !isLoading && (<div> <h1> No results to show, practice some more to get results.</h1> <button className='button'> SUBJECTS </button></div>)}
 
           { isLoading && (<LoadingAnimation />)}
-  
           { results.map((item) => (
-            <div key={item.id} className='scorecard'>
+            <div key={item.id} className='scorecard' id='accessibility' style={{backgroundColor: bgColor}}>
               <h2> {item.totalScore}% </h2>
               <p> {item.subject} </p>
               <p> {item.date} </p>
@@ -54,7 +56,12 @@ const ScoresPage = () => {
             </div>
           ))}
         </div>
+
     </div>
+
+    <img className='bg-image' src="favicon.png" alt="light bulb graphic" />
+        
+    </>
   )
 }
 

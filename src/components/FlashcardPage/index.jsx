@@ -15,20 +15,20 @@ const FlashcardPage = () => {
 
     const { selectedSubjectId, selectedSubjectName, setSelectedSubjectName } = useSubject()
 
-    const { bgColor, spacing, lineSpacing, size } = useSelector((state) => state.accessibility);
+    const { bgColor } = useSelector((state) => state.accessibility);
 
     const { responseToken } = useAuth()
 
     const navigate = useNavigate()
 
-    const [results, setResults] = useState([])
-    const [scoreResults, setScoreResults] = useState([])
-    const [revealAnswer, setRevealAnswer] = useState(false)
-    const [totalQuestions, setTotalQuestions] = useState(0)
-    const [rightAnswers, setRightAnswers] = useState(0)
-    const [wrongAnswers, setWrongAnswers] = useState(0)
-    const [isEndClicked, setIsEndClicked] = useState(false)
-    const [finalPercentage, setFinalPercentage] = useState(0)
+    const [ results, setResults ] = useState([])
+    const [ scoreResults, setScoreResults ] = useState([])
+    const [ revealAnswer, setRevealAnswer ] = useState(false)
+    const [ totalQuestions, setTotalQuestions ] = useState(0)
+    const [ rightAnswers, setRightAnswers ] = useState(0)
+    const [ wrongAnswers, setWrongAnswers ] = useState(0)
+    const [ isEndClicked, setIsEndClicked ] = useState(false)
+    const [ finalPercentage, setFinalPercentage ] = useState(0)
     const [ isLoading, setIsLoading ] = useState(true)
 
     const today = new Date()
