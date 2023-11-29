@@ -2,7 +2,7 @@ import React from 'react'
 import { useAuth } from '../../authContext'
 import './style.css'
 import { SubjectsPageLoggedIn } from '../../components'
-import LoadingAnimation from '../../components/LoadingAnimation'
+import LoginRedirection from '../../components/LoginRedirection'
 
 
 const Subjects = () => {
@@ -12,9 +12,7 @@ const Subjects = () => {
   return (
     <div className='page-layout'>
 
-      {isLoggedIn ? (<SubjectsPageLoggedIn/>) : (
-        <LoadingAnimation />
-      )}
+      {isLoggedIn ? (<SubjectsPageLoggedIn/>) : ( <LoginRedirection/> )}
 
     </div>
   )

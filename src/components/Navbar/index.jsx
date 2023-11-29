@@ -5,7 +5,7 @@ import './style.css'
 
 const Navbar = () => {
 
-  const { isLoggedIn } = useAuth()
+  const { isLoggedIn, logout } = useAuth()
 
   const styles = ({ isActive }) => ({ color: isActive ? '#d6ff89' : '#FFFFFF', scale: isActive ? '1.2' : '1', fontWeight : isActive ? 'bold' : 'normal'})
 
