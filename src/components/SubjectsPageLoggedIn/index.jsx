@@ -43,7 +43,7 @@ const SubjectsPageLoggedIn = () => {
 
       <Search handleHideSubject={handleHideSubject} handleShowSubject={handleShowSubject} handleSearch={handleSearch} resetSearch={resetSearch} />
 
-      <div>
+      {/* <div> */}
         {showSubject && !searching ? (<SubjectCard />) : null}
 
         {/* {!searching && finalSearchResults.length === 0 ? (<LoadingAnimation />) : showSubject ? (<SubjectCard />) : null } */}
@@ -60,7 +60,7 @@ const SubjectsPageLoggedIn = () => {
         {!searching && finalSearchResults.length === 0 && !showSubject && (
           <h3> Nothing to show! </h3>
         )}
-      </div>
+      {/* </div> */}
 
     </div>
   )
