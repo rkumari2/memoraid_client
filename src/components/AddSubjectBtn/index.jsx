@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import axios from 'axios'
 import { useAuth } from '../../authContext'
 import { IoMdClose, IoMdAdd } from "react-icons/io";
+import { motion } from 'framer-motion';
 
 const AddSubjectBtn = ({ setResults, results }) => {
     const [showAddOverlay, setShowAddOverlay] = useState(false)
@@ -50,7 +51,7 @@ const AddSubjectBtn = ({ setResults, results }) => {
 
     return (
         <>
-            <button className='button' id='add-subject-btn' onClick={handleShowOverlay}> <IoMdAdd className='icon' /> </button>
+            <motion.button className='button' id='add-subject-btn' onClick={handleShowOverlay} whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.9 }}> <IoMdAdd className='icon' /> </motion.button>
 
             <div className='overlay-bg' style={{ display: showAddOverlay ? 'flex' : 'none' }}>
 
@@ -69,7 +70,7 @@ const AddSubjectBtn = ({ setResults, results }) => {
                                 value={subject}
                                 onChange={(e) => setSubject(e.target.value)}
                             />
-                            <button className='button' id='add-btn' onClick={handleAddNew}> ADD </button>
+                            <motion.button className='button' id='add-btn' onClick={handleAddNew} whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.9 }}> ADD </motion.button>
                         </div>
                     </div>
                 )}

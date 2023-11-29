@@ -80,7 +80,8 @@ const Settings = () => {
                 name='font-size'
                 value='16px'
                 checked={size === '16px'}
-                onChange={() => handleFontSizeChange('16px')} />
+                onChange={() => handleFontSizeChange('16px')} 
+                style={{cursor: 'pointer'}}/>
               <label htmlFor="16px font size"> Small </label>
             </div>
 
@@ -90,7 +91,8 @@ const Settings = () => {
                 name='font-size'
                 value='17px'
                 checked={size === '17px'}
-                onChange={() => handleFontSizeChange('17px')} />
+                onChange={() => handleFontSizeChange('17px')} 
+                style={{cursor: 'pointer'}}/>
               <label htmlFor="17px font size"> Medium </label>
             </div>
 
@@ -100,7 +102,8 @@ const Settings = () => {
                 name='font-size'
                 value='20px'
                 checked={size === '20px'}
-                onChange={() => handleFontSizeChange('20px')} />
+                onChange={() => handleFontSizeChange('20px')} 
+                style={{cursor: 'pointer'}}/>
               <label htmlFor="20px font size"> Large </label>
             </div>
           </div>
@@ -116,7 +119,8 @@ const Settings = () => {
                 name='line-height'
                 value='1.5rem'
                 checked={lineSpacing === '1.5rem'}
-                onChange={() => handleLineHeightChange('1.5rem')} />
+                onChange={() => handleLineHeightChange('1.5rem')} 
+                style={{cursor: 'pointer'}}/>
               <label htmlFor=" 1.5rem height"> Small </label>
             </div>
 
@@ -127,7 +131,8 @@ const Settings = () => {
                 name='line-height'
                 value='1.75rem'
                 checked={lineSpacing === '1.75rem'}
-                onChange={() => handleLineHeightChange('1.75rem')} />
+                onChange={() => handleLineHeightChange('1.75rem')} 
+                style={{cursor: 'pointer'}}/>
               <label htmlFor="1.75rem height"> Medium </label>
             </div>
 
@@ -138,7 +143,8 @@ const Settings = () => {
                 name='line-height'
                 value='2rem'
                 checked={lineSpacing === '2rem'}
-                onChange={() => handleLineHeightChange('2rem')} />
+                onChange={() => handleLineHeightChange('2rem')} 
+                style={{cursor: 'pointer'}}/>
               <label htmlFor="2rem height"> Large </label>
             </div>
           </div>
@@ -156,7 +162,7 @@ const Settings = () => {
                 value="0.05rem"
                 checked={spacing === '0.05rem'}
                 onChange={() => handleSpacingChange('0.05rem')}
-              />
+                style={{cursor: 'pointer'}}/>
               <label htmlFor="0.05 spacing"> Small </label>
             </div>
 
@@ -168,7 +174,7 @@ const Settings = () => {
                 value="0.1rem"
                 checked={spacing === '0.1rem'}
                 onChange={() => handleSpacingChange('0.1rem')}
-              />
+                style={{cursor: 'pointer'}}/>
               <label htmlFor="0.1 spacing"> Medium </label>
             </div>
 
@@ -180,7 +186,7 @@ const Settings = () => {
                 value="0.15rem"
                 checked={spacing === '0.15rem'}
                 onChange={() => handleSpacingChange('0.15rem')}
-              />
+                style={{cursor: 'pointer'}}/>
               <label htmlFor="0.15 spacing"> Large </label>
             </div>
             </div>
@@ -197,7 +203,7 @@ const Settings = () => {
                 value="#efffd0"
                 checked={bgColor === '#efffd0'}
                 onChange={() => handleBgChange('#efffd0')}
-              />
+                style={{cursor: 'pointer'}}/>
               <label htmlFor="default colour"> Default </label>
           </div>
 
@@ -208,20 +214,9 @@ const Settings = () => {
                 value="#B987DC"
                 checked={bgColor === '#B987DC'}
                 onChange={() => handleBgChange('#B987DC')}
-              />
+                style={{cursor: 'pointer'}}/>
               <label htmlFor="purple"> Purple </label>
           </div>
-
-          {/* <div>
-              <input
-                type="radio"
-                name="background-color"
-                value="#BD987DC"
-                checked={bgColor === '#BD987DC'}
-                onChange={() => handleBgChange('#BD987DC')}
-              />
-              <label htmlFor="purple colour"> Purple </label>
-          </div> */}
 
             <div>
               <input
@@ -230,7 +225,7 @@ const Settings = () => {
                 value="#ffffff"
                 checked={bgColor === '#ffffff'}
                 onChange={() => handleBgChange('#ffffff')}
-              />
+                style={{cursor: 'pointer'}}/>
               <label htmlFor="color-white"> White </label>
             </div>
 
@@ -242,7 +237,7 @@ const Settings = () => {
                 value="#96ADFC"
                 checked={bgColor === '#96ADFC'}
                 onChange={() => handleBgChange('#96ADFC')}
-              />
+                style={{cursor: 'pointer'}}/>
               <label htmlFor="color-blue"> Blue </label>
             </div>
 
@@ -254,7 +249,7 @@ const Settings = () => {
                 value="#DBE1F1"
                 checked={bgColor === '#DBE1F1'}
                 onChange={() => handleBgChange('#DBE1F1')}
-              />
+                style={{cursor: 'pointer'}}/>
               <label htmlFor="color-blue"> Blue-Grey </label>
             </div>
 
@@ -266,7 +261,7 @@ const Settings = () => {
                 value="#F8FD89"
                 checked={bgColor === '#F8FD89'}
                 onChange={() => handleBgChange('#F8FD89')}
-              />
+                style={{cursor: 'pointer'}}/>
               <label htmlFor="color-yellow"> Yellow </label>
             </div>
 
@@ -278,33 +273,9 @@ const Settings = () => {
                 value="#EDD1B0"
                 checked={bgColor === '#EDD1B0'}
                 onChange={() => handleBgChange('#EDD1B0')}
-              />
+                style={{cursor: 'pointer'}}/>
               <label htmlFor="color-peach"> Peach </label>
             </div>
-
-            {/* <div>
-              <input
-                type="radio"
-                id="color-green"
-                name="background-color"
-                value="#D8FFC1"
-                checked={bgColor === '#D8FFC1'}
-                onChange={() => handleBgChange('#D8FFC1')}
-              />
-              <label htmlFor="color-green"> Green </label>
-            </div> */}
-
-            {/* <div>
-              <input
-                type="radio"
-                id="color-pink"
-                name="background-color"
-                value="#FFD4EA"
-                checked={bgColor === '#FFD4EA'}
-                onChange={() => handleBgChange('#FFD4EA')}
-              />
-              <label htmlFor="color-pink"> Pink </label>
-            </div> */}
 
             <div>
               <input
@@ -314,7 +285,7 @@ const Settings = () => {
                 value="#EDDD6E"
                 checked={bgColor === '#EDDD6E'}
                 onChange={() => handleBgChange('#EDDD6E')}
-              />
+                style={{cursor: 'pointer'}}/>
               <label htmlFor="color-orange"> Orange </label>
             </div>
           </div>

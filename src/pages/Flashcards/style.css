@@ -113,6 +113,7 @@
     align-items: center;
     justify-content: center;
     opacity: 0.5;
+    color: black;
 }
 
 .flashcard-content {
@@ -122,6 +123,7 @@
     display: flex;
     align-items: start;
     justify-content: center;
+    color: black;
 }
 
 .flashcard-content p {
@@ -131,16 +133,11 @@
 
 .final-score-cont {
     /* background-color: aqua; */
-    margin-top: 20px;
+    margin-top: 80px;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: start;
-}
-
-.final-score-cont img {
-    height: 30px;
-    margin-top: 50px;
 }
 
 .score-cont {

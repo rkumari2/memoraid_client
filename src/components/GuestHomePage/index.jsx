@@ -1,5 +1,6 @@
 import React from 'react'
 import { Link, useNavigate } from 'react-router-dom'
+import { motion } from 'framer-motion'
 
 const GuestHomePage = () => {
 
@@ -22,8 +23,8 @@ const GuestHomePage = () => {
       </div>
 
       <div className='buttons-section'>
-        <button className='button' onClick={handleClick}>LOG IN</button>
-        <Link className='hyperlink' to='/register'>SIGN UP</Link>
+        <motion.button className='button' onClick={handleClick} whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.9 }}>LOG IN</motion.button>
+        <Link className='hyperlink' to='/register'> <motion.p whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.9 }}> SIGN UP </motion.p> </Link>
       </div>
 
       <img className='bg-image' src="favicon.png" alt="light bulb graphic" />

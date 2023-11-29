@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from 'react'
 import axios from 'axios'
 import { useAuth } from '../../authContext'
-import { IoMdClose } from "react-icons/io";
-import LoadingAnimation from '../LoadingAnimation';
-
+import { IoMdClose } from "react-icons/io"
+import LoadingAnimation from '../LoadingAnimation'
+import { motion } from 'framer-motion'
 
 const Search = ({ handleHideSubject, handleShowSubject, handleSearch, resetSearch }) => {
 
@@ -90,7 +90,7 @@ const Search = ({ handleHideSubject, handleShowSubject, handleSearch, resetSearc
                     {inputText && (
                         <button className='button' id='clear-btn' onClick={handleClearClick}> <IoMdClose className='icon' /> </button>
                     )}
-                <button className='button' id='search-btn' onClick={handleButtonClick}>SUBMIT</button>
+                <motion.button className='button' id='search-btn' onClick={handleButtonClick} whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.9 }}>SUBMIT</motion.button>
             </form>
 
             {/* { isLoading ? (<LoadingAnimation/>) : null } */}

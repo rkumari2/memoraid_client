@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { useAuth } from '../../authContext'
 import { useNavigate } from 'react-router-dom'
+import { motion } from 'framer-motion'
 
 const Login = () => {
 
@@ -37,6 +38,8 @@ const Login = () => {
 
   return (
     <div className='page-layout'>
+      <img className='bg-image' src="favicon.png" alt="light bulb graphic" />
+
       <div id='form-cont'>
         <h1>Log In</h1>
         <form onSubmit={handleSubmit}>
@@ -59,7 +62,7 @@ const Login = () => {
             placeholder='Password' 
           />
 
-          <button type='submit' className='button'> LOG IN </button>
+          <motion.button type='submit' className='button' whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.9 }}> LOG IN </motion.button>
 
           <p className='redirection-txt'> Don't have an account? <a href="/register"> SIGN UP </a></p>
 

@@ -62,6 +62,7 @@
     text-align: center;
     /* color: var(--bg); */
     color: var(--pink);
+    cursor: pointer;
 }
 
 #option-box img {

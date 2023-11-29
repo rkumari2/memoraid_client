@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react'
 import { useAuth } from '../../authContext'
 import { useNavigate } from 'react-router-dom'
 import './style.css'
+import { motion } from 'framer-motion'
 
 const Register = () => {
   
@@ -47,6 +48,8 @@ const Register = () => {
 
   return (
     <div className='page-layout'>
+      <img className='bg-image' src="favicon.png" alt="light bulb graphic" />
+
       <div id='form-cont'>
         <h1>Register</h1>
         <form onSubmit={handleSubmit}>
@@ -78,7 +81,7 @@ const Register = () => {
             placeholder='Password' 
           />
 
-          <button type='submit' className='button'> SIGN UP </button>
+          <motion.button type='submit' className='button' whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.9 }}> SIGN UP </motion.button>
 
           <p className='redirection-txt'> Already have an account? <a href="/login"> LOG IN </a></p>
 

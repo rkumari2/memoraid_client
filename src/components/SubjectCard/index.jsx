@@ -4,12 +4,13 @@ import { useAuth } from '../../authContext'
 import { useNavigate } from 'react-router-dom'
 import { useSubject } from '../../subjectContext'
 import AddSubjectBtn from '../AddSubjectBtn'
-import { useSelector } from 'react-redux';
+import { useSelector } from 'react-redux'
 import LoadingAnimation from '../LoadingAnimation'
+import { motion } from 'framer-motion'
 
-const SubjectCard = () => {
+const SubjectCard = ({handleSubjectClick}) => {
 
-    const { bgColor, spacing, lineSpacing, size } = useSelector((state) => state.accessibility);
+    const { bgColor } = useSelector((state) => state.accessibility);
 
     const { responseToken } = useAuth()
 
@@ -44,37 +45,40 @@ const SubjectCard = () => {
         fetchData()
     }, [])
 
-    const handleSubjectClick = (id, name) => {
-        localStorage.setItem('selectedSubjectId', id);
-        localStorage.setItem('selectedSubjectName', name);
-        setSelectedSubjectId(id);
-        setSelectedSubjectName(name);
-        navigate('/flashcards');
-    }
+    // const handleSubjectClick = (id, name) => {
+    //     localStorage.setItem('selectedSubjectId', id);
+    //     localStorage.setItem('selectedSubjectName', name);
+    //     setSelectedSubjectId(id);
+    //     setSelectedSubjectName(name);
+    //     navigate('/flashcards');
+    // }
 
-    useEffect(() => {
-        if (selectedSubjectId && selectedSubjectName) {
-            localStorage.setItem('selectedSubjectId', selectedSubjectId)
-            localStorage.setItem('selectedSubjectName', selectedSubjectName)
-        }
-    }, [selectedSubjectId, selectedSubjectName]);
+    // useEffect(() => {
+    //     if (selectedSubjectId && selectedSubjectName) {
+    //         localStorage.setItem('selectedSubjectId', selectedSubjectId)
+    //         localStorage.setItem('selectedSubjectName', selectedSubjectName)
+    //     }
+    // }, [selectedSubjectId, selectedSubjectName]);
 
 
     return (
         <>
-            <ul className='subjectsOutput-cont'>
+            <div className='subjectsOutput-cont'>
                 {results.length === 0 && !isLoading && (<h1>You don't have any subjects</h1>)}
 
                 {isLoading && (<LoadingAnimation/>)}
 
                 {results.map((item) => (
-                    <li key={item.id} className='subject-card' 
-                    id='accessibility' style={{backgroundColor: bgColor}}
-                    onClick={() => handleSubjectClick(item.id, item.subject)}>
+                    <motion.div key={item.id} 
+                        className='subject-card' 
+                        id='accessibility' 
+                        style={{backgroundColor: bgColor}}
+                        onClick={() => handleSubjectClick(item.id, item.subject)}
+                        whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.9 }}>
                         <p> {item.subject} </p>
-                    </li>
+                    </motion.div>
                 ))}
-            </ul>
+            </div>
 
             <AddSubjectBtn results={results} setResults={setResults} />
         </>
