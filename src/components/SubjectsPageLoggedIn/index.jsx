@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import Search from '../Search'
 import SubjectCard from '../SubjectCard'
 import { useSelector } from 'react-redux';
+import LoadingAnimation from '../LoadingAnimation';
 
 const SubjectsPageLoggedIn = () => {
 
@@ -44,6 +45,8 @@ const SubjectsPageLoggedIn = () => {
 
       <div>
         {showSubject && !searching ? (<SubjectCard />) : null}
+
+        {/* {!searching && finalSearchResults.length === 0 ? (<LoadingAnimation />) : showSubject ? (<SubjectCard />) : null } */}
 
         {(searching || finalSearchResults.length > 0) && (
           <ul className='subjectsOutput-cont'>

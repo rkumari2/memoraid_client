@@ -1,6 +1,6 @@
 .flashcards-cont {
     /* background-color: antiquewhite; */
-    border: 3px solid red;
+    /* border: 3px solid red; */
     height: 100%;
     width: 100%;
     display: flex;
@@ -10,7 +10,8 @@
     color: var(--white);
     /* margin-top: 5rem; */
     overflow-y: auto;
-    margin-top: 20px;
+    /* margin-top: 20px; */
+    padding-top: 20px;
 }
 
 .card-cont {

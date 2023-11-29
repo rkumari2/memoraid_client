@@ -9,6 +9,7 @@ import { MdCancel } from "react-icons/md";
 import { FaCirclePlay } from "react-icons/fa6";
 import { PiBooksFill } from "react-icons/pi";
 import { useSelector } from 'react-redux';
+import LoadingAnimation from '../LoadingAnimation'
 
 const FlashcardPage = () => {
 
@@ -28,6 +29,7 @@ const FlashcardPage = () => {
     const [wrongAnswers, setWrongAnswers] = useState(0)
     const [isEndClicked, setIsEndClicked] = useState(false)
     const [finalPercentage, setFinalPercentage] = useState(0)
+    const [ isLoading, setIsLoading ] = useState(true)
 
     const today = new Date()
     const month = today.getMonth()+1
@@ -51,7 +53,8 @@ const FlashcardPage = () => {
             if (response.status === 200) {
                 const responseData = response.data
                 setResults([responseData])
-                setRevealAnswer(false);
+                setRevealAnswer(false)
+                setIsLoading(false)
             }
 
         } catch (err) {
@@ -113,9 +116,14 @@ const FlashcardPage = () => {
     }
 
     const handleEndButton = () => {
-        const percentage = (((rightAnswers / totalQuestions) * 100.).toFixed(1))
+        let percentage;
+        if (totalQuestions === 0) {
+            percentage = 0;
+        } else {
+            percentage = ((rightAnswers / totalQuestions) * 100).toFixed(1);
+        }
         setFinalPercentage(percentage)
-        console.log('percentage is', finalPercentage)
+        // console.log('percentage is', finalPercentage)
         setIsEndClicked(true)
         handleCreateScoreCard(percentage)
     }
@@ -136,7 +144,7 @@ const FlashcardPage = () => {
     }
 
     const handleViewScores = () => {
-        navigate('/scores')
+        navigate('/progress')
     }
 
     return (
@@ -144,11 +152,11 @@ const FlashcardPage = () => {
             <h1> <span className='highlight'> {selectedSubjectName} </span> Flashcards </h1>
 
             {isEndClicked ? (
+                <>
                 <div className='final-score-cont'>
                     <h1> Well Done <span className='highlight'> {responseToken.user} </span>! </h1>
-                    {/* <img src="well-done.png" alt="moving forward graphic" /> */}
                     <div className='score-cont'>
-                        <h2> Your final score is <span className='highlight'> {finalPercentage}% </span>.</h2> 
+                        <h2> Your final score is {finalPercentage}%.</h2> 
                         <h2> You did <span className='highlight'> {rightAnswers} </span>questions correct out of <span className='highlight'> {totalQuestions}</span>.</h2>
                     </div>
                     
@@ -175,8 +183,13 @@ const FlashcardPage = () => {
                         </div>
                     </div>
                 </div>
+
+                <img className='bg-image' src="favicon.png" alt="light bulb graphic" />
+
+                </>
             ) : (
                 <div className='card-cont'>
+                    {isLoading && (<LoadingAnimation/>)}
                     <ul className='flashcardOutput-cont'>
                         {results.length === 0 ? (<h2> No Flashcards </h2>) : (
                             <div className='actual-card-cont'>

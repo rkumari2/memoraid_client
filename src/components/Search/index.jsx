@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react'
 import axios from 'axios'
 import { useAuth } from '../../authContext'
 import { IoMdClose } from "react-icons/io";
+import LoadingAnimation from '../LoadingAnimation';
 
 
 const Search = ({ handleHideSubject, handleShowSubject, handleSearch, resetSearch }) => {
@@ -9,6 +10,7 @@ const Search = ({ handleHideSubject, handleShowSubject, handleSearch, resetSearc
     const [inputText, setInputText] = useState('')
     const [results, setResults] = useState([])
     const [showOutput, setShowOutput] = useState(false)
+    const [ isLoading, setIsLoading ] = useState(true)
 
     const { responseToken } = useAuth()
 
@@ -28,6 +30,7 @@ const Search = ({ handleHideSubject, handleShowSubject, handleSearch, resetSearc
 
                     if (Array.isArray(responseData)) {
                         setResults(responseData)
+                        setIsLoading(false)
                     } else {
                         console.log('data is not an array', responseData)
                     }
@@ -89,6 +92,8 @@ const Search = ({ handleHideSubject, handleShowSubject, handleSearch, resetSearc
                     )}
                 <button className='button' id='search-btn' onClick={handleButtonClick}>SUBMIT</button>
             </form>
+
+            {/* { isLoading ? (<LoadingAnimation/>) : null } */}
         </>
     )
 }

@@ -52,13 +52,13 @@
 
 #login-btn-text {
     color: var(--bg);
-    font-size: 16px;
+    /* font-size: 16px; */
     text-decoration: none;
 }
 
 #logout-link {
-    color: var(--pink);
-    text-decoration: underline;
+    color: var(--white);
+    /* text-decoration: underline; */
 }
 
 @media screen and (max-width: 1024px) {

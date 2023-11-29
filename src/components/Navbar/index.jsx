@@ -5,7 +5,9 @@ import './style.css'
 
 const Navbar = () => {
 
-  const { isLoggedIn, setIsLoggedIn, logout, responseToken } = useAuth()
+  const { isLoggedIn } = useAuth()
+
+  const styles = ({ isActive }) => ({ color: isActive ? '#d6ff89' : '#FFFFFF', scale: isActive ? '1.2' : '1', fontWeight : isActive ? 'bold' : 'normal'})
 
   const navigate = useNavigate()
 
@@ -28,10 +30,10 @@ const Navbar = () => {
         </div>
 
         <div id="links">
-            <NavLink className='navlink' to='/'> HOME </NavLink>
-            <NavLink className='navlink' to='/subjects'> SUBJECTS </NavLink>
-            <NavLink className='navlink' to='/progress'> PROGRESS </NavLink>
-            <NavLink className='navlink' to='/settings'> SETTINGS </NavLink>
+            <NavLink className='navlink' style={styles} to='/'> HOME </NavLink>
+            <NavLink className='navlink' style={styles} to='/subjects'> TOPICS </NavLink>
+            <NavLink className='navlink' style={styles} to='/progress'> PROGRESS </NavLink>
+            <NavLink className='navlink' style={styles} to='/settings'> SETTINGS </NavLink>
         </div>
 
         <div id='login-btn-navbar'>

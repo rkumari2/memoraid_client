@@ -5,6 +5,7 @@ import { useNavigate } from 'react-router-dom'
 import { useSubject } from '../../subjectContext'
 import AddSubjectBtn from '../AddSubjectBtn'
 import { useSelector } from 'react-redux';
+import LoadingAnimation from '../LoadingAnimation'
 
 const SubjectCard = () => {
 
@@ -13,6 +14,7 @@ const SubjectCard = () => {
     const { responseToken } = useAuth()
 
     const [results, setResults] = useState([])
+    const [ isLoading, setIsLoading ] = useState(true)
 
     const { selectedSubjectId, setSelectedSubjectId, selectedSubjectName, setSelectedSubjectName } = useSubject()
 
@@ -29,6 +31,7 @@ const SubjectCard = () => {
 
                     if (Array.isArray(responseData)) {
                         setResults(responseData)
+                        setIsLoading(false)
                     } else {
                         console.log('data is not an array', responseData)
                     }
@@ -60,7 +63,9 @@ const SubjectCard = () => {
     return (
         <>
             <ul className='subjectsOutput-cont'>
-                {results.length === 0 && (<h1>You don't have any subjects</h1>)}
+                {results.length === 0 && !isLoading && (<h1>You don't have any subjects</h1>)}
+
+                {isLoading && (<LoadingAnimation/>)}
 
                 {results.map((item) => (
                     <li key={item.id} className='subject-card' 
