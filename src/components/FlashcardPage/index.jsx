@@ -38,14 +38,7 @@ const FlashcardPage = () => {
   const day = today.getDate()
   const currentDate = day + '/' + month + '/' + year
 
-  useEffect(() => {
-    const storedSubjectId = parseInt(localStorage.getItem('selectedSubjectId'), 10);
-    if (storedSubjectId) {
-      const storedSubjectName = localStorage.getItem('selectedSubjectName');
-      fetchData(storedSubjectId)
-      localStorage.setItem('storedSubjectName', storedSubjectName);
-    }
-  }, [])
+  const storedSubjectId = parseInt(localStorage.getItem('selectedSubjectId'), 10);
 
   const fetchData = async (storedSubjectId) => {
     try {
@@ -55,13 +48,28 @@ const FlashcardPage = () => {
         const responseData = response.data
         setResults([responseData])
         setRevealAnswer(false)
-        setIsLoading(false)
       }
 
     } catch (err) {
       console.log('Error fetching data', err)
     }
+    setIsLoading(false)
   }
+
+  useEffect(() => {
+    setIsLoading(true)
+    if (storedSubjectId) {
+      const storedSubjectName = localStorage.getItem('selectedSubjectName');
+      fetchData(storedSubjectId)
+      localStorage.setItem('storedSubjectName', storedSubjectName);
+      setSelectedSubjectName(storedSubjectName)
+    } else {
+      setIsLoading(false)
+    }
+  }, [storedSubjectId])
+
+  console.log('stored subject id is line 53:', storedSubjectId)
+
 
   const handleShowAnswer = () => {
     setRevealAnswer(true)
@@ -150,80 +158,78 @@ const FlashcardPage = () => {
 
   return (
     <div className='flashcards-cont'>
-      <h1> <span className='highlight'> {selectedSubjectName} </span> Flashcards </h1>
+      <h1><span className='highlight'>{selectedSubjectName}</span> Flashcards</h1>
 
-      {isEndClicked ? (
+      {isLoading ? (
+        <LoadingAnimation />
+      ) : isEndClicked ? (
         <>
-          <div className='final-score-cont'>
-            <h1> Well Done <span className='highlight'> {responseToken.user} </span>! </h1>
-            <div className='score-cont'>
-              <h2> Your final score is {finalPercentage}%.</h2>
-              <h2> You did <span className='highlight'> {rightAnswers} </span>questions correct out of <span className='highlight'> {totalQuestions}</span>.</h2>
-            </div>
-
-            <div className='score-page-btns'>
-              <div className='flashcard-actions'>
-                <motion.div onClick={handleRestart} className='flashcard-icon' whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.9 }}>
-                  <FaCirclePlay />
-                </motion.div>
-                <p> Restart </p>
-              </div>
-
-              <div className='flashcard-actions'>
-                <motion.div onClick={handleViewScores} className='flashcard-icon' whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.9 }} >
-                  <BsRocketTakeoffFill />
-                </motion.div>
-                <p> View Scores </p>
-              </div>
-
-              <div className='flashcard-actions'>
-                <motion.div onClick={handleViewSubjects} className='flashcard-icon' whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.9 }} >
-                  <PiBooksFill />
-                </motion.div>
-                <p> View Topics </p>
-              </div>
-            </div>
+        <div className='final-score-cont'>
+          <h2> Well Done <span className='highlight'> {responseToken.user} </span>! </h2>
+          <div className='score-cont'>
+            <h2> Your final score is {finalPercentage}%.</h2>
+            <h2> You did <span className='highlight'> {rightAnswers} </span>questions correct out of <span className='highlight'> {totalQuestions}</span>.</h2>
           </div>
 
-          <img className='bg-image' src="favicon.png" alt="light bulb graphic" />
+          <div className='score-page-btns'>
+            <div className='flashcard-actions'>
+              <motion.div onClick={handleRestart} className='flashcard-icon' whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.9 }}>
+                <FaCirclePlay />
+              </motion.div>
+              <p> Restart </p>
+            </div>
 
-        </>
+            <div className='flashcard-actions'>
+              <motion.div onClick={handleViewScores} className='flashcard-icon' whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.9 }} >
+                <BsRocketTakeoffFill />
+              </motion.div>
+              <p> View Scores </p>
+            </div>
+
+            <div className='flashcard-actions'>
+              <motion.div onClick={handleViewSubjects} className='flashcard-icon' whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.9 }} >
+                <PiBooksFill />
+              </motion.div>
+              <p> View Topics </p>
+            </div>
+          </div>
+        </div>
+
+        <img className='bg-image' src="favicon.png" alt="light bulb graphic" />
+
+      </>
       ) : (
-        <div className='card-cont'>
-          <div className='flashcardOutput-cont'>
-            {results.length === 0 ? (<h2> No Flashcards </h2>) : isLoading ? (
-            <LoadingAnimation />
-            ) : (
-              <div className='actual-card-cont'>
+        results.length > 0 ? (
+          <div className='card-cont'>
+            <div className='flashcardOutput-cont'>
+            <div className='actual-card-cont'>
                 {results.map((item) => (
-  <motion.div
-    className='flashcard'
-    id='accessibility'
-    style={{
-      backgroundColor: bgColor,
-      transformStyle: "preserve-3d",
-    }}
-    onClick={revealAnswer ? handleHideAnswer : handleShowAnswer}
-    animate={{
-      rotateY: revealAnswer ? [180, 0] : [0, 180, 0]
-    }}
-    transition={{ duration: 1 }}
-    key={item.id}
-  >
-    <div className='flashcard-type'>
-      <h3> {revealAnswer ? 'ANSWER' : 'QUESTION'} </h3>
-    </div>
-    <div className='flashcard-content'>
-      <p key={item.id}> {revealAnswer ? item.answer : item.question} </p>
-    </div>
-  </motion.div>
-))}
+                  <motion.div
+                    className='flashcard'
+                    id='accessibility'
+                    style={{
+                      backgroundColor: bgColor,
+                    }}
+                    onClick={revealAnswer ? handleHideAnswer : handleShowAnswer}
+                    animate={{
+                      rotateY: revealAnswer ? [180, 0] : [0, 180, 0]
+                    }}
+                    transition={{ duration: 1 }}
+                    key={item.id}
+                  >
+                    <div className='flashcard-type'>
+                      <h3> {revealAnswer ? 'ANSWER' : 'QUESTION'} </h3>
+                    </div>
+                    <div className='flashcard-content'>
+                      <p key={item.id}> {revealAnswer ? item.answer : item.question} </p>
+                    </div>
+                  </motion.div>
+                ))}
 
               </div>
-            )}
-          </div>
+            </div>
 
-          <div className='buttons-cont'>
+            <div className='buttons-cont'>
             <div className='flashcard-actions'>
               <motion.div onClick={handleRightAnswer} className='flashcard-icon' whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.9 }}>
                 <BsFillHandThumbsUpFill id='thumbs-up' />
@@ -244,13 +250,14 @@ const FlashcardPage = () => {
               </motion.div>
               <h3> {wrongAnswers} </h3>
             </div>
+            </div>
           </div>
-
-        </div>
+        ) : (
+          <h2>No Flashcards Available</h2>
+        )
       )}
 
-      <AddFlashcardBtn fetchData={fetchData} />
-
+      {!isLoading && !isEndClicked && <AddFlashcardBtn fetchData={fetchData} />}
     </div>
   )
 }

@@ -1,16 +1,13 @@
 .scores-cont {
-    /* border: 3px solid red; */
-    /* height: 100%; */
     width: 100%;
+    height: 100%;
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: start;
+    justify-content: safe;
     color: var(--white);
     overflow-y: auto;
     padding-top: 20px;
-    /* padding-bottom: 500px; */
-    /* margin-bottom: 80px; */
 }
 
 .scoresOutput-cont {
@@ -48,3 +45,20 @@
 .scorecard p, h2 {
     padding-bottom: 10px;
 }
+
+.no-scores {
+    width: 80%;
+    text-align: center;
+}
+
+.no-scores h3 {
+    margin-bottom: 50px;
+}
+
+@media only screen and (max-width: 1025px) {
+    .scores-cont {
+        padding-bottom: 150px;
+    }
+}
+
+

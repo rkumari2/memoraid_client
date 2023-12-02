@@ -1,6 +1,4 @@
 .flashcards-cont {
-    /* background-color: antiquewhite; */
-    /* border: 3px solid red; */
     height: 100%;
     width: 100%;
     display: flex;
@@ -8,21 +6,19 @@
     align-items: center;
     justify-content: safe;
     color: var(--white);
-    /* margin-top: 5rem; */
     overflow-y: auto;
-    /* margin-top: 20px; */
     padding-top: 20px;
 }
 
 .card-cont {
     /* background-color: antiquewhite; */
     width: 100%;
-    height: 80%;
+    height: 65%;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: start;
-    margin-top: 70px;
+    margin-top: 60px;
 }
 
 .flashcardOutput-cont {
@@ -47,7 +43,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    color: var(--bg);
+    color: black;
 }
 
 .flashcard {
@@ -57,16 +53,17 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    font-size: 16px;
+    /* font-size: 16px; */
     padding: 20px;
     cursor: pointer;
+    z-index: -100;
 }
 
 .buttons-cont {
     /* background-color: aquamarine; */
     width: 45%;
     /* height: 20%; */
-    margin-top: 100px;
+    margin-top: 80px;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -101,10 +98,6 @@
     color: red;
 }
 
-/* #finish {
-    color: white;
-} */
-
 .flashcard-type {
     /* background-color: yellow; */
     width: 100%;
@@ -124,16 +117,13 @@
     align-items: start;
     justify-content: center;
     color: black;
-}
-
-.flashcard-content p {
-    /* background-color: aqua; */
-    margin-top: 80px;
+    overflow-y: auto;
+    margin-top: 30px;
 }
 
 .final-score-cont {
     /* background-color: aqua; */
-    margin-top: 80px;
+    margin-top: 60px;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -145,7 +135,7 @@
     display: flex;
     align-items: center;
     flex-direction: column;
-    margin-top: 50px;
+    /* margin-top: 50px; */
     /* margin-bottom: 40px; */
 }
 
@@ -155,4 +145,86 @@
     display: flex;
     justify-content: space-between;
     width: 100%;
+}
+
+@media only screen and (max-width: 1025px) {
+    .card-cont {
+        height: 70%;
+        margin-top: 60px;
+    }
+
+    .actual-card-cont {
+        width: 60%;
+    }
+
+    .final-score-cont {
+        margin-top: 50px;
+    }
+
+    .score-cont {
+        margin-top: 0px;
+    }
+
+    .score-page-btns {
+        margin-top: 40px;
+    }
+}
+
+@media only screen and (max-width: 915px) {
+    .flashcards-cont {
+        padding-bottom: 150px;
+    }
+
+    .actual-card-cont {
+        width: 75%;
+    }
+
+    .card-cont {
+        height: 90%;
+        margin-top: 60px;
+    }
+
+    .buttons-cont {
+        width: 60%;
+        margin-top: 80px;
+    }
+
+    .flashcards-cont {
+        padding-bottom: 150px;
+    }
+}
+
+@media only screen and (max-width: 450px) {
+    .actual-card-cont {
+        width: 80%;
+        height: 90%;
+    }
+
+    .buttons-cont {
+        width: 80%;
+    }
+
+    .card-cont {
+        height: 90%;
+        margin-top: 40px;
+    }
+
+    .final-score-cont {
+        width: 80%;
+        text-align: center;
+    }
+
+    .flashcard-icon {
+        font-size: 40px;
+    }
+
+    .score-page-btns {
+        width: 80%;
+    }
+}
+
+@media only screen and (max-width: 290px) {
+    .flashcards-cont {
+        text-align: center;
+    }
 }

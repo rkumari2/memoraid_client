@@ -44,7 +44,7 @@ const ScoresPage = () => {
         <h1> Progress </h1>
         
         <div className='scoresOutput-cont'>
-          { results.length === 0 && !isLoading && (<div> <h1> No results to show, practice some more to get results.</h1> <button className='button'> SUBJECTS </button></div>)}
+          { results.length === 0 && !isLoading && (<div className='no-scores'> <h3> No results to show, practice some more to get results.</h3> <button className='button'> TOPICS </button></div>)}
 
           { isLoading && (<LoadingAnimation />)}
           { results.map((item) => (
@@ -52,7 +52,7 @@ const ScoresPage = () => {
               <h2> {item.totalScore}% </h2>
               <p> {item.subject} </p>
               <p> {item.date} </p>
-              <p> {item.rightAnswer} out of {item.totalQuestions} </p>
+              <p> {item.rightAnswer} right out of {item.totalQuestions} </p>
             </div>
           ))}
         </div>

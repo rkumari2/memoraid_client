@@ -61,7 +61,7 @@ const AddSubjectBtn = ({ setResults, results }) => {
                             <button className='button' id='cancel-btn' onClick={handleHideOverlay}> <IoMdClose className='icon' /> </button>
                         </div>
                         <h2> ADD A NEW TOPIC </h2>
-                        <div className='search'>
+                        <div className='search' id='column-search'>
                             <input
                                 className='input-field'
                                 id='subject-input'

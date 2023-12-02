@@ -53,6 +53,9 @@ const AddFlashcardBtn = ({fetchData}) => {
 
         } catch (err) {
             console.error('Error adding new flashcard:', err)
+            if (err.response) {
+                console.error('Server response:', err.response.data);
+              }
         }
     }
 
@@ -68,7 +71,7 @@ const AddFlashcardBtn = ({fetchData}) => {
                             <button className='button' id='cancel-btn' onClick={handleHideOverlay}> <IoMdClose className='icon' /> </button>
                         </div>
                         <h2> ADD A NEW FLASHCARD </h2>
-                        <div className='search' >
+                        <div className='search' id='column-search' >
                             <input
                                 className='input-field'
                                 id='subject-input'

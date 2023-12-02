@@ -2,6 +2,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    height: 100vh;
 }
 
 #navbar-cont {
@@ -70,6 +71,9 @@
 
 
 @media only screen and (max-width: 1025px) {
+    #navbar-cont {
+        width: 25%;
+    }
     #links {
         margin-left: 40px;
     }
@@ -81,16 +85,19 @@
     #login-btn-navbar {
         margin-left: 40px;
     }
+
 }
 
-@media only screen and (max-width: 821px) {
+@media only screen and (max-width: 915px) {
     .page {
         display: flex;
         flex-direction: column;
+        /* background-color: antiquewhite; */
     }
 
     #navbar-cont {
         background-color: var(--bg);
+        border: 1px solid red;
         padding-top: 15px;
         /* background-color: antiquewhite; */
         width: 100%;
@@ -100,6 +107,7 @@
         justify-content: center;
         position: fixed;
         top: 0;
+        margin-bottom: 20px;
     }
 
     .small-screen-menu {
@@ -147,7 +155,7 @@
     #small-menu-icon {
         color: var(--pink);
         font-size: 30px; 
-        z-index: 2;
+        z-index: 5;
     }
 
     #login-btn-text {
@@ -182,7 +190,7 @@
     }
 }
 
-@media only screen and (max-width: 426px) {
+@media only screen and (max-width: 450px) {
     #navbar-cont {
         height: 10vh;
     }

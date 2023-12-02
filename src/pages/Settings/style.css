@@ -1,6 +1,6 @@
 .settings-cont {
     /* background-color: antiquewhite; */
-    border: 3px solid red;
+    /* border: 3px solid red; */
     height: 100%;
     width: 100%;
     display: flex;
@@ -14,10 +14,14 @@
     padding-top: 20px;
 }
 
+.settings-cont h1 {
+    font-size: 30px;
+}
+
 .settings-output-cont {
     /* background-color: aqua; */
     width: 90%;
-    height: 100%;
+    /* height: 100%; */
     display: flex;
     /* flex-direction:row; */
     align-items: start;
@@ -37,6 +41,7 @@
     flex-direction: column;
     align-items: center;
     text-align: center;
+    margin-bottom: 50px;
 }
 
 .setting-box h2 {
@@ -47,3 +52,28 @@
     /* background-color: aqua; */
     text-align: left;
 }
+
+@media only screen and (max-width: 1025px) {
+    .settings-output-cont {
+        margin-top: 30px;
+    }
+}
+
+@media only screen and (max-width: 915px) {
+    .settings-output-cont {
+        /* background-color: darkolivegreen; */
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: start;
+        width: 100%;
+        margin-bottom: 150px;
+    }
+
+    .setting-box {
+        width: 90%;
+        /* background-color: aqua; */
+        margin-bottom: 30px;
+    }
+}
+

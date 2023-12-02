@@ -12,7 +12,7 @@ const GuestHomePage = () => {
   }
 
   return (
-    <>
+    <div className='guest-home-page-cont'>
       <div className='tagline-home-page'>
         <h1> Learn. Recall. Master. </h1>
       </div>
@@ -28,7 +28,7 @@ const GuestHomePage = () => {
       </div>
 
       <img className='bg-image' src="favicon.png" alt="light bulb graphic" />
-    </>
+    </ div>
   )
 }
 
