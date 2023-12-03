@@ -84,7 +84,7 @@ const SubjectCard = ({ handleSubjectClick, results, setResults }) => {
   return (
     <div className='subjectsOutput-cont'>
       {results.length === 0 ? (
-        <h1>You don't have any subjects</h1>
+        <h3>You don't have any topics. Use the button below to add new topics. </h3>
       ) : (
         results.map((item) => (
           <motion.div

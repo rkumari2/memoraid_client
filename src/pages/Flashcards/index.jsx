@@ -2,6 +2,7 @@ import React from 'react'
 import { FlashcardPage } from '../../components'
 import { useAuth } from '../../authContext'
 import './style.css'
+import LoginRedirection from '../../components/LoginRedirection'
 
 const Flashcards = () => {
 
@@ -10,7 +11,7 @@ const Flashcards = () => {
     return (
         <div className='page-layout'>
             
-            {isLoggedIn ? (<FlashcardPage/>) : (<h1> Please Login first </h1>)}
+            {isLoggedIn ? (<FlashcardPage/>) : (< LoginRedirection />)}
         </div>
     )
 }

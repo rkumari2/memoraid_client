@@ -7,6 +7,7 @@ import { useSubject } from '../../subjectContext'
 import { useNavigate } from 'react-router-dom'
 import { useAuth } from '../../authContext'
 import LoadingAnimation from '../LoadingAnimation'
+import { motion } from 'framer-motion'
 
 const SubjectsPageLoggedIn = () => {
   const { bgColor } = useSelector((state) => state.accessibility);
@@ -75,18 +76,39 @@ const SubjectsPageLoggedIn = () => {
 
   return (
     <div className='subjects-cont'>
-      <h1> Topics </h1>
-      <Search handleHideSubject={handleHideSubject} handleShowSubject={handleShowSubject} handleSearch={handleSearch} resetSearch={resetSearch} />
-      {isLoading ? (
-        <LoadingAnimation />
-      ) : (
-        <>
-          {showSubject && !searching ? <SubjectCard handleSubjectClick={handleSubjectClick} results={results} setResults={setResults} /> : null}
-          {finalSearchResults.length === 0 && !showSubject && <h3> Nothing to show! </h3>}
-          {results.length === 0 && !showSubject && <h3> You don't have any topics! Use the button below to add new topics! </h3>}
-        </>
-      )}
-    </div>
+            <h1>Topics</h1>
+            <Search handleHideSubject={handleHideSubject} handleShowSubject={handleShowSubject} handleSearch={handleSearch} resetSearch={resetSearch} />
+            {isLoading ? (
+                <LoadingAnimation />
+            ) : (
+                <>
+                    {!searching && finalSearchResults.length === 0 && !showSubject && <div className='subjectsOutput-cont'> <h3>No results found!</h3> </div>}
+                    {!searching && (
+                        <>
+                            {/* {showSubject && results.length === 0 && <div className='subjectsOutput-cont'> <h3> You don't have any topics, use the button below to add topics.</h3> </div>} */}
+                            {showSubject && <SubjectCard handleSubjectClick={handleSubjectClick} results={results} setResults={setResults} />}
+                        </>
+                    )}
+                    {finalSearchResults.length > 0 && searching && (
+                        <div className='subjectsOutput-cont'>
+                            {finalSearchResults.map((result) => (
+                              <motion.div
+                              key={result.subjectId}
+                              className='subject-card'
+                              id='accessibility'
+                              style={{ backgroundColor: bgColor }}
+                              onClick={() => handleSubjectClick(result.subjectId, result.subject)}
+                              whileHover={{ scale: 1.1 }}
+                              whileTap={{ scale: 0.9 }}
+                              >
+                              <p>{result.subject}</p>
+                              </motion.div>
+                            ))}
+                        </div>
+                    )}
+                </>
+            )}
+        </div>
   );
 };
 
