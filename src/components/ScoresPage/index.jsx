@@ -6,7 +6,7 @@ import { useSelector } from 'react-redux'
 
 const ScoresPage = () => {
 
-  const { bgColor } = useSelector((state) => state.accessibility);
+  const { bgColor, spacing, lineSpacing, size } = useSelector((state) => state.accessibility)
 
   const [ results, setResults ] = useState([])
   const [ isLoading, setIsLoading ] = useState(true)
@@ -40,7 +40,7 @@ const ScoresPage = () => {
   return (
     <>
 
-    <div className='scores-cont'>
+    <div className='scores-cont' style={{fontSize: size, lineHeight: lineSpacing, letterSpacing: spacing}}>
         <h1> Progress </h1>
         
         <div className='scoresOutput-cont'>

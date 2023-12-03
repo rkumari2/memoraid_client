@@ -4,10 +4,10 @@ import { motion } from 'framer-motion';
 import AddSubjectBtn from '../AddSubjectBtn';
 
 const SubjectCard = ({ handleSubjectClick, results, setResults }) => {
-  const { bgColor } = useSelector((state) => state.accessibility);
+  const { bgColor, spacing, lineSpacing, size } = useSelector((state) => state.accessibility)
 
   return (
-    <div className='subjectsOutput-cont'>
+    <div className='subjectsOutput-cont' style={{fontSize: size, lineHeight: lineSpacing, letterSpacing: spacing}}>
       {results.length === 0 ? (
         <h3>You don't have any topics. Use the button below to add new topics. </h3>
       ) : (

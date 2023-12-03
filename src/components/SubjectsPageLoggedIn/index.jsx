@@ -10,7 +10,7 @@ import LoadingAnimation from '../LoadingAnimation'
 import { motion } from 'framer-motion'
 
 const SubjectsPageLoggedIn = () => {
-  const { bgColor } = useSelector((state) => state.accessibility);
+  const { bgColor, spacing, lineSpacing, size } = useSelector((state) => state.accessibility)
 
   const navigate = useNavigate();
 
@@ -75,7 +75,7 @@ const SubjectsPageLoggedIn = () => {
   }
 
   return (
-    <div className='subjects-cont'>
+    <div className='subjects-cont' style={{fontSize: size, lineHeight: lineSpacing, letterSpacing: spacing}}>
             <h1>Topics</h1>
             <Search handleHideSubject={handleHideSubject} handleShowSubject={handleShowSubject} handleSearch={handleSearch} resetSearch={resetSearch} />
             {isLoading ? (

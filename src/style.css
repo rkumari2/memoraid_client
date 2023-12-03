@@ -28,8 +28,12 @@ body {
 
 .button {
     background-color: var(--pink);
-    width: 130px;
-    height: 50px;
+    /* min-width: 130px; */
+    /* min-height: 50px; */
+    padding-left: 30px;
+    padding-right: 30px;
+    padding-top: 15px;
+    padding-bottom: 15px;
     color: var(--bg);
     border: none;
     font-size: 16px;
@@ -58,12 +62,15 @@ body {
 .input-field {
     margin-top: 40px;
     width: 90%;
-    height: 30px;
+    /* min-height: 30px; */
     outline: none;
     border: none;
     padding-left: 10px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    padding-right: 30px;
     font-family: 'Open Sans', sans-serif;
-    border: 1px solid var(--pink);
+    border: 2px solid var(--pink);
     border-radius: 2px;
 }
 

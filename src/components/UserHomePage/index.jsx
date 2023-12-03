@@ -3,10 +3,13 @@ import { useAuth } from '../../authContext'
 import { motion } from 'framer-motion';
 import { useNavigate } from 'react-router-dom';
 import { useMediaQuery } from 'react-responsive'
+import { useSelector } from 'react-redux';
 
 const UserHomePage = () => {
 
   const { responseToken, isLoggedIn } = useAuth()
+
+  const { spacing, lineSpacing, size } = useSelector((state) => state.accessibility)
 
   const navigate = useNavigate()
 
@@ -31,7 +34,7 @@ const UserHomePage = () => {
 
   
   return (
-    <div className='logged-in-home-page-cont'>
+    <div className='logged-in-home-page-cont' style={{fontSize: size, lineHeight: lineSpacing, letterSpacing: spacing}}>
       { isLoggedIn && responseToken.user ? (<h1> Hello, <span className='highlight'> {responseToken.user} </span> </h1>) : (<h1>Welcome!</h1>)}
 
       <p>Let's make today a productive study day.</p>

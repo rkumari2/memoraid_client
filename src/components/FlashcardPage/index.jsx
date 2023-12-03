@@ -8,7 +8,7 @@ import { BsFillHandThumbsUpFill, BsFillHandThumbsDownFill, BsRocketTakeoffFill }
 import { MdCancel } from "react-icons/md";
 import { FaCirclePlay } from "react-icons/fa6";
 import { PiBooksFill } from "react-icons/pi";
-import { useSelector } from 'react-redux';
+import { useSelector } from 'react-redux'
 import LoadingAnimation from '../LoadingAnimation'
 import { motion } from 'framer-motion'
 
@@ -16,7 +16,7 @@ const FlashcardPage = () => {
 
   const { selectedSubjectId, selectedSubjectName, setSelectedSubjectName } = useSubject()
 
-  const { bgColor } = useSelector((state) => state.accessibility);
+  const { bgColor, spacing, lineSpacing, size } = useSelector((state) => state.accessibility)
 
   const { responseToken } = useAuth()
 
@@ -157,7 +157,7 @@ const FlashcardPage = () => {
   }
 
   return (
-    <div className='flashcards-cont'>
+    <div className='flashcards-cont' style={{fontSize: size, lineHeight: lineSpacing, letterSpacing: spacing}}>
       <h1><span className='highlight'>{selectedSubjectName}</span> Flashcards</h1>
 
       {isLoading ? (
@@ -208,7 +208,7 @@ const FlashcardPage = () => {
                     className='flashcard'
                     id='accessibility'
                     style={{
-                      backgroundColor: bgColor,
+                      backgroundColor: bgColor
                     }}
                     onClick={revealAnswer ? handleHideAnswer : handleShowAnswer}
                     animate={{

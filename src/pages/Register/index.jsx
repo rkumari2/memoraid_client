@@ -3,6 +3,7 @@ import { useAuth } from '../../authContext'
 import { useNavigate } from 'react-router-dom'
 import './style.css'
 import { motion } from 'framer-motion'
+import { useSelector } from 'react-redux'
 
 const Register = () => {
   
@@ -10,7 +11,10 @@ const Register = () => {
   const [ inputName, setInputName ] = useState('')
   const [ inputEmail, setInputEmail ] = useState('')
   const [ inputPassword, setInputPassword ] = useState('')
+
   const navigate = useNavigate()
+
+  const { spacing, lineSpacing, size } = useSelector((state) => state.accessibility)
 
   const handleNameInput = (e) => {
     const name = e.target.value
@@ -51,7 +55,7 @@ const Register = () => {
       <img className='bg-image' src="favicon.png" alt="light bulb graphic" />
 
       <div id='form-cont'>
-        <h1>Register</h1>
+        <h1 style={{lineHeight: lineSpacing, letterSpacing: spacing}}>Register</h1>
         <form onSubmit={handleSubmit}>
 
           <input 
@@ -81,9 +85,9 @@ const Register = () => {
             placeholder='Password' 
           />
 
-          <motion.button type='submit' className='button' whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.9 }}> SIGN UP </motion.button>
+          <motion.button type='submit' className='button' whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.9 }} style={{fontSize: size, lineHeight: lineSpacing, letterSpacing: spacing}}> Sign Up </motion.button>
 
-          <p className='redirection-txt'> Already have an account? <a href="/login"> LOG IN </a></p>
+          <p className='redirection-txt' style={{fontSize: size, lineHeight: lineSpacing, letterSpacing: spacing}}> Already have an account? <a href="/login"> Log In </a></p>
 
         </form>
       </div>

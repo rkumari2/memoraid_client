@@ -3,8 +3,11 @@ import { useSubject } from '../../subjectContext'
 import axios from 'axios'
 import { IoMdClose, IoMdAdd } from "react-icons/io";
 import { motion } from 'framer-motion';
+import { useSelector } from 'react-redux';
 
 const AddFlashcardBtn = ({fetchData}) => {
+
+  const { spacing, lineSpacing, size } = useSelector((state) => state.accessibility)
 
     const { selectedSubjectId } = useSubject()
 
@@ -63,7 +66,7 @@ const AddFlashcardBtn = ({fetchData}) => {
         <>
             <motion.button className='button' id='add-subject-btn' onClick={handleShowOverlay} whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.9 }}> <IoMdAdd className='icon' id='plus-icon'/> </motion.button>
 
-            <div className='overlay-bg' style={{ display: showAddOverlay ? 'flex' : 'none' }}>
+            <div className='overlay-bg' style={{ display: showAddOverlay ? 'flex' : 'none', fontSize: size, lineHeight: lineSpacing, letterSpacing: spacing}}>
 
                 {showAddOverlay && (
                     <div className='overlay'>
@@ -79,6 +82,7 @@ const AddFlashcardBtn = ({fetchData}) => {
                                 placeholder='Question'
                                 value={question}
                                 onChange={(e) => setQuestion(e.target.value)}
+                                style={{fontSize: size, lineHeight: lineSpacing, letterSpacing: spacing}}
                             />
                             <input
                                 className='input-field'
@@ -87,8 +91,9 @@ const AddFlashcardBtn = ({fetchData}) => {
                                 placeholder='Answer'
                                 value={answer}
                                 onChange={(e) => setAnswer(e.target.value)}
+                                style={{fontSize: size, lineHeight: lineSpacing, letterSpacing: spacing}}
                             />
-                            <motion.button className='button' id='add-btn' onClick={handleAddNew} whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.9 }}> ADD </motion.button>
+                            <motion.button className='button' id='add-btn' onClick={handleAddNew} whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.9 }} style={{fontSize: size, lineHeight: lineSpacing, letterSpacing: spacing}}> Add </motion.button>
                         </div>
                     </div>
                 )}

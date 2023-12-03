@@ -1,6 +1,4 @@
 .settings-cont {
-    /* background-color: antiquewhite; */
-    /* border: 3px solid red; */
     height: 100%;
     width: 100%;
     display: flex;
@@ -8,12 +6,7 @@
     align-items: center;
     justify-content: safe;
     color: var(--white);
-    /* margin-top: 5rem; */
-    /* overflow-y: auto; */
-    /* margin-top: 20px; */
     padding-top: 20px;
-    background-color: black;
-
 }
 
 .settings-cont h1 {

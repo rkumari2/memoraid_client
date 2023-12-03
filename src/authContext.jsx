@@ -16,8 +16,8 @@ export function AuthProvider({ children }) {
 
         try {
             const response = await axios.post('https://memoraide-server.onrender.com/users/register', {
-                name: inputName, 
-                email: inputEmail, 
+                name: inputName.toLowerCase(), 
+                email: inputEmail.toLowerCase(), 
                 password: inputPassword
             })
 
@@ -36,7 +36,7 @@ export function AuthProvider({ children }) {
 
         try {
             const response = await axios.post('https://memoraide-server.onrender.com/users/login', {
-                email: inputEmail, 
+                email: inputEmail.toLowerCase(), 
                 password: inputPassword
             })
 

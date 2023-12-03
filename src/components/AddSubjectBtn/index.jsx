@@ -3,8 +3,11 @@ import axios from 'axios'
 import { useAuth } from '../../authContext'
 import { IoMdClose, IoMdAdd } from "react-icons/io";
 import { motion } from 'framer-motion';
+import { useSelector } from 'react-redux';
 
 const AddSubjectBtn = ({ setResults, results }) => {
+  const { spacing, lineSpacing, size } = useSelector((state) => state.accessibility)
+
     const [showAddOverlay, setShowAddOverlay] = useState(false)
     const [subject, setSubject] = useState('')
 
@@ -53,7 +56,7 @@ const AddSubjectBtn = ({ setResults, results }) => {
         <>
             <motion.button className='button' id='add-subject-btn' onClick={handleShowOverlay} whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.9 }}> <IoMdAdd className='icon' id='plus-icon'/> </motion.button>
 
-            <div className='overlay-bg' style={{ display: showAddOverlay ? 'flex' : 'none' }}>
+            <div className='overlay-bg' style={{ display: showAddOverlay ? 'flex' : 'none', fontSize: size, lineHeight: lineSpacing, letterSpacing: spacing}}>
 
                 {showAddOverlay && (
                     <div className='overlay'>
@@ -69,8 +72,9 @@ const AddSubjectBtn = ({ setResults, results }) => {
                                 placeholder='Subject'
                                 value={subject}
                                 onChange={(e) => setSubject(e.target.value)}
+                                style={{fontSize: size, lineHeight: lineSpacing, letterSpacing: spacing}}
                             />
-                            <motion.button className='button' id='add-btn' onClick={handleAddNew} whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.9 }}> ADD </motion.button>
+                            <motion.button className='button' id='add-btn' onClick={handleAddNew} whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.9 }} style={{fontSize: size, lineHeight: lineSpacing, letterSpacing: spacing}}> Add </motion.button>
                         </div>
                     </div>
                 )}

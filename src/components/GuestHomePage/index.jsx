@@ -1,8 +1,11 @@
 import React from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import { motion } from 'framer-motion'
+import { useSelector } from 'react-redux'
 
 const GuestHomePage = () => {
+
+  const { spacing, lineSpacing, size } = useSelector((state) => state.accessibility)
 
   const navigate = useNavigate()
 
@@ -12,7 +15,7 @@ const GuestHomePage = () => {
   }
 
   return (
-    <div className='guest-home-page-cont'>
+    <div className='guest-home-page-cont' style={{fontSize: size, lineHeight: lineSpacing, letterSpacing: spacing}}>
       <div className='tagline-home-page'>
         <h1> Learn. Recall. Master. </h1>
       </div>
@@ -23,8 +26,8 @@ const GuestHomePage = () => {
       </div>
 
       <div className='buttons-section'>
-        <motion.button className='button' onClick={handleClick} whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.9 }}>LOG IN</motion.button>
-        <Link className='hyperlink' to='/register'> <motion.p whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.9 }}> SIGN UP </motion.p> </Link>
+        <motion.button className='button' onClick={handleClick} whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.9 }} style={{fontSize: size, lineHeight: lineSpacing, letterSpacing: spacing}}> Log In </motion.button>
+        <Link className='hyperlink' to='/register'> <motion.p whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.9 }} style={{fontSize: size, lineHeight: lineSpacing, letterSpacing: spacing}}> Sign Up </motion.p> </Link>
       </div>
 
       <img className='bg-image' src="favicon.png" alt="light bulb graphic" />
