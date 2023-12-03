@@ -47,7 +47,7 @@ const UserHomePage = () => {
           <h2>View Your Progress</h2>
         </MotionDiv>
 
-        <MotionDiv className='option' id='option-box' whileHover={{scale:1.1}} whileTap={{scale:0.9}} onClick={handleSettingsClick}>
+        <MotionDiv className='option' id='option-box' whileHover={{scale:1.1}} whileTap={{scale:0.9}} onClick={handleSettingsClick} style={{paddingBottom: '500px'}}>
           <img src="accessibility.png" alt="" />
           <h2>View Your Settings</h2>
         </MotionDiv>
