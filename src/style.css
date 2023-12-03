@@ -97,7 +97,7 @@ body {
         flex-direction: column;
         justify-content: center;
         align-items: center;
-        overflow-y: auto;
+        /* overflow-y: auto; */
     }
 }
 
@@ -112,8 +112,8 @@ body {
         flex-direction: column;
         justify-content: start;
         align-items: center;
-        overflow-y: auto;
-        overflow-x: hidden;
+        /* overflow-y: auto;
+        overflow-x: hidden; */
     }
 
     .bg-image {
