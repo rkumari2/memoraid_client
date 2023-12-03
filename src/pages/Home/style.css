@@ -125,9 +125,11 @@
     }
 
     .logged-in-home-page-cont {
-        /* background-color: black; */
+        background-color: black;
         width: 80%;
-        height: 100%;
+        padding-left: 10%;
+        padding-right: 10%;
+        height: auto;
         display: flex;
         flex-direction: column;
         justify-content: start;
