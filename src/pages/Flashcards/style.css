@@ -56,7 +56,7 @@
     /* font-size: 16px; */
     padding: 20px;
     cursor: pointer;
-    z-index: -100;
+    /* z-index: -100; */
 }
 
 .buttons-cont {
@@ -188,29 +188,43 @@
         width: 60%;
         margin-top: 80px;
     }
-
-    .flashcards-cont {
-        padding-bottom: 150px;
-    }
 }
 
 @media only screen and (max-width: 450px) {
-    .actual-card-cont {
+    .flashcards-cont {
+        padding-bottom: 0;
+        background-color: black;
         width: 80%;
-        height: 90%;
+        padding-left: 10%;
+        padding-right: 10%;
+    }
+
+    .flashcardOutput-cont {
+        width: 100%;
+        height: 200px;
+        /* height: 80%; */
+    }
+
+    .actual-card-cont {
+        width: 100%;
+        /* height: 100%; */
     }
 
     .buttons-cont {
-        width: 80%;
+        width: 100%;
     }
 
     .card-cont {
-        height: 90%;
-        margin-top: 40px;
+        /* height: 100%; */
+        margin-top: 20px;
+    }
+
+    .flashcard {
+        padding-top: 0;
     }
 
     .final-score-cont {
-        width: 80%;
+        width: 100%;
         text-align: center;
     }
 
@@ -219,7 +233,7 @@
     }
 
     .score-page-btns {
-        width: 80%;
+        width: 100%;
     }
 }
 

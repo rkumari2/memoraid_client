@@ -51,7 +51,7 @@ const AddSubjectBtn = ({ setResults, results }) => {
 
     return (
         <>
-            <motion.button className='button' id='add-subject-btn' onClick={handleShowOverlay} whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.9 }}> <IoMdAdd className='icon' /> </motion.button>
+            <motion.button className='button' id='add-subject-btn' onClick={handleShowOverlay} whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.9 }}> <IoMdAdd className='icon' id='plus-icon'/> </motion.button>
 
             <div className='overlay-bg' style={{ display: showAddOverlay ? 'flex' : 'none' }}>
 

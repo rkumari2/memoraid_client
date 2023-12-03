@@ -54,9 +54,15 @@
 }
 
 @media only screen and (max-width: 450px) {
+    #form-cont {
+        background-color: black;
+        width: 80%;
+        padding-left: 10%;
+        padding-right: 10%;
+    }
     #form-cont form {
         padding-top: 0px;
         padding-bottom: 0px;
-        width: 80%;
+        width: 100%;
     }
 }
