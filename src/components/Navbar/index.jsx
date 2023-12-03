@@ -3,6 +3,8 @@ import { NavLink, Outlet, useNavigate } from 'react-router-dom'
 import { motion } from 'framer-motion'
 import { useAuth } from '../../authContext'
 import { IoMdClose } from "react-icons/io"
+import { IoLogOutSharp } from "react-icons/io5";
+import { FaUser } from "react-icons/fa";
 import { CgMenuGridR } from "react-icons/cg"
 import './style.css'
 
@@ -100,9 +102,9 @@ const Navbar = () => {
 
           <div id='login-btn-navbar'>
             {isLoggedIn ? (
-              <NavLink className='navlink' id='logout-link' onClick={handleLogout} > LOG OUT </NavLink>
+              <NavLink onClick={handleLogout} className='phone-menu-icon'> <IoLogOutSharp id='small-menu-icon'/> </NavLink>
             ) : (
-              <NavLink id='login-btn-text' to='/login'> LOG IN </NavLink>
+              <NavLink to='/login' className='phone-menu-icon'> <FaUser id='small-menu-icon'/> </NavLink>
             )}
           </div>
 

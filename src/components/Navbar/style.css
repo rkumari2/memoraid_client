@@ -97,7 +97,7 @@
 
     #navbar-cont {
         background-color: var(--bg);
-        border: 1px solid red;
+        /* border: 1px solid red; */
         padding-top: 15px;
         /* background-color: antiquewhite; */
         width: 100%;
