@@ -92,7 +92,8 @@
     .page {
         display: flex;
         flex-direction: column;
-        /* background-color: antiquewhite; */
+        background-color: antiquewhite;
+        padding-bottom: 100px;
     }
 
     #navbar-cont {
