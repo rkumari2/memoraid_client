@@ -2,6 +2,7 @@ import React from 'react'
 import { useAuth } from '../../authContext'
 import { motion } from 'framer-motion';
 import { useNavigate } from 'react-router-dom';
+import { useMediaQuery } from 'react-responsive'
 
 const UserHomePage = () => {
 
@@ -24,6 +25,10 @@ const UserHomePage = () => {
     navigate('/settings')
   }
 
+  const isLargeScreen = useMediaQuery({ minWidth: 900 })
+
+  const MotionDiv = isLargeScreen ? motion.div : 'div'
+
   
   return (
     <div className='logged-in-home-page-cont'>
@@ -32,20 +37,20 @@ const UserHomePage = () => {
       <p>Let's make today a productive study day.</p>
 
       <div className='options-section'>
-        <motion.div className='option' id='option-box' whileHover={{scale:1.1}} whileTap={{scale:0.9}} onClick={handleSubjectClick}>
+        <MotionDiv className='option' id='option-box' whileHover={isLargeScreen ? {scale:1.1} : {}} whileTap={isLargeScreen ? {scale:0.9} : {}} onClick={handleSubjectClick}>
           <img src="subjects.png" alt="" />
           <h2>View Your Topics</h2>
-        </motion.div>
+        </MotionDiv>
 
-        <motion.div className='option' id='option-box' whileHover={{scale:1.1}} whileTap={{scale:0.9}} onClick={handleProgressClick}>
+        <MotionDiv className='option' id='option-box' whileHover={{scale:1.1}} whileTap={{scale:0.9}} onClick={handleProgressClick}>
           <img src="progress.png" alt="" />
           <h2>View Your Progress</h2>
-        </motion.div>
+        </MotionDiv>
 
-        <motion.div className='option' id='option-box' whileHover={{scale:1.1}} whileTap={{scale:0.9}} onClick={handleSettingsClick}>
+        <MotionDiv className='option' id='option-box' whileHover={{scale:1.1}} whileTap={{scale:0.9}} onClick={handleSettingsClick}>
           <img src="accessibility.png" alt="" />
           <h2>View Your Settings</h2>
-        </motion.div>
+        </MotionDiv>
       </div>
       
     </div>
