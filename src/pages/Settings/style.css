@@ -9,9 +9,11 @@
     justify-content: safe;
     color: var(--white);
     /* margin-top: 5rem; */
-    overflow-y: auto;
+    /* overflow-y: auto; */
     /* margin-top: 20px; */
     padding-top: 20px;
+    background-color: black;
+
 }
 
 .settings-cont h1 {
@@ -61,13 +63,12 @@
 
 @media only screen and (max-width: 915px) {
     .settings-output-cont {
-        /* background-color: darkolivegreen; */
         display: flex;
         flex-direction: column;
         align-items: center;
         justify-content: start;
         width: 100%;
-        margin-bottom: 150px;
+        /* margin-bottom: 150px; */
     }
 
     .setting-box {
