@@ -35,7 +35,7 @@ const UserHomePage = () => {
   
   return (
     <div className='logged-in-home-page-cont' style={{fontSize: size, lineHeight: lineSpacing, letterSpacing: spacing}}>
-      { isLoggedIn && responseToken.user ? (<h1> Hello, <span className='highlight'> {responseToken.user} </span> </h1>) : (<h1>Welcome!</h1>)}
+      { isLoggedIn && responseToken.user ? (<h1 style={{ lineHeight: '' }}> Hello, <span className='highlight'> {responseToken.user} </span> </h1>) : (<h1 style={{ lineHeight: '' }}>Welcome!</h1>)}
 
       <p>Let's make today a productive study day.</p>
 

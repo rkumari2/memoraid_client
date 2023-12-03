@@ -19,11 +19,11 @@ const LoginRedirection = () => {
         <div className='not-logged-in-cont' style={{fontSize: size, lineHeight: lineSpacing, letterSpacing: spacing}}>
 
             <div className='tagline-home-page'>
-                <h1> Curious to see more? </h1>
+                <h1 style={{ lineHeight: '' }}> Curious to see more? </h1>
             </div>
 
             <div className="intro-paragraph">
-                <p> <span className='highlight'> Log in </span>or <span className='highlight'> Sign up </span> with Memoraid to unlock a treasure trove of flashcards tailored to make learning fun and effective. Let's embark on this learning adventure together! </p>
+                <p style={{fontSize: size, lineHeight: lineSpacing, letterSpacing: spacing}}> <span className='highlight'> Log in </span>or <span className='highlight'> Sign up </span> with Memoraid to unlock a treasure trove of flashcards tailored to make learning fun and effective. Let's embark on this learning adventure together! </p>
             </div>
 
 

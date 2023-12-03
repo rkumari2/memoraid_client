@@ -41,7 +41,7 @@ const ScoresPage = () => {
     <>
 
     <div className='scores-cont' style={{fontSize: size, lineHeight: lineSpacing, letterSpacing: spacing}}>
-        <h1> Progress </h1>
+        <h1 style={{ lineHeight: '' }}> Progress </h1>
         
         <div className='scoresOutput-cont'>
           { results.length === 0 && !isLoading && (<div className='no-scores'> <h3> No results to show, practice some more to get results.</h3> <button className='button'> TOPICS </button></div>)}

@@ -45,7 +45,7 @@ const Login = () => {
       <img className='bg-image' src="favicon.png" alt="light bulb graphic" />
 
       <div id='form-cont'>
-        <h1 style={{lineHeight: lineSpacing, letterSpacing: spacing}}>Log In</h1>
+        <h1 style={{lineHeight: '', letterSpacing: spacing}}>Log In</h1>
         <form onSubmit={handleSubmit}>
 
           <input 

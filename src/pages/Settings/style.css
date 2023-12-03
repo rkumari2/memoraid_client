@@ -10,7 +10,7 @@
 }
 
 .settings-cont h1 {
-    font-size: 30px;
+    font-size: 40px;
 }
 
 .settings-output-cont {
@@ -41,6 +41,7 @@
 
 .setting-box h2 {
     color: var(--pink);
+    font-size: 30px;
 }
 
 .radio-btns-cont {
@@ -68,6 +69,17 @@
         width: 90%;
         /* background-color: aqua; */
         margin-bottom: 30px;
+    }
+}
+
+@media only screen and (max-width: 450px) {
+    .settings-cont h1 {
+        font-size: 30px;
+    }
+
+    .setting-box h2 {
+        color: var(--pink);
+        font-size: 25px;
     }
 }
 

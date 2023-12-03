@@ -110,7 +110,6 @@
         padding-left: 10%;
         padding-right: 10%;
         height: 100%;
-        background-color: black;
     }
 
     .intro-paragraph {
@@ -123,7 +122,6 @@
     }
 
     .logged-in-home-page-cont {
-        background-color: black;
         width: 80%;
         padding-left: 10%;
         padding-right: 10%;

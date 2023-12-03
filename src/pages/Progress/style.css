@@ -10,6 +10,10 @@
     padding-top: 20px;
 }
 
+.scores-cont h1 {
+    font-size: 40px;
+}
+
 .scoresOutput-cont {
     /* background-color: aqua; */
     width: 90%;
@@ -32,7 +36,6 @@
     background-color: var(--pink);
     margin: 20px;
     margin-bottom: 50px;
-    color: black;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -40,6 +43,7 @@
     border-radius: 2px;
     padding: 15px;
     padding-bottom: 30px;
+    color: black;
 }
 
 .scorecard p, h2 {
@@ -64,10 +68,13 @@
 @media only screen and (max-width: 450px) {
     .scores-cont {
         padding-bottom: 0;
-        background-color: black;
         width: 80%;
         padding-left: 10%;
         padding-right: 10%;
+    }
+
+    .scores-cont h1 {
+        font-size: 30px;
     }
 }
 

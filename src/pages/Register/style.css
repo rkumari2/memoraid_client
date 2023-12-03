@@ -13,7 +13,7 @@
 
 #form-cont h1 {
     color: var(--white);
-    font-size: 30px;
+    font-size: 40px;
 }
 
 #form-cont form {
@@ -55,7 +55,6 @@
 
 @media only screen and (max-width: 450px) {
     #form-cont {
-        background-color: black;
         width: 80%;
         padding-left: 10%;
         padding-right: 10%;
@@ -68,5 +67,9 @@
     #form-cont form {
         padding-bottom: 0px;
         width: 100%;
+    }
+
+    #form-cont h1 {
+        font-size: 30px;
     }
 }

@@ -17,11 +17,11 @@ const GuestHomePage = () => {
   return (
     <div className='guest-home-page-cont' style={{fontSize: size, lineHeight: lineSpacing, letterSpacing: spacing}}>
       <div className='tagline-home-page'>
-        <h1> Learn. Recall. Master. </h1>
+        <h1 style={{ lineHeight: '' }}> Learn. Recall. Master. </h1>
       </div>
 
       <div className='intro-paragraph'>
-        <p> 
+        <p style={{fontSize: size, lineHeight: lineSpacing, letterSpacing: spacing}}> 
           Are you struggling with traditional flashcards that don't cater to your dyslexia and visual stress? Say hello to Memoraid - the groundbreaking flashcard app designed with you in mind. Customise fonts and color themes to ease your reading experience. With Memoraid, effortlessly transform any study material into an accessible and captivating learning resource. Don't just memorize - Memoraid! </p>
       </div>
 

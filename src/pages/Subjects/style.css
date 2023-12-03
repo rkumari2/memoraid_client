@@ -14,9 +14,9 @@
     padding-top: 20px;
 }
 
-/* .subjects-cont h1 {
-    font-size: 30px;
-} */
+.subjects-cont h1 {
+    font-size: 40px;
+}
 
 .search {
     /* background-color: brown; */
@@ -187,12 +187,16 @@
 }
 
 @media only screen and (max-width: 450px) {
+
     .subjects-cont {
-        background-color: black;
         width: 80%;
         padding-left: 10%;
         padding-right: 10%;
         padding-bottom: 0;
+    }
+
+    .subjects-cont h1 {
+        font-size: 30px;
     }
 
     #add-subject-btn {
@@ -206,8 +210,6 @@
     }
 
     #add-btn {
-        height: 34px;
-        margin-left: 5px;
         margin-bottom: 60px;
     }
 
@@ -224,7 +226,6 @@
     }
 
     .not-logged-in-cont {
-        background-color: black;
         width: 80%;
         padding-left: 10%;
         padding-right: 10%;
@@ -244,7 +245,7 @@
         color: var(--white);
     }
 
-    #search-btn {
+    #search-btn, #add-btn {
         /* min-height: 34px; */
         margin-left: 5px;
         padding-top: 4px;

@@ -158,7 +158,7 @@ const FlashcardPage = () => {
 
   return (
     <div className='flashcards-cont' style={{fontSize: size, lineHeight: lineSpacing, letterSpacing: spacing}}>
-      <h1><span className='highlight'>{selectedSubjectName}</span> Flashcards</h1>
+      <h1 style={{ lineHeight: '' }}><span className='highlight'>{selectedSubjectName}</span> Flashcards</h1>
 
       {isLoading ? (
         <LoadingAnimation />
