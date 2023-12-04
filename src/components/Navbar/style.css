@@ -92,6 +92,7 @@
     .page {
         display: flex;
         flex-direction: column;
+        height: auto;
     }
 
     #navbar-cont {
@@ -106,7 +107,7 @@
         justify-content: center;
         position: fixed;
         top: 0;
-        margin-bottom: 20px;
+        /* margin-bottom: 20px; */
     }
 
     .small-screen-menu {

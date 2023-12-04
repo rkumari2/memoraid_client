@@ -42,7 +42,7 @@
     /* height: 34px; */
     margin-left: 5px;
     /* width: 34px; */
-    padding: 6px;
+    padding: 5.5px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -183,6 +183,22 @@
 
     .overlay{
         width: 60%;
+    }
+}
+
+@media only screen and (max-width: 915px) {
+    .not-logged-in-cont {
+        padding-bottom: 50px;
+        padding-top: 50px;
+        display: flex;
+        align-items: center;
+        justify-content: start;
+    }
+
+    #add-subject-btn {
+        position: fixed;
+        right: 7vw;
+        top: 75vh;
     }
 }
 

@@ -94,7 +94,7 @@
         height: 40%;
     }
 
-    .guest-home-page-cont {
+    .guest-home-page-cont, .logged-in-home-page-cont {
         padding-bottom: 50px;
         padding-top: 50px;
         display: flex;

@@ -48,6 +48,14 @@
 }
 
 @media only screen and (max-width: 915px) {
+    #form-cont {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: start;
+        padding-top: 50px;
+    }
+
     #form-cont form {
         width: 60%;
     }
