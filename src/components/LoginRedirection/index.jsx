@@ -19,7 +19,7 @@ const LoginRedirection = () => {
         <div className='not-logged-in-cont' style={{fontSize: size, lineHeight: lineSpacing, letterSpacing: spacing}}>
 
             <div className='tagline-home-page'>
-                <h1 style={{ lineHeight: '' }}> Curious to see more? </h1>
+                <h1 style={{ lineHeight: lineSpacing }}> Curious to see more? </h1>
             </div>
 
             <div className="intro-paragraph">

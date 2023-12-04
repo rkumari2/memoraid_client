@@ -76,7 +76,7 @@ const SubjectsPageLoggedIn = () => {
 
   return (
     <div className='subjects-cont' style={{fontSize: size, lineHeight: lineSpacing, letterSpacing: spacing}}>
-            <h1 style={{ lineHeight: '' }}>Topics</h1>
+            <h1 style={{ lineHeight: lineSpacing }}>Topics</h1>
             <Search handleHideSubject={handleHideSubject} handleShowSubject={handleShowSubject} handleSearch={handleSearch} resetSearch={resetSearch} />
             {isLoading ? (
                 <LoadingAnimation />

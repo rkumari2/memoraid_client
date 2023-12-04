@@ -55,7 +55,7 @@ const Register = () => {
       <img className='bg-image' src="favicon.png" alt="light bulb graphic" />
 
       <div id='form-cont'>
-        <h1 style={{lineHeight: '', letterSpacing: spacing}}>Register</h1>
+        <h1 style={{lineHeight: lineSpacing, letterSpacing: spacing}}>Register</h1>
         <form onSubmit={handleSubmit}>
 
           <input 
