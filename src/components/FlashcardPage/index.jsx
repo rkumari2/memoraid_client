@@ -210,27 +210,22 @@ const FlashcardPage = () => {
             <div className='actual-card-cont'>
                 {results.map((item) => (
                   <>
-                  <motion.div
-                    className='flashcard'
-                    id='accessibility'
-                    style={{
-                      backgroundColor: bgColor
-                    }}
-                    onClick={revealAnswer ? handleHideAnswer : handleShowAnswer}
-                    animate={{
-                      rotateY: revealAnswer ? [180, 0] : [0, 180, 0]
-                    }}
+                  <motion.div className='flashcard' id='accessibility'
+                    style={{backgroundColor: bgColor}}
+                    animate={{rotateY: revealAnswer ? [180, 0] : [0, 180, 0]}}
                     transition={{ duration: 1 }}
                     key={item.id}
-                  >
+                  > 
+                    <div onClick={revealAnswer ? handleHideAnswer : handleShowAnswer} className='card-content'>
                     <div className='flashcard-type'>
                       <h3> {revealAnswer ? 'ANSWER' : 'QUESTION'} </h3>
                     </div>
                     <div className='flashcard-content'>
                       <p key={item.id}> {revealAnswer ? item.answer : item.question} </p>
                     </div>
+                    </div>
+                    <TextToSpeech text={currentFlashcardContent} />
                   </motion.div>
-                  <TextToSpeech text={currentFlashcardContent} />
                   </>
                 ))}
               </div>
