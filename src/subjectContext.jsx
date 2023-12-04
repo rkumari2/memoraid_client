@@ -1,12 +1,25 @@
-import React, { createContext, useState, useContext } from 'react';
+import React, { createContext, useState, useContext, useEffect } from 'react';
 
 const SubjectContext = createContext();
 
 export const useSubject = () => useContext(SubjectContext);
 
 export const SubjectProvider = ({ children }) => {
-    const [selectedSubjectId, setSelectedSubjectId] = useState(null);
-    const [selectedSubjectName, setSelectedSubjectName] = useState(null)
+    
+    const storedSubjectId = localStorage.getItem('selectedSubjectId');
+    const storedSubjectName = localStorage.getItem('selectedSubjectName');
+
+    const [selectedSubjectId, setSelectedSubjectId] = useState(storedSubjectId || null);
+    const [selectedSubjectName, setSelectedSubjectName] = useState(storedSubjectName || null);
+
+    useEffect(() => {
+        if (selectedSubjectId !== storedSubjectId) {
+            setSelectedSubjectId(storedSubjectId);
+        }
+        if (selectedSubjectName !== storedSubjectName) {
+            setSelectedSubjectName(storedSubjectName);
+        }
+    }, [selectedSubjectId, storedSubjectId, selectedSubjectName, storedSubjectName]);
 
     const value = {
         selectedSubjectId,
@@ -21,3 +34,4 @@ export const SubjectProvider = ({ children }) => {
         </SubjectContext.Provider>
     );
 };
+

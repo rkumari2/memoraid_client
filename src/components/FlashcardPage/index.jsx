@@ -8,6 +8,7 @@ import { BsFillHandThumbsUpFill, BsFillHandThumbsDownFill, BsRocketTakeoffFill }
 import { MdCancel } from "react-icons/md";
 import { FaCirclePlay } from "react-icons/fa6";
 import { PiBooksFill } from "react-icons/pi";
+import { IoList } from "react-icons/io5";
 import { useSelector } from 'react-redux'
 import LoadingAnimation from '../LoadingAnimation'
 import { motion } from 'framer-motion'
@@ -95,6 +96,11 @@ const FlashcardPage = () => {
     setWrongAnswers(wrongAnswers + 1)
     fetchData(selectedSubjectId)
   }
+
+  const handleListBtn = async(e) => {
+    e.preventDefault()
+    navigate('/all')
+  } 
 
   const handleCreateScoreCard = async (newPercentage) => {
     try {
@@ -260,6 +266,8 @@ const FlashcardPage = () => {
       )}
 
       {!isLoading && !isEndClicked && <AddFlashcardBtn fetchData={fetchData} />}
+      
+      {!isLoading && <motion.button className='button' id='list-btn' onClick={handleListBtn} whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.9 }}> <IoList className='icon' id='plus-icon'/> </motion.button>}
     </div>
   )
 }

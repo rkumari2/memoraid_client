@@ -16,6 +16,7 @@ const ScoresPage = () => {
   useEffect(() => {
 
     const fetchData = async () => {
+      setIsLoading(true)
       try {
         const response = await axios.get(`https://memoraide-server.onrender.com/scores/${storedToken.user_id}`)
         if (response.status === 200) {

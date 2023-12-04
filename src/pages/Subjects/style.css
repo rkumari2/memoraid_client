@@ -89,6 +89,19 @@
     justify-content: center;
 }
 
+#list-btn {
+    position: absolute;
+    right: 5vw;
+    top: 80vh;
+    min-height: 50px;
+    min-width: 50px;
+    padding: 0;
+    background-color: var(--white);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
 .overlay-bg {
     position: absolute;
     background-color: rgb(239, 255, 208, 0.3);
@@ -181,6 +194,11 @@
         top: 90vh;
     }
 
+    #list-btn {
+        right: 7vw;
+        top: 80vh;
+    }
+
     .overlay{
         width: 60%;
     }
@@ -199,6 +217,12 @@
         position: fixed;
         right: 7vw;
         top: 75vh;
+    }
+
+    #list-btn {
+        position: fixed;
+        right: 7vw;
+        top: 70vh;
     }
 }
 
@@ -219,6 +243,16 @@
         position: fixed;
         right: 7vw;
         top: 75vh;
+        height: 35px;
+        width: 35px;
+        /* background-color: aqua; */
+        padding: 0;
+    }
+
+    #list-btn {
+        position: fixed;
+        right: 7vw;
+        top: 70vh;
         height: 35px;
         width: 35px;
         /* background-color: aqua; */
