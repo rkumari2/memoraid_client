@@ -11,6 +11,7 @@ import { PiBooksFill } from "react-icons/pi";
 import { useSelector } from 'react-redux'
 import LoadingAnimation from '../LoadingAnimation'
 import { motion } from 'framer-motion'
+import TextToSpeech from '../TextToSpeech'
 
 const FlashcardPage = () => {
 
@@ -31,6 +32,7 @@ const FlashcardPage = () => {
   const [isEndClicked, setIsEndClicked] = useState(false)
   const [finalPercentage, setFinalPercentage] = useState(0)
   const [isLoading, setIsLoading] = useState(true)
+  const [currentFlashcardContent, setCurrentFlashcardContent] = useState('');
 
   const today = new Date()
   const month = today.getMonth() + 1
@@ -48,6 +50,7 @@ const FlashcardPage = () => {
         const responseData = response.data
         setResults([responseData])
         setRevealAnswer(false)
+        setCurrentFlashcardContent(responseData.question); 
       }
 
     } catch (err) {
@@ -68,15 +71,17 @@ const FlashcardPage = () => {
     }
   }, [storedSubjectId])
 
-  console.log('stored subject id is line 53:', storedSubjectId)
+  // console.log('stored subject id is line 53:', storedSubjectId)
 
 
   const handleShowAnswer = () => {
     setRevealAnswer(true)
+    setCurrentFlashcardContent(results[0].answer)
   }
 
   const handleHideAnswer = () => {
     setRevealAnswer(false)
+    setCurrentFlashcardContent(results[0].question)
   }
 
   const handleRightAnswer = () => {
@@ -204,6 +209,7 @@ const FlashcardPage = () => {
             <div className='flashcardOutput-cont'>
             <div className='actual-card-cont'>
                 {results.map((item) => (
+                  <>
                   <motion.div
                     className='flashcard'
                     id='accessibility'
@@ -224,8 +230,9 @@ const FlashcardPage = () => {
                       <p key={item.id}> {revealAnswer ? item.answer : item.question} </p>
                     </div>
                   </motion.div>
+                  <TextToSpeech text={currentFlashcardContent} />
+                  </>
                 ))}
-
               </div>
             </div>
 
