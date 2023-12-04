@@ -17,7 +17,7 @@ const GuestHomePage = () => {
   return (
     <div className='guest-home-page-cont' style={{fontSize: size, lineHeight: lineSpacing, letterSpacing: spacing}}>
       <div className='tagline-home-page'>
-        <h1 style={{ lineHeight: '40px' }}> Learn. Recall. Master. </h1>
+        <h1 style={{ lineHeight: '45px' }}> Learn. Recall. Master. </h1>
       </div>
 
       <div className='intro-paragraph'>
