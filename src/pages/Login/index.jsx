@@ -9,6 +9,7 @@ const Login = () => {
   const { isLoggedIn, login } = useAuth()
   const [ inputEmail, setInputEmail ] = useState('')
   const [ inputPassword, setInputPassword ] = useState('')
+  const [ loginFeedback, setLoginFeedback ] = useState(false)
 
   const navigate = useNavigate()
 
@@ -34,17 +35,22 @@ const Login = () => {
     if (isLoggedIn) {
       setInputEmail('')
       setInputPassword('')
-      alert('Logged In successfully!')
-      navigate('/')
+      setLoginFeedback(true)
+      // alert('Logged In successfully!')
+
+      setTimeout(() => {
+        setLoginFeedback(false)
+        navigate('/')
+      }, 1000)
     }
   }, [isLoggedIn])
-
 
   return (
     <div className='page-layout'>
       <img className='bg-image' src="favicon.png" alt="light bulb graphic" />
 
       <div id='form-cont'>
+        {loginFeedback && <motion.div className='feedback' animate={{y:'120px'}}> Logged In Successfully! </motion.div>}
         <h1 style={{lineHeight: lineSpacing, letterSpacing: spacing}}>Log In</h1>
         <form onSubmit={handleSubmit}>
 
@@ -70,7 +76,6 @@ const Login = () => {
           style={{fontSize: size, lineHeight: lineSpacing, letterSpacing: spacing}}> Log In </motion.button>
 
           <p className='redirection-txt' style={{fontSize: size, lineHeight: lineSpacing, letterSpacing: spacing}}> Don't have an account? <a href="/register"> Sign Up </a></p>
-
         </form>
       </div>
     </div>

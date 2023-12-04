@@ -12,6 +12,7 @@ export function AuthProvider({ children }) {
     const [ isLoggedIn, setIsLoggedIn ] = useState(false)
     const [ responseToken, setResponseToken ] = useState(null)
 
+
     const register = async (inputName, inputEmail, inputPassword) => {
 
         try {
@@ -51,7 +52,7 @@ export function AuthProvider({ children }) {
                 alert ('Unable to Log In')
             }
 
-            console.log ('line 55 authcontext', responseToken)
+            // console.log ('line 55 authcontext', responseToken)
 
         } catch (err) {
             alert('Wrong Credentials') 
@@ -71,7 +72,7 @@ export function AuthProvider({ children }) {
             localStorage.removeItem('storedSubjectName')
             setResponseToken(null)
             setIsLoggedIn(false)
-
+            
         } catch (err) {
             alert('Error while logging out')
         }

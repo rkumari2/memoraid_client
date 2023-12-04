@@ -13,8 +13,10 @@ const Navbar = () => {
 
   const { isLoggedIn, logout } = useAuth()
 
-  const [showMenu, setShowMenu] = useState(false)
-  const [isOpen, setIsOpen] = useState(false)
+  const [ showMenu, setShowMenu ] = useState(false)
+  const [ isOpen, setIsOpen ] = useState(false)
+  // const [ logoutFeedback, setLogoutFeedback ] = useState(false)
+
 
   const styles = ({ isActive }) => ({ color: isActive ? '#d6ff89' : '', scale: isActive ? '1.2' : '1', fontWeight: isActive ? 'bold' : 'normal' })
 
@@ -25,7 +27,6 @@ const Navbar = () => {
   const handleLogout = async (e) => {
     e.preventDefault()
     await logout()
-    alert('logout successful')
   }
 
   const handleLogoClick = async (e) => {
@@ -68,19 +69,19 @@ const Navbar = () => {
 
           <div id="links">
             <NavLink className='navlink' style={styles} to='/'>
-              <motion.p whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.9 }}> Home </motion.p>
+              <motion.p whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.9 }} > Home </motion.p>
             </NavLink>
 
             <NavLink className='navlink' style={styles} to='/subjects'>
-              <motion.p whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.9 }}> Topics </motion.p>
+              <motion.p whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.9 }} > Topics </motion.p>
             </NavLink>
 
             <NavLink className='navlink' style={styles} to='/progress'>
-              <motion.p whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.9 }}> Progress </motion.p>
+              <motion.p whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.9 }} > Progress </motion.p>
             </NavLink>
 
             <NavLink className='navlink' style={styles} to='/settings'>
-              <motion.p whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.9 }}> Settings </motion.p>
+              <motion.p whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.9 }} > Settings </motion.p>
             </NavLink>
           </div>
 

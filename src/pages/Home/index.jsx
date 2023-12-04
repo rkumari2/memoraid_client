@@ -11,7 +11,7 @@ const Home = () => {
   return (
     <div className='page-layout'>
 
-      {isLoggedIn ? (<UserHomePage/>) : (<GuestHomePage/>)}
+      {isLoggedIn ? (<UserHomePage/>) : (<GuestHomePage />)}
 
     </div>
   )

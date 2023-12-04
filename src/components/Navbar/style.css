@@ -3,6 +3,7 @@
     justify-content: center;
     align-items: center;
     height: 100vh;
+    position: relative;
 }
 
 #navbar-cont {
@@ -67,6 +68,14 @@
 
 .menu-links, .phone-menu-icon, .small-screen-menu {
     display: none;
+}
+
+#logout-thing {
+    width: 100vw;
+    background-color: aqua;
+    position:absolute;
+    top: 0;
+    /* left: 500px; */
 }
 
 
