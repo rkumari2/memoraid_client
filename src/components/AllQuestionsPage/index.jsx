@@ -97,8 +97,8 @@ const AllQuestionsPage = () => {
       {!isLoading && <AddFlashcardBtn fetchData={fetchData} />}
 
       {showDeleteConfirmation && (
-        <div className='overlay'>
-          <div className='confirmation-box'>
+        <div className='overlay-bg'>
+          <div className='overlay'>
             <p>Are you sure you want to delete this flashcard?</p>
             <button className='button' onClick={handleDeleteFlashcard}>
               Delete

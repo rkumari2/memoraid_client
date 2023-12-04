@@ -21,12 +21,14 @@ const SubjectsPageLoggedIn = () => {
   const [searching, setSearching] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
   const [results, setResults] = useState([]);
+  const [showDeleteConfirmation, setShowDeleteConfirmation] = useState(false);
+  const [selectedSubjectIdToDelete, setSelectedSubjectIdToDelete] = useState(null);
 
   const { responseToken } = useAuth();
 
-  useEffect(() => {
+  
+  const fetchData = async () => {
     setIsLoading(true);
-    const fetchData = async () => {
       try {
         const response = await axios.get(`https://memoraide-server.onrender.com/subjects/${responseToken.user_id}`);
         if (response.status === 200) {
@@ -38,6 +40,7 @@ const SubjectsPageLoggedIn = () => {
       setIsLoading(false);
     };
 
+  useEffect(() => {
     fetchData();
   }, [responseToken.user_id]);
 
@@ -74,6 +77,28 @@ const SubjectsPageLoggedIn = () => {
     setSearching(false)
   }
 
+  const handleDeleteSubject = async () => {
+    try {
+      const response = await axios.delete(`https://memoraide-server.onrender.com/subjects/topic/${selectedSubjectIdToDelete}`);
+      if (response.status === 204) {
+        // Filter out the deleted subject
+        const updatedResults = results.filter(subject => subject.id !== selectedSubjectIdToDelete);
+        setResults(updatedResults);
+      }
+    } catch (error) {
+      console.log('Error deleting Subject', error);
+    } finally {
+      setShowDeleteConfirmation(false);
+      setSelectedSubjectIdToDelete(null);
+    }
+  };
+  
+
+  const showDeleteConfirmationOverlay = (SubjectId) => {
+    setSelectedSubjectIdToDelete(SubjectId);
+    setShowDeleteConfirmation(true);
+  };
+
   return (
     <div className='subjects-cont' style={{fontSize: size, lineHeight: lineSpacing, letterSpacing: spacing}}>
             <h1 style={{ lineHeight: '45px' }}>Topics</h1>
@@ -86,7 +111,7 @@ const SubjectsPageLoggedIn = () => {
                     {!searching && (
                         <>
                             {/* {showSubject && results.length === 0 && <div className='subjectsOutput-cont'> <h3> You don't have any topics, use the button below to add topics.</h3> </div>} */}
-                            {showSubject && <SubjectCard handleSubjectClick={handleSubjectClick} results={results} setResults={setResults} />}
+                            {showSubject && <SubjectCard handleSubjectClick={handleSubjectClick} results={results} setResults={setResults} showDeleteConfirmationOverlay={showDeleteConfirmationOverlay} handleDeleteSubject={handleDeleteSubject} showDeleteConfirmation={showDeleteConfirmation} setShowDeleteConfirmation={setShowDeleteConfirmation} />}
                         </>
                     )}
                     {finalSearchResults.length > 0 && searching && (
