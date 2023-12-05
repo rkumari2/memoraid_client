@@ -5,8 +5,8 @@
 :root {
     --bg: #22242e;
     --pink: #d6ff89;
-    --white: #ffffff; 
-    --light-yellow: #efffd0; 
+    --white: #ffffff;
+    --light-yellow: #efffd0;
 }
 
 * {
@@ -136,13 +136,7 @@ body {
     }
 
     .bg-image {
-        position: absolute;
-        height: 10%;
-        top: 17vh;
-        right: 10vw;
-        transform: rotate(15deg);
-        z-index: -1;
-        opacity: 0.2;
+        display: none;
     }
 }
 
