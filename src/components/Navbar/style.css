@@ -157,7 +157,8 @@
     }
 
     #logo img {
-        width: 70%;
+        width: 100%;
+        height: 100%;
     }
 
     .large-screen-menu{
@@ -222,7 +223,7 @@
     }
 
     #logo img {
-        width: 100%;
+        width: 100px;
     }
 
 }
