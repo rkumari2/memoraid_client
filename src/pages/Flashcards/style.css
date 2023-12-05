@@ -215,7 +215,7 @@
 
 @media only screen and (max-width: 915px) {
     .flashcardOutput-cont {
-        height: 500px;
+        height: 300px;
     }
 
     /* .flashcards-cont {
