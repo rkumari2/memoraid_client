@@ -251,6 +251,11 @@
         margin-top: 20px;
         margin-bottom: 25px;
         padding: 5px;
+        overflow-y: auto;
+    }
+
+    .flashcard-content p {
+        padding: 5px;
     }
 
     .text-to-speech-btns {
