@@ -243,6 +243,13 @@
         width: 80%;
         padding-left: 10%;
         padding-right: 10%;
+        padding-top: 0;
+    }
+
+    .flashcard-content {
+        background-color: lightgreen;
+        margin-top: 20px;
+        margin-bottom: 25px;
     }
 
     .flashcardOutput-cont {
