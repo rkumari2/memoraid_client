@@ -108,3 +108,12 @@
     margin-top: 20px;
 }
 
+@media only screen and (max-width: 915px) {
+    .questions-cont {
+        padding-bottom: 0;
+        width: 80%;
+        padding-left: 10%;
+        padding-right: 10%;
+        padding-top: 0;
+    }
+}

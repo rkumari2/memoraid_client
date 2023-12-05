@@ -74,6 +74,10 @@
 }
 
 @media only screen and (max-width: 450px) {
+    .settings-cont {
+        padding-top: 0;
+    }
+    
     .settings-cont h1 {
         font-size: 30px;
     }
