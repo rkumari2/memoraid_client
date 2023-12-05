@@ -250,6 +250,15 @@
         background-color: lightgreen;
         margin-top: 20px;
         margin-bottom: 25px;
+        padding: 5px;
+    }
+
+    .text-to-speech-btns {
+        background-color: cadetblue;
+        height: 10%;
+        width: 70%;
+        padding-top: 10px;
+        padding-bottom: 10px;
     }
 
     .flashcardOutput-cont {
