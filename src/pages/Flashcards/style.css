@@ -214,9 +214,13 @@
 }
 
 @media only screen and (max-width: 915px) {
-    .flashcards-cont {
-        padding-bottom: 150px;
+    .flashcardOutput-cont {
+        height: 80%;
     }
+
+    /* .flashcards-cont {
+        padding-bottom: 150px;
+    } */
 
     .actual-card-cont {
         width: 75%;
