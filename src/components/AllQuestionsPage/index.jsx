@@ -6,8 +6,9 @@ import LoadingAnimation from '../LoadingAnimation'
 import EditFlashcardBtn from '../EditFlashcardBtn'
 import AddFlashcardBtn from '../AddFlashcardBtn'
 import { useNavigate } from 'react-router-dom'
-import { IoMdClose } from "react-icons/io"
+import { IoMdClose, IoMdAdd } from "react-icons/io";
 import { RiDeleteBin6Fill } from "react-icons/ri"
+import { RiEdit2Fill } from "react-icons/ri";
 import { motion } from 'framer-motion'
 
 const AllQuestionsPage = () => {
@@ -117,7 +118,9 @@ const AllQuestionsPage = () => {
     <div className='questions-cont'>
       <h1 style={{ lineHeight: '45px' }}><span className='highlight'>{selectedSubjectName}</span> Questions </h1>
 
-      <p> View all the questions for this topic and edit them by clicking the edit button, practice when ready.</p>
+      <p className='intro-page-text'>
+        Check out all the <span className='highlight'>{selectedSubjectName}</span> questions. Easily add more using the <IoMdAdd/> button or tweak existing ones with the <RiEdit2Fill /> button. When you're set, hit 'Practice' and dive into learning!
+      </p>
 
       <motion.button className='button' onClick={handlePractice} whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.9 }}> Practice </motion.button>
 
@@ -130,7 +133,7 @@ const AllQuestionsPage = () => {
           <div key={item.id} className='question-card' id='accessibility' style={{ backgroundColor: bgColor }} whileHover={{ scale: 1.1 }}
           whileTap={{ scale: 0.9 }}>
 
-            <p> {item.question} </p>
+            <p id='question-paragraph'> {item.question} </p>
 
               <EditFlashcardBtn flashcardId={item.id} fetchData={fetchData} handleShowEditOverlay={handleShowEditOverlay} setEditedQuestion={setEditedQuestion} setEditedAnswer={setEditedAnswer} handleHideEditOverlay={handleHideEditOverlay} handleEditFlashcard={handleEditFlashcard}/>
 

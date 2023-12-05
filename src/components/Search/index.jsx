@@ -80,7 +80,7 @@ const Search = ({ handleHideSubject, handleShowSubject, handleSearch, resetSearc
 
     return (
         <>
-            <form className='search'>
+            <form className='search' id='search-topic'>
                 <input
                     className='input-field'
                     id='search-input'

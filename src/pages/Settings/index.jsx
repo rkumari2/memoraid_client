@@ -53,7 +53,7 @@ const Settings = () => {
   useEffect(() => {
     // document.body.style.backgroundColor = bgColor;
     const element = document.getElementById('accessibility')
-    if(element) {
+    if (element) {
       element.style.backgroundColor = bgColor
     }
     document.body.style.letterSpacing = spacing;
@@ -63,239 +63,241 @@ const Settings = () => {
 
   return (
     <div className='page-layout'>
-    <img className='bg-image' src="favicon.png" alt="light bulb graphic" />
+      <img className='bg-image' src="favicon.png" alt="light bulb graphic" />
+      <>
+        <div className='settings-cont'>
+          <h1> Accessibility Settings </h1>
 
-      <div className='settings-cont'>
-        <h1> Settings </h1>
+          <p className="intro-page-text"> Enhance your learning journey by customising your experience to suit you. </p>
 
-        <div className='settings-output-cont'>
+          <div className='settings-output-cont'>
 
-          {/* font size */}
-          <div className='setting-box'>
-          <h2> Font size </h2>
-          <div className='radio-btns-cont'>
-            <div>
-              <input
-                type="radio"
-                name='font-size'
-                value='16px'
-                checked={size === '16px'}
-                onChange={() => handleFontSizeChange('16px')} 
-                style={{cursor: 'pointer'}}/>
-              <label htmlFor="16px font size"> Small </label>
+            {/* font size */}
+            <div className='setting-box'>
+              <h2> Font size </h2>
+              <div className='radio-btns-cont'>
+                <div>
+                  <input
+                    type="radio"
+                    name='font-size'
+                    value='16px'
+                    checked={size === '16px'}
+                    onChange={() => handleFontSizeChange('16px')}
+                    style={{ cursor: 'pointer' }} />
+                  <label htmlFor="16px font size"> Small </label>
+                </div>
+
+                <div>
+                  <input
+                    type="radio"
+                    name='font-size'
+                    value='17px'
+                    checked={size === '17px'}
+                    onChange={() => handleFontSizeChange('17px')}
+                    style={{ cursor: 'pointer' }} />
+                  <label htmlFor="17px font size"> Medium </label>
+                </div>
+
+                <div>
+                  <input
+                    type="radio"
+                    name='font-size'
+                    value='20px'
+                    checked={size === '20px'}
+                    onChange={() => handleFontSizeChange('20px')}
+                    style={{ cursor: 'pointer' }} />
+                  <label htmlFor="20px font size"> Large </label>
+                </div>
+              </div>
             </div>
 
-            <div>
-              <input
-                type="radio"
-                name='font-size'
-                value='17px'
-                checked={size === '17px'}
-                onChange={() => handleFontSizeChange('17px')} 
-                style={{cursor: 'pointer'}}/>
-              <label htmlFor="17px font size"> Medium </label>
+            {/* line height */}
+            <div className='setting-box'>
+              <h2>Line height</h2>
+              <div className='radio-btns-cont'>
+                <div>
+                  <input
+                    type="radio"
+                    name='line-height'
+                    value='1.5rem'
+                    checked={lineSpacing === '1.5rem'}
+                    onChange={() => handleLineHeightChange('1.5rem')}
+                    style={{ cursor: 'pointer' }} />
+                  <label htmlFor=" 1.5rem height"> Small </label>
+                </div>
+
+                <div>
+                  <input
+                    type="radio"
+                    id='1.75rem'
+                    name='line-height'
+                    value='1.75rem'
+                    checked={lineSpacing === '1.75rem'}
+                    onChange={() => handleLineHeightChange('1.75rem')}
+                    style={{ cursor: 'pointer' }} />
+                  <label htmlFor="1.75rem height"> Medium </label>
+                </div>
+
+                <div>
+                  <input
+                    type="radio"
+                    id='2rem'
+                    name='line-height'
+                    value='2rem'
+                    checked={lineSpacing === '2rem'}
+                    onChange={() => handleLineHeightChange('2rem')}
+                    style={{ cursor: 'pointer' }} />
+                  <label htmlFor="2rem height"> Large </label>
+                </div>
+              </div>
             </div>
 
-            <div>
-              <input
-                type="radio"
-                name='font-size'
-                value='20px'
-                checked={size === '20px'}
-                onChange={() => handleFontSizeChange('20px')} 
-                style={{cursor: 'pointer'}}/>
-              <label htmlFor="20px font size"> Large </label>
+            {/* letter spacing */}
+            <div className='setting-box'>
+              <h2>Letter spacing</h2>
+              <div className='radio-btns-cont'>
+                <div>
+                  <input
+                    type="radio"
+                    id="0.1rem"
+                    name="letter-spacing"
+                    value="0.05rem"
+                    checked={spacing === '0.05rem'}
+                    onChange={() => handleSpacingChange('0.05rem')}
+                    style={{ cursor: 'pointer' }} />
+                  <label htmlFor="0.05 spacing"> Small </label>
+                </div>
+
+                <div>
+                  <input
+                    type="radio"
+                    id="0.15rem"
+                    name="letter-spacing"
+                    value="0.1rem"
+                    checked={spacing === '0.1rem'}
+                    onChange={() => handleSpacingChange('0.1rem')}
+                    style={{ cursor: 'pointer' }} />
+                  <label htmlFor="0.1 spacing"> Medium </label>
+                </div>
+
+                <div>
+                  <input
+                    type="radio"
+                    id="0.2rem"
+                    name="letter-spacing"
+                    value="0.15rem"
+                    checked={spacing === '0.15rem'}
+                    onChange={() => handleSpacingChange('0.15rem')}
+                    style={{ cursor: 'pointer' }} />
+                  <label htmlFor="0.15 spacing"> Large </label>
+                </div>
+              </div>
             </div>
+
+            {/* background color */}
+            <div className='setting-box'>
+              <h2>Background color</h2>
+              <div className='radio-btns-cont'>
+                <div>
+                  <input
+                    type="radio"
+                    name="background-color"
+                    value="#efffd0"
+                    checked={bgColor === '#efffd0'}
+                    onChange={() => handleBgChange('#efffd0')}
+                    style={{ cursor: 'pointer' }} />
+                  <label htmlFor="default colour"> Default </label>
+                </div>
+
+                <div>
+                  <input
+                    type="radio"
+                    name="background-color"
+                    value="#B987DC"
+                    checked={bgColor === '#B987DC'}
+                    onChange={() => handleBgChange('#B987DC')}
+                    style={{ cursor: 'pointer' }} />
+                  <label htmlFor="purple"> Purple </label>
+                </div>
+
+                <div>
+                  <input
+                    type="radio"
+                    name="background-color"
+                    value="#ffffff"
+                    checked={bgColor === '#ffffff'}
+                    onChange={() => handleBgChange('#ffffff')}
+                    style={{ cursor: 'pointer' }} />
+                  <label htmlFor="color-white"> White </label>
+                </div>
+
+                <div>
+                  <input
+                    type="radio"
+                    id="color-blue"
+                    name="background-color"
+                    value="#96ADFC"
+                    checked={bgColor === '#96ADFC'}
+                    onChange={() => handleBgChange('#96ADFC')}
+                    style={{ cursor: 'pointer' }} />
+                  <label htmlFor="color-blue"> Blue </label>
+                </div>
+
+                <div>
+                  <input
+                    type="radio"
+                    id="color-blue"
+                    name="background-color"
+                    value="#DBE1F1"
+                    checked={bgColor === '#DBE1F1'}
+                    onChange={() => handleBgChange('#DBE1F1')}
+                    style={{ cursor: 'pointer' }} />
+                  <label htmlFor="color-blue"> Blue-Grey </label>
+                </div>
+
+                <div>
+                  <input
+                    type="radio"
+                    id="color-yellow"
+                    name="background-color"
+                    value="#F8FD89"
+                    checked={bgColor === '#F8FD89'}
+                    onChange={() => handleBgChange('#F8FD89')}
+                    style={{ cursor: 'pointer' }} />
+                  <label htmlFor="color-yellow"> Yellow </label>
+                </div>
+
+                <div>
+                  <input
+                    type="radio"
+                    id="color-peach"
+                    name="background-color"
+                    value="#EDD1B0"
+                    checked={bgColor === '#EDD1B0'}
+                    onChange={() => handleBgChange('#EDD1B0')}
+                    style={{ cursor: 'pointer' }} />
+                  <label htmlFor="color-peach"> Peach </label>
+                </div>
+
+                <div>
+                  <input
+                    type="radio"
+                    id="color-orange"
+                    name="background-color"
+                    value="#EDDD6E"
+                    checked={bgColor === '#EDDD6E'}
+                    onChange={() => handleBgChange('#EDDD6E')}
+                    style={{ cursor: 'pointer' }} />
+                  <label htmlFor="color-orange"> Orange </label>
+                </div>
+              </div>
+            </div>
+
+
           </div>
-          </div>
 
-          {/* line height */}
-          <div className='setting-box'>
-          <h2>Line height</h2>
-          <div className='radio-btns-cont'>
-            <div>
-              <input
-                type="radio"
-                name='line-height'
-                value='1.5rem'
-                checked={lineSpacing === '1.5rem'}
-                onChange={() => handleLineHeightChange('1.5rem')} 
-                style={{cursor: 'pointer'}}/>
-              <label htmlFor=" 1.5rem height"> Small </label>
-            </div>
-
-            <div>
-              <input
-                type="radio"
-                id='1.75rem'
-                name='line-height'
-                value='1.75rem'
-                checked={lineSpacing === '1.75rem'}
-                onChange={() => handleLineHeightChange('1.75rem')} 
-                style={{cursor: 'pointer'}}/>
-              <label htmlFor="1.75rem height"> Medium </label>
-            </div>
-
-            <div>
-              <input
-                type="radio"
-                id='2rem'
-                name='line-height'
-                value='2rem'
-                checked={lineSpacing === '2rem'}
-                onChange={() => handleLineHeightChange('2rem')} 
-                style={{cursor: 'pointer'}}/>
-              <label htmlFor="2rem height"> Large </label>
-            </div>
-          </div>
         </div>
-
-        {/* letter spacing */}
-        <div className='setting-box'>
-          <h2>Letter spacing</h2>
-            <div className='radio-btns-cont'>
-              <div>
-              <input
-                type="radio"
-                id="0.1rem"
-                name="letter-spacing"
-                value="0.05rem"
-                checked={spacing === '0.05rem'}
-                onChange={() => handleSpacingChange('0.05rem')}
-                style={{cursor: 'pointer'}}/>
-              <label htmlFor="0.05 spacing"> Small </label>
-            </div>
-
-            <div>
-              <input
-                type="radio"
-                id="0.15rem"
-                name="letter-spacing"
-                value="0.1rem"
-                checked={spacing === '0.1rem'}
-                onChange={() => handleSpacingChange('0.1rem')}
-                style={{cursor: 'pointer'}}/>
-              <label htmlFor="0.1 spacing"> Medium </label>
-            </div>
-
-            <div>
-              <input
-                type="radio"
-                id="0.2rem"
-                name="letter-spacing"
-                value="0.15rem"
-                checked={spacing === '0.15rem'}
-                onChange={() => handleSpacingChange('0.15rem')}
-                style={{cursor: 'pointer'}}/>
-              <label htmlFor="0.15 spacing"> Large </label>
-            </div>
-            </div>
-        </div>
-
-        {/* background color */}
-        <div className='setting-box'>
-          <h2>Background color</h2>
-          <div className='radio-btns-cont'>
-          <div>
-              <input
-                type="radio"
-                name="background-color"
-                value="#efffd0"
-                checked={bgColor === '#efffd0'}
-                onChange={() => handleBgChange('#efffd0')}
-                style={{cursor: 'pointer'}}/>
-              <label htmlFor="default colour"> Default </label>
-          </div>
-
-          <div>
-              <input
-                type="radio"
-                name="background-color"
-                value="#B987DC"
-                checked={bgColor === '#B987DC'}
-                onChange={() => handleBgChange('#B987DC')}
-                style={{cursor: 'pointer'}}/>
-              <label htmlFor="purple"> Purple </label>
-          </div>
-
-            <div>
-              <input
-                type="radio"
-                name="background-color"
-                value="#ffffff"
-                checked={bgColor === '#ffffff'}
-                onChange={() => handleBgChange('#ffffff')}
-                style={{cursor: 'pointer'}}/>
-              <label htmlFor="color-white"> White </label>
-            </div>
-
-            <div>
-              <input
-                type="radio"
-                id="color-blue"
-                name="background-color"
-                value="#96ADFC"
-                checked={bgColor === '#96ADFC'}
-                onChange={() => handleBgChange('#96ADFC')}
-                style={{cursor: 'pointer'}}/>
-              <label htmlFor="color-blue"> Blue </label>
-            </div>
-
-            <div>
-              <input
-                type="radio"
-                id="color-blue"
-                name="background-color"
-                value="#DBE1F1"
-                checked={bgColor === '#DBE1F1'}
-                onChange={() => handleBgChange('#DBE1F1')}
-                style={{cursor: 'pointer'}}/>
-              <label htmlFor="color-blue"> Blue-Grey </label>
-            </div>
-
-            <div>
-              <input
-                type="radio"
-                id="color-yellow"
-                name="background-color"
-                value="#F8FD89"
-                checked={bgColor === '#F8FD89'}
-                onChange={() => handleBgChange('#F8FD89')}
-                style={{cursor: 'pointer'}}/>
-              <label htmlFor="color-yellow"> Yellow </label>
-            </div>
-
-            <div>
-              <input
-                type="radio"
-                id="color-peach"
-                name="background-color"
-                value="#EDD1B0"
-                checked={bgColor === '#EDD1B0'}
-                onChange={() => handleBgChange('#EDD1B0')}
-                style={{cursor: 'pointer'}}/>
-              <label htmlFor="color-peach"> Peach </label>
-            </div>
-
-            <div>
-              <input
-                type="radio"
-                id="color-orange"
-                name="background-color"
-                value="#EDDD6E"
-                checked={bgColor === '#EDDD6E'}
-                onChange={() => handleBgChange('#EDDD6E')}
-                style={{cursor: 'pointer'}}/>
-              <label htmlFor="color-orange"> Orange </label>
-            </div>
-          </div>
-        </div>
-
-
-        </div>
-
-      </div>
-
+      </>
     </div>
   )
 }

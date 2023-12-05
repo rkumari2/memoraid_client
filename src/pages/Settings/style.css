@@ -6,7 +6,9 @@
     align-items: center;
     justify-content: start;
     color: var(--white);
-    padding-top: 20px;
+    padding-top: 30px;
+    overflow-y: auto;
+    /* margin-top: 50px; */
 }
 
 .settings-cont h1 {
@@ -25,8 +27,8 @@
     padding: 0;
     flex-wrap: wrap;
     /* display: grid; */
-    margin-top: 50px;
-    margin-bottom: 50px;
+    /* margin-top: 50px; */
+    margin-bottom: 10px;
 }
 
 .setting-box {
@@ -49,11 +51,11 @@
     text-align: left;
 }
 
-@media only screen and (max-width: 1025px) {
+/* @media only screen and (max-width: 1025px) {
     .settings-output-cont {
         margin-top: 30px;
     }
-}
+} */
 
 @media only screen and (max-width: 915px) {
     .settings-cont {
@@ -75,7 +77,8 @@
 
 @media only screen and (max-width: 450px) {
     .settings-cont {
-        padding-top: 0;
+        padding-top: 10px;
+        /* margin-top: 20px; */
     }
     
     .settings-cont h1 {

@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react'
 import axios from 'axios'
 import LoadingAnimation from '../LoadingAnimation'
 import { useSelector } from 'react-redux'
+import { motion } from 'framer-motion'
 
 
 const ScoresPage = () => {
@@ -43,9 +44,11 @@ const ScoresPage = () => {
 
     <div className='scores-cont' style={{fontSize: size, lineHeight: lineSpacing, letterSpacing: spacing}}>
         <h1 style={{ lineHeight: '45px' }}> Progress </h1>
+
+        <p className='intro-page-text'> Your study sessions, at a glance. The Progress Page shows how you're doing in each topic and how many questions you've aced. </p>
         
         <div className='scoresOutput-cont'>
-          { results.length === 0 && !isLoading && (<div className='no-scores'> <h3> No results to show, practice some more to get results.</h3> <button className='button'> TOPICS </button></div>)}
+          { results.length === 0 && !isLoading && (<div className='no-scores'> <h3> No scores yet? No worries! Dive into more practice sessions to unveil your achievements. The more you practice, the more you'll conquer. You're on the right track! </h3> <motion.button className='button' whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.9 }}> Topics </motion.button></div>)}
 
           { isLoading && (<LoadingAnimation />)}
           { results.map((item) => (

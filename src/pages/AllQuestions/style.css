@@ -14,9 +14,9 @@
     font-size: 40px;
 }
 
-.questions-cont p {
-    margin-top: 30px;
-    margin-bottom: 30px;
+.intro-page-text {
+    padding: 15px 200px 40px 200px;
+    text-align: center;
 }
 
 .questionsOutput-cont {
@@ -52,8 +52,11 @@
     position: relative;
 }
 
-.question-card p {
-    padding-bottom: 10px;
+#question-paragraph {
+    /* padding-bottom: 10px; */
+    padding-left: 0;
+    padding-right: 0;
+    /* padding-top: 10px; */
     /* background-color: aqua; */
     margin: 20px;
     margin-right: 60px;
@@ -118,6 +121,11 @@
         text-align: center;
     }
 
+    .intro-page-text {
+        padding: 15px 100px 40px 100px;
+        text-align: center;
+    }
+
     .questionsOutput-cont {
         width: 100%;
     }
@@ -126,5 +134,13 @@
         width: 100%;
         margin-left: 0;
         margin-right: 0;
+    }
+}
+
+@media only screen and (max-width: 915px) {
+    .intro-page-text {
+        padding-left: 0;
+        padding-right: 0;
+        text-align: center;
     }
 }

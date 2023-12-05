@@ -1,6 +1,4 @@
 .subjects-cont {
-    /* background-color: antiquewhite; */
-    /* border: 3px solid red; */
     height: 100%;
     width: 100%;
     display: flex;
@@ -8,9 +6,7 @@
     align-items: center;
     justify-content: start;
     color: var(--white);
-    /* margin-top: 5rem; */
     overflow-y: auto;
-    /* margin-top: 20px; */
     padding-top: 20px;
 }
 
@@ -195,6 +191,10 @@
     padding: 15px 15px 10px 30px;
 }
 
+#search-topic {
+    margin-top: 0;
+}
+
 
 @media only screen and (max-width: 1025px) {
     .subjects-cont {
@@ -218,6 +218,14 @@
 }
 
 @media only screen and (max-width: 915px) {
+    .subjects-cont {
+        width: 80%;
+        padding-left: 10%;
+        padding-right: 10%;
+        padding-bottom: 0;
+        padding-top: 0;
+    }
+
     .not-logged-in-cont {
         padding-bottom: 50px;
         padding-top: 50px;
@@ -256,13 +264,17 @@
         padding-top: 0;
     }
 
+    .subjectsOutput-cont {
+        width: 100%;
+    }
+
     .subjects-cont h1 {
         font-size: 30px;
     }
 
     #add-subject-btn {
         position: fixed;
-        right: 25vw;
+        right: 7vw;
         top: 79vh;
         height: 35px;
         width: 35px;
@@ -272,7 +284,7 @@
 
     #list-btn {
         position: fixed;
-        right: 7vw;
+        right: 25vw;
         top: 79vh;
         height: 35px;
         width: 35px;
@@ -321,5 +333,11 @@
         margin-left: 5px;
         padding-top: 4px;
         padding-bottom: 4px;
+    }
+
+    .subject-card {
+        margin-left: 0;
+        margin-right: 0;
+        width: 100%;
     }
 }

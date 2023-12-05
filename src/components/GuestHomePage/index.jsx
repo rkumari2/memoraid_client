@@ -22,7 +22,7 @@ const GuestHomePage = () => {
 
       <div className='intro-paragraph'>
         <p style={{fontSize: size, lineHeight: lineSpacing, letterSpacing: spacing}}> 
-          Are you struggling with traditional flashcards that don't cater to your dyslexia and visual stress? Say hello to Memoraid - the groundbreaking flashcard app designed with you in mind. Customise fonts and color themes to ease your reading experience. With Memoraid, effortlessly transform any study material into an accessible and captivating learning resource. Don't just memorize - Memoraid! </p>
+          Are you struggling with traditional flashcards that don't cater to your dyslexia and visual stress? Dive into the world of accessible learning with Memoraid. Beyond offering customisation features like font and colour preferences, we bring you seamless organisation by allowing you to sort flashcards by topic. Take control of your content with easy editing and deletion options, ensuring your study material is always up to date. And with our text-to-speech feature, learning is not just tailored but truly inclusive. </p>
       </div>
 
       <div className='buttons-section'>

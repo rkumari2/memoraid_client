@@ -35,9 +35,9 @@ const UserHomePage = () => {
   
   return (
     <div className='logged-in-home-page-cont' style={{fontSize: size, lineHeight: lineSpacing, letterSpacing: spacing}}>
-      { isLoggedIn && responseToken.user ? (<h1 style={{ lineHeight: '45px' }}> Hello, <span className='highlight'> {responseToken.user} </span> </h1>) : (<h1 style={{ lineHeight: '45px' }}>Welcome!</h1>)}
+      { isLoggedIn && responseToken.user ? (<h1 style={{ lineHeight: '45px' }}> Hello, <span className='highlight'> {responseToken.user}</span>! </h1>) : (<h1 style={{ lineHeight: '45px' }}>Welcome!</h1>)}
 
-      <p>Let's make today a productive study day.</p>
+      <p>Let's make today a productive study day!</p>
 
       <div className='options-section'>
         <MotionDiv className='option' id='option-box' whileHover={isLargeScreen ? {scale:1.1} : {}} whileTap={isLargeScreen ? {scale:0.9} : {}} onClick={handleSubjectClick}>

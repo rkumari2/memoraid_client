@@ -101,12 +101,13 @@ const SubjectsPageLoggedIn = () => {
   return (
     <div className='subjects-cont' style={{ fontSize: size, lineHeight: lineSpacing, letterSpacing: spacing }}>
       <h1 style={{ lineHeight: '45px' }}>Topics</h1>
+      <p className='intro-page-text'> Explore flashcards by clicking on any topic to deepen your understanding. Effortlessly craft custom topic decks with the '+' button. </p>
       <Search handleHideSubject={handleHideSubject} handleShowSubject={handleShowSubject} handleSearch={handleSearch} resetSearch={resetSearch} />
       {isLoading ? (
         <LoadingAnimation />
       ) : (
         <>
-          {!searching && finalSearchResults.length === 0 && !showSubject && <div className='subjectsOutput-cont'> <h3>No results found!</h3> </div>}
+          {!searching && finalSearchResults.length === 0 && !showSubject && <div className='subjectsOutput-cont'> <h3> No results found. </h3> </div>}
           {!searching && (
             <>
               {showSubject && <SubjectCard handleSubjectClick={handleSubjectClick} results={results} setResults={setResults} showDeleteConfirmationOverlay={showDeleteConfirmationOverlay} handleDeleteSubject={handleDeleteSubject} showDeleteConfirmation={showDeleteConfirmation} setShowDeleteConfirmation={setShowDeleteConfirmation} />}

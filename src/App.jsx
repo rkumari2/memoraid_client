@@ -16,6 +16,7 @@ const App = () => {
         <Route path='/progress' element={<Pages.Progress/>}/>
         <Route path='/flashcards' element={<Pages.Flashcards/>}/>
         <Route path='/all' element={<Pages.AllQuestions/>}/>
+        <Route path='/*' element={<Pages.NotFound/>}/>
       </Route>
     </Routes>
   )

@@ -16,7 +16,7 @@ const SubjectCard = ({ handleSubjectClick, results, setResults, showDeleteConfir
   return (
     <div className='subjectsOutput-cont' style={{fontSize: size, lineHeight: lineSpacing, letterSpacing: spacing}}>
       {results.length === 0 ? (
-        <h3>You don't have any topics. Use the button below to add new topics. </h3>
+        <h3 className='intro-page-text'> Ready to start your learning journey? Add topics to get started! Choose your interests and let the learning adventure unfold. </h3>
       ) : (
         results.map((item) => (
           <motion.div
