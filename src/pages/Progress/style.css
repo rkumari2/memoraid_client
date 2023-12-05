@@ -77,6 +77,16 @@
     .scores-cont h1 {
         font-size: 30px;
     }
+
+    .scoresOutput-cont {
+        width: 100%;
+    }
+
+    .scorecard {
+        margin-left: 0;
+        margin-right: 0;
+        width: 100%;
+    }
 }
 
 
