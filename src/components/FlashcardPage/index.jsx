@@ -24,12 +24,15 @@ const FlashcardPage = () => {
 
   const navigate = useNavigate()
 
+  const initialRightAnswers = localStorage.getItem('rightAnswers') ? parseInt(localStorage.getItem('rightAnswers'), 10) : 0;
+  const initialWrongAnswers = localStorage.getItem('wrongAnswers') ? parseInt(localStorage.getItem('wrongAnswers'), 10) : 0;
+
   const [results, setResults] = useState([])
   const [scoreResults, setScoreResults] = useState([])
   const [revealAnswer, setRevealAnswer] = useState(false)
   const [totalQuestions, setTotalQuestions] = useState(0)
-  const [rightAnswers, setRightAnswers] = useState(0)
-  const [wrongAnswers, setWrongAnswers] = useState(0)
+  const [rightAnswers, setRightAnswers] = useState(initialRightAnswers)
+  const [wrongAnswers, setWrongAnswers] = useState(initialWrongAnswers)
   const [isEndClicked, setIsEndClicked] = useState(false)
   const [finalPercentage, setFinalPercentage] = useState(0)
   const [isLoading, setIsLoading] = useState(true)
@@ -51,7 +54,7 @@ const FlashcardPage = () => {
         const responseData = response.data
         setResults([responseData])
         setRevealAnswer(false)
-        setCurrentFlashcardContent(responseData.question); 
+        setCurrentFlashcardContent(responseData.question);
       }
 
     } catch (err) {
@@ -86,21 +89,23 @@ const FlashcardPage = () => {
   }
 
   const handleRightAnswer = () => {
-    setTotalQuestions(totalQuestions + 1)
-    setRightAnswers(rightAnswers + 1)
-    fetchData(selectedSubjectId)
-  }
+    const updatedRightAnswers = rightAnswers + 1;
+    setRightAnswers(updatedRightAnswers);
+    localStorage.setItem('rightAnswers', updatedRightAnswers.toString());
+    fetchData(selectedSubjectId);
+  };
 
   const handleWrongAnswer = () => {
-    setTotalQuestions(totalQuestions + 1)
-    setWrongAnswers(wrongAnswers + 1)
-    fetchData(selectedSubjectId)
-  }
+    const updatedWrongAnswers = wrongAnswers + 1;
+    setWrongAnswers(updatedWrongAnswers);
+    localStorage.setItem('wrongAnswers', updatedWrongAnswers.toString());
+    fetchData(selectedSubjectId);
+  };
 
-  const handleListBtn = async(e) => {
+  const handleListBtn = async (e) => {
     e.preventDefault()
     navigate('/all')
-  } 
+  }
 
   const handleCreateScoreCard = async (newPercentage) => {
     try {
@@ -149,12 +154,15 @@ const FlashcardPage = () => {
   }
 
   const handleRestart = () => {
-    setRevealAnswer(false)
-    setTotalQuestions(0)
-    setRightAnswers(0)
-    setWrongAnswers(0)
-    setFinalPercentage(0)
-    setIsEndClicked(false)
+    setRevealAnswer(false);
+    setTotalQuestions(0);
+    setRightAnswers(0);
+    setWrongAnswers(0);
+    setFinalPercentage(0);
+    setIsEndClicked(false);
+    localStorage.removeItem('rightAnswers');
+    localStorage.removeItem('wrongAnswers');
+
     const storedSubjectName = localStorage.getItem('selectedSubjectName');
     setSelectedSubjectName(storedSubjectName)
   }
@@ -167,97 +175,130 @@ const FlashcardPage = () => {
     navigate('/progress')
   }
 
+  const variants = {
+    // initial: { rotateY: 0, opacity: [1] },
+    question: { rotateY: 0 },
+    answer: { rotateY: 180 },
+  };
+
+  const innerVariants = {
+    initial: { rotateY: 0, opacity: [0, 1] },
+    rotated: { rotateY: -180, opacity: [1, 0, 1] },
+  };
+
   return (
-    <div className='flashcards-cont' style={{fontSize: size, lineHeight: lineSpacing, letterSpacing: spacing}}>
+    <div className='flashcards-cont' style={{ fontSize: size, lineHeight: lineSpacing, letterSpacing: spacing }}>
       <h1 style={{ lineHeight: '45px' }}><span className='highlight'>{selectedSubjectName}</span> Flashcards</h1>
 
       {isLoading ? (
         <LoadingAnimation />
       ) : isEndClicked ? (
         <>
-        <div className='final-score-cont'>
-          <h2> Well Done <span className='highlight'> {responseToken.user} </span>! </h2>
-          <div className='score-cont'>
-            <h2> Your final score is {finalPercentage}%.</h2>
-            <h2> You did <span className='highlight'> {rightAnswers} </span>questions correct out of <span className='highlight'> {totalQuestions}</span>.</h2>
+          <div className='final-score-cont'>
+            <h2> Well Done <span className='highlight'> {responseToken.user} </span>! </h2>
+            <div className='score-cont'>
+              <h2> Your final score is {finalPercentage}%.</h2>
+              <h2> You did <span className='highlight'> {rightAnswers} </span>questions correct out of <span className='highlight'> {totalQuestions}</span>.</h2>
+            </div>
+
+            <div className='score-page-btns'>
+              <div className='flashcard-actions'>
+                <motion.div onClick={handleRestart} className='flashcard-icon' whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.9 }}>
+                  <FaCirclePlay />
+                </motion.div>
+                <p> Restart </p>
+              </div>
+
+              <div className='flashcard-actions'>
+                <motion.div onClick={handleViewScores} className='flashcard-icon' whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.9 }} >
+                  <BsRocketTakeoffFill />
+                </motion.div>
+                <p> View Scores </p>
+              </div>
+
+              <div className='flashcard-actions'>
+                <motion.div onClick={handleViewSubjects} className='flashcard-icon' whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.9 }} >
+                  <PiBooksFill />
+                </motion.div>
+                <p> View Topics </p>
+              </div>
+            </div>
           </div>
 
-          <div className='score-page-btns'>
-            <div className='flashcard-actions'>
-              <motion.div onClick={handleRestart} className='flashcard-icon' whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.9 }}>
-                <FaCirclePlay />
-              </motion.div>
-              <p> Restart </p>
-            </div>
+          <img className='bg-image' src="favicon.png" alt="light bulb graphic" />
 
-            <div className='flashcard-actions'>
-              <motion.div onClick={handleViewScores} className='flashcard-icon' whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.9 }} >
-                <BsRocketTakeoffFill />
-              </motion.div>
-              <p> View Scores </p>
-            </div>
-
-            <div className='flashcard-actions'>
-              <motion.div onClick={handleViewSubjects} className='flashcard-icon' whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.9 }} >
-                <PiBooksFill />
-              </motion.div>
-              <p> View Topics </p>
-            </div>
-          </div>
-        </div>
-
-        <img className='bg-image' src="favicon.png" alt="light bulb graphic" />
-
-      </>
+        </>
       ) : (
         results.length > 0 ? (
           <div className='card-cont'>
             <div className='flashcardOutput-cont'>
-            <div className='actual-card-cont'>
+              <div className='actual-card-cont'>
                 {results.map((item) => (
                   <>
-                  <motion.div className='flashcard' id='accessibility'
-                    style={{backgroundColor: bgColor}}
-                    animate={{rotateY: revealAnswer ? [180, 0] : [0, 180, 0]}}
-                    transition={{ duration: 1 }}
-                    key={item.id}
-                  > 
-                    <div onClick={revealAnswer ? handleHideAnswer : handleShowAnswer} className='card-content'>
-                    <div className='flashcard-type'>
-                      <h3> {revealAnswer ? 'ANSWER' : 'QUESTION'} </h3>
-                    </div>
-                    <div className='flashcard-content'>
-                      <p key={item.id}> {revealAnswer ? item.answer : item.question} </p>
-                    </div>
-                    </div>
-                    <TextToSpeech text={currentFlashcardContent} />
-                  </motion.div>
+
+                    <motion.div
+                      className='flashcard'
+                      id='accessibility'
+                      animate={revealAnswer ? 'answer' : 'question'}
+                      variants={variants}
+                      transition={{ duration: 1.2, ease: "easeInOut" }}
+                      style={{ backgroundColor: bgColor }}
+                      key={item.id}
+                    >
+                      <div onClick={revealAnswer ? handleHideAnswer : handleShowAnswer} className='card-content'>
+                        <motion.div
+                          className='flashcard-type'
+                          variants={innerVariants}
+                          animate={revealAnswer ? 'rotated' : 'initial'}
+                          transition={{ duration: 1.2, ease: "easeInOut" }}
+                        >
+                          <h3>{revealAnswer ? 'ANSWER' : 'QUESTION'}</h3>
+                        </motion.div>
+                        <motion.div
+                          className='flashcard-content'
+                          variants={innerVariants}
+                          animate={revealAnswer ? 'rotated' : 'initial'}
+                          transition={{ duration: 1.2, ease: "easeInOut" }}
+                        >
+                          <p key={item.id}>{revealAnswer ? item.answer : item.question}</p>
+                        </motion.div>
+                      </div>
+                      <motion.div
+                        variants={innerVariants}
+                        animate={revealAnswer ? 'rotated' : 'initial'}
+                        transition={{ duration: 1.2, ease: "easeInOut" }}
+                        className="text-to-speech-btns"
+                      >
+                        <TextToSpeech text={currentFlashcardContent} />
+                      </motion.div>
+                    </motion.div>
+
                   </>
                 ))}
               </div>
             </div>
 
             <div className='buttons-cont'>
-            <div className='flashcard-actions'>
-              <motion.div onClick={handleRightAnswer} className='flashcard-icon' whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.9 }}>
-                <BsFillHandThumbsUpFill id='thumbs-up' />
-              </motion.div>
-              <h3> {rightAnswers} </h3>
-            </div>
+              <div className='flashcard-actions'>
+                <motion.div onClick={handleRightAnswer} className='flashcard-icon' whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.9 }}>
+                  <BsFillHandThumbsUpFill id='thumbs-up' />
+                </motion.div>
+                <h3> {rightAnswers} </h3>
+              </div>
 
-            <div className='flashcard-actions' >
-              <motion.div onClick={handleEndButton} className='flashcard-icon' whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.9 }}>
-                <MdCancel id='finish' />
-              </motion.div>
-              <p> Finish </p>
-            </div>
+              <div className='flashcard-actions' >
+                <motion.div onClick={handleEndButton} className='flashcard-icon' whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.9 }}>
+                  <MdCancel id='finish' />
+                </motion.div>
+                <p> Finish </p>
+              </div>
 
-            <div className='flashcard-actions'>
-              <motion.div onClick={handleWrongAnswer} className='flashcard-icon' whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.9 }}>
-                <BsFillHandThumbsDownFill id='thumbs-down' />
-              </motion.div>
-              <h3> {wrongAnswers} </h3>
-            </div>
+              <div className='flashcard-actions'>
+                <motion.div onClick={handleWrongAnswer} className='flashcard-icon' whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.9 }}>
+                  <BsFillHandThumbsDownFill id='thumbs-down' />
+                </motion.div>
+                <h3> {wrongAnswers} </h3>
+              </div>
             </div>
           </div>
         ) : (
@@ -266,8 +307,8 @@ const FlashcardPage = () => {
       )}
 
       {!isLoading && !isEndClicked && <AddFlashcardBtn fetchData={fetchData} />}
-      
-      {!isLoading && <motion.button className='button' id='list-btn' onClick={handleListBtn} whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.9 }}> <IoList className='icon' id='plus-icon'/> </motion.button>}
+
+      {!isLoading && <motion.button className='button' id='list-btn' onClick={handleListBtn} whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.9 }}> <IoList className='icon' id='plus-icon' /> </motion.button>}
     </div>
   )
 }

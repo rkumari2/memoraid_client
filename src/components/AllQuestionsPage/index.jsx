@@ -6,6 +6,9 @@ import LoadingAnimation from '../LoadingAnimation'
 import EditFlashcardBtn from '../EditFlashcardBtn'
 import AddFlashcardBtn from '../AddFlashcardBtn'
 import { useNavigate } from 'react-router-dom'
+import { IoMdClose } from "react-icons/io"
+import { RiDeleteBin6Fill } from "react-icons/ri"
+import { motion } from 'framer-motion'
 
 const AllQuestionsPage = () => {
   const { selectedSubjectId, selectedSubjectName, setSelectedSubjectName } = useSubject()
@@ -16,8 +19,29 @@ const AllQuestionsPage = () => {
 
   const [results, setResults] = useState([])
   const [isLoading, setIsLoading] = useState(true)
-  const [showDeleteConfirmation, setShowDeleteConfirmation] = useState(false);
-  const [selectedFlashcardIdToDelete, setSelectedFlashcardIdToDelete] = useState(null);
+  const [showDeleteConfirmation, setShowDeleteConfirmation] = useState(false)
+  const [selectedFlashcardIdToDelete, setSelectedFlashcardIdToDelete] = useState(null)
+  const [showEditOverlay, setShowEditOverlay] = useState(false);
+  const [editedQuestion, setEditedQuestion] = useState('');
+  const [editedAnswer, setEditedAnswer] = useState('');
+  const [ clickedFlashcardId, setClickedFlashcardId ] = useState(null)
+
+
+  const handleShowEditOverlay = (FlashcardId) => {
+    setShowEditOverlay(true);
+    setClickedFlashcardId(FlashcardId)
+  };
+
+  const handleHideEditOverlay = () => {
+    setShowEditOverlay(false);
+    setEditedQuestion('');
+    setEditedAnswer('');
+    setClickedFlashcardId(null)
+  };
+
+  const handleHideOverlay = () => {
+    setShowDeleteConfirmation(false)
+  }
 
   const fetchData = async () => {
     setIsLoading(true)
@@ -31,8 +55,6 @@ const AllQuestionsPage = () => {
         } else {
           console.log('data is not an array:', responseData)
         }
-
-        
       }
     } catch (err) {
       console.log('Error fetching data', err)
@@ -54,7 +76,8 @@ const AllQuestionsPage = () => {
     try {
       const response = await axios.delete(`https://memoraide-server.onrender.com/flashcards/cards/${selectedFlashcardIdToDelete}`);
       if (response.status === 204) {
-        fetchData();
+        const updatedResults = results.filter(question => question.id !== selectedFlashcardIdToDelete);
+        setResults(updatedResults)
       }
     } catch (error) {
       console.log('Error deleting flashcard', error);
@@ -69,27 +92,59 @@ const AllQuestionsPage = () => {
     setShowDeleteConfirmation(true);
   };
 
+  const handleEditFlashcard = async () => {
+
+    try {
+      const response = await axios.patch(`https://memoraide-server.onrender.com/flashcards/cards/${clickedFlashcardId}`, {
+        question: editedQuestion,
+        answer: editedAnswer
+      });
+
+      if (response.status === 200) {
+        handleHideEditOverlay();
+        fetchData();
+      }
+
+    } catch (err) {
+      console.error('Error editing flashcard:', err);
+      if (err.response) {
+        console.error('Server response:', err.response.data);
+      }
+    }
+  };
+
   return (
-    <div className='flashcards-cont'>
+    <div className='questions-cont'>
       <h1 style={{ lineHeight: '45px' }}><span className='highlight'>{selectedSubjectName}</span> Questions </h1>
 
       <p> View all the questions for this topic and edit them by clicking the edit button, practice when ready.</p>
 
-      <button className='button' onClick={handlePractice}> Practice </button>
+      <motion.button className='button' onClick={handlePractice} whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.9 }}> Practice </motion.button>
 
-      <div className='scoresOutput-cont'>
+      <div className='questionsOutput-cont'>
         {results.length === 0 && !isLoading && (<div className='no-scores'> No Questions, use + button to add more questions. </div>)}
 
         {isLoading && (<LoadingAnimation />)}
 
         {results.map((item) => (
-          <div key={item.id} className='scorecard' id='accessibility' style={{ backgroundColor: bgColor }}>
+          <div key={item.id} className='question-card' id='accessibility' style={{ backgroundColor: bgColor }} whileHover={{ scale: 1.1 }}
+          whileTap={{ scale: 0.9 }}>
+
             <p> {item.question} </p>
 
-            <EditFlashcardBtn flashcardId={item.id} fetchData={fetchData} />
-            <button className='button' onClick={() => showDeleteConfirmationOverlay(item.id)}>
-              Delete
-            </button>
+              <EditFlashcardBtn flashcardId={item.id} fetchData={fetchData} handleShowEditOverlay={handleShowEditOverlay} setEditedQuestion={setEditedQuestion} setEditedAnswer={setEditedAnswer} handleHideEditOverlay={handleHideEditOverlay} handleEditFlashcard={handleEditFlashcard}/>
+
+              <motion.button className='button' id='delete-btn-question'
+                onClick={(e) => {
+                  e.stopPropagation()
+                  showDeleteConfirmationOverlay(item.id)
+                }}
+                initial={{ opacity: 0.5 }}
+                whileHover={{ scale: 1.1, opacity: 1 }}
+                whileTap={{ scale: 0.9 }}>
+                <RiDeleteBin6Fill className='icon' id='delete-icon' />
+              </motion.button>
+
           </div>
         ))}
       </div>
@@ -97,16 +152,75 @@ const AllQuestionsPage = () => {
       {!isLoading && <AddFlashcardBtn fetchData={fetchData} />}
 
       {showDeleteConfirmation && (
-        <div className='overlay-bg'>
-          <div className='overlay'>
-            <p>Are you sure you want to delete this flashcard?</p>
-            <button className='button' onClick={handleDeleteFlashcard}>
-              Delete
-            </button>
-            <button className='button' onClick={() => setShowDeleteConfirmation(false)}>
-              Cancel
-            </button>
+        <div className='overlay-bg' style={{ display: showDeleteConfirmation ? 'flex' : 'none', fontSize: size, lineHeight: lineSpacing, letterSpacing: spacing}}>
+
+          {showDeleteConfirmation && (
+            <div className='overlay'>
+
+              <div id='cancel-sect'>
+                <button className='button' id='cancel-btn' onClick={handleHideOverlay}> <IoMdClose className='icon' /> </button>
+              </div>
+
+              <p className='delete-text'> Are you sure you want to delete this flashcard? </p>
+
+              <div className='search' id='column-search'>
+                <motion.button className='button' id='add-btn' onClick={handleDeleteFlashcard} whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.9 }} style={{fontSize: size, lineHeight: lineSpacing, letterSpacing: spacing}}> Delete </motion.button>
+              </div>
+
+            </div>)}
+
           </div>
+      )}
+
+
+      {showEditOverlay && (
+        <div className="overlay-bg" id='edit-overlay' style={{ display: showEditOverlay ? 'flex' : 'none', fontSize: size, lineHeight: lineSpacing, letterSpacing: spacing }}>
+
+          {showEditOverlay && (
+            <div className="overlay">
+              <div id='cancel-sect'>
+                <button className='button' id='cancel-btn' onClick={handleHideEditOverlay}> <IoMdClose className='icon' /> </button>
+              </div>
+
+                <h2> Edit Flashcard </h2>
+
+                <div className='search' id='column-search'>
+                  <input
+                    className='input-field'
+                    id='subject-input'
+                    type="text"
+                    placeholder='Edited Question'
+                    value={editedQuestion}
+                    onChange={(e) => setEditedQuestion(e.target.value)}
+                    style={{ fontSize: size, lineHeight: lineSpacing, letterSpacing: spacing }}
+                  />
+
+                  <input
+                    className='input-field'
+                    id='subject-input'
+                    type="text"
+                    placeholder='Edited Answer'
+                    value={editedAnswer}
+                    onChange={(e) => setEditedAnswer(e.target.value)}
+                    style={{ fontSize: size, lineHeight: lineSpacing, letterSpacing: spacing }}
+                  />
+
+                  <motion.button
+                    className='button'
+                    id='add-btn'
+                    onClick={handleEditFlashcard}
+                    whileHover={{ scale: 1.05 }}
+                    whileTap={{ scale: 0.9 }}
+                    style={{ fontSize: size, lineHeight: lineSpacing, letterSpacing: spacing }}
+                  >
+                    Save
+                  </motion.button>
+
+
+                </div>
+            </div>
+          )}
+
         </div>
       )}
 

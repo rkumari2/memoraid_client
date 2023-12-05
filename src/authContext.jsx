@@ -70,6 +70,8 @@ export function AuthProvider({ children }) {
             localStorage.removeItem('selectedSubjectId')
             localStorage.removeItem('selectedSubjectName')
             localStorage.removeItem('storedSubjectName')
+            localStorage.removeItem('rightAnswers');
+            localStorage.removeItem('wrongAnswers');
             setResponseToken(null)
             setIsLoggedIn(false)
             

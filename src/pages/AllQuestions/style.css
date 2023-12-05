@@ -1,0 +1,110 @@
+.questions-cont {
+    height: 100%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: safe;
+    color: var(--white);
+    overflow-y: auto;
+    padding-top: 20px;
+}
+
+.questions-cont h1 {
+    font-size: 40px;
+}
+
+.questions-cont p {
+    margin-top: 30px;
+    margin-bottom: 30px;
+}
+
+.questionsOutput-cont {
+    /* background-color: aqua; */
+    width: 90%;
+    /* height: 100%; */
+    display: flex;
+    /* flex-direction:row; */
+    align-items: start;
+    justify-content: space-evenly;
+    margin: 0;
+    padding: 0;
+    flex-wrap: wrap;
+    /* display: grid; */
+    margin-top: 50px;
+    margin-bottom: 50px;
+}
+
+.question-card {
+    width: 50%;
+    min-height: 130px;
+    background-color: var(--pink);
+    margin: 20px;
+    margin-bottom: 50px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    border-radius: 2px;
+    padding: 15px;
+    /* padding-right: 60px; */
+    color: black;
+    position: relative;
+}
+
+.question-card p {
+    padding-bottom: 10px;
+    /* background-color: aqua; */
+    margin: 20px;
+    margin-right: 60px;
+}
+
+#cancel-sect {
+    /* background-color: aqua; */
+    width: 100%;
+    display: flex;
+    align-items: end;
+    justify-content: end;
+    margin-top: 20px;
+}
+
+#column-search {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.delete-text {
+    text-align: center;
+    padding: 15px;
+    margin: 20px;
+}
+
+#delete-btn-question {
+    /* background-color: transparent; */
+    position: absolute;
+    bottom: 5px;
+    right: 5px;
+    background-color: transparent;
+    /* background-color: aquamarine; */
+    padding: 15px 15px 10px 30px;
+}
+
+#edit-flashcard-btn {
+    position: absolute;
+    right: 5px;
+    top: 5px;
+    padding: 15px 15px 10px 30px;
+    background-color: transparent;
+}
+
+#cancel-sect {
+    /* background-color: aqua; */
+    width: 100%;
+    display: flex;
+    align-items: end;
+    justify-content: end;
+    margin-top: 20px;
+}
+

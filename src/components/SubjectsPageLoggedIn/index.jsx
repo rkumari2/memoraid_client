@@ -26,19 +26,19 @@ const SubjectsPageLoggedIn = () => {
 
   const { responseToken } = useAuth();
 
-  
+
   const fetchData = async () => {
     setIsLoading(true);
-      try {
-        const response = await axios.get(`https://memoraide-server.onrender.com/subjects/${responseToken.user_id}`);
-        if (response.status === 200) {
-          setResults(response.data);
-        }
-      } catch (err) {
-        console.log('Error fetching data', err);
+    try {
+      const response = await axios.get(`https://memoraide-server.onrender.com/subjects/${responseToken.user_id}`);
+      if (response.status === 200) {
+        setResults(response.data);
       }
-      setIsLoading(false);
-    };
+    } catch (err) {
+      console.log('Error fetching data', err);
+    }
+    setIsLoading(false);
+  };
 
   useEffect(() => {
     fetchData();
@@ -81,9 +81,8 @@ const SubjectsPageLoggedIn = () => {
     try {
       const response = await axios.delete(`https://memoraide-server.onrender.com/subjects/topic/${selectedSubjectIdToDelete}`);
       if (response.status === 204) {
-        // Filter out the deleted subject
         const updatedResults = results.filter(subject => subject.id !== selectedSubjectIdToDelete);
-        setResults(updatedResults);
+        setResults(updatedResults)
       }
     } catch (error) {
       console.log('Error deleting Subject', error);
@@ -92,7 +91,7 @@ const SubjectsPageLoggedIn = () => {
       setSelectedSubjectIdToDelete(null);
     }
   };
-  
+
 
   const showDeleteConfirmationOverlay = (SubjectId) => {
     setSelectedSubjectIdToDelete(SubjectId);
@@ -100,40 +99,39 @@ const SubjectsPageLoggedIn = () => {
   };
 
   return (
-    <div className='subjects-cont' style={{fontSize: size, lineHeight: lineSpacing, letterSpacing: spacing}}>
-            <h1 style={{ lineHeight: '45px' }}>Topics</h1>
-            <Search handleHideSubject={handleHideSubject} handleShowSubject={handleShowSubject} handleSearch={handleSearch} resetSearch={resetSearch} />
-            {isLoading ? (
-                <LoadingAnimation />
-            ) : (
-                <>
-                    {!searching && finalSearchResults.length === 0 && !showSubject && <div className='subjectsOutput-cont'> <h3>No results found!</h3> </div>}
-                    {!searching && (
-                        <>
-                            {/* {showSubject && results.length === 0 && <div className='subjectsOutput-cont'> <h3> You don't have any topics, use the button below to add topics.</h3> </div>} */}
-                            {showSubject && <SubjectCard handleSubjectClick={handleSubjectClick} results={results} setResults={setResults} showDeleteConfirmationOverlay={showDeleteConfirmationOverlay} handleDeleteSubject={handleDeleteSubject} showDeleteConfirmation={showDeleteConfirmation} setShowDeleteConfirmation={setShowDeleteConfirmation} />}
-                        </>
-                    )}
-                    {finalSearchResults.length > 0 && searching && (
-                        <div className='subjectsOutput-cont'>
-                            {finalSearchResults.map((result) => (
-                              <motion.div
-                              key={result.subjectId}
-                              className='subject-card'
-                              id='accessibility'
-                              style={{ backgroundColor: bgColor }}
-                              onClick={() => handleSubjectClick(result.subjectId, result.subject)}
-                              whileHover={{ scale: 1.1 }}
-                              whileTap={{ scale: 0.9 }}
-                              >
-                              <p>{result.subject}</p>
-                              </motion.div>
-                            ))}
-                        </div>
-                    )}
-                </>
-            )}
-        </div>
+    <div className='subjects-cont' style={{ fontSize: size, lineHeight: lineSpacing, letterSpacing: spacing }}>
+      <h1 style={{ lineHeight: '45px' }}>Topics</h1>
+      <Search handleHideSubject={handleHideSubject} handleShowSubject={handleShowSubject} handleSearch={handleSearch} resetSearch={resetSearch} />
+      {isLoading ? (
+        <LoadingAnimation />
+      ) : (
+        <>
+          {!searching && finalSearchResults.length === 0 && !showSubject && <div className='subjectsOutput-cont'> <h3>No results found!</h3> </div>}
+          {!searching && (
+            <>
+              {showSubject && <SubjectCard handleSubjectClick={handleSubjectClick} results={results} setResults={setResults} showDeleteConfirmationOverlay={showDeleteConfirmationOverlay} handleDeleteSubject={handleDeleteSubject} showDeleteConfirmation={showDeleteConfirmation} setShowDeleteConfirmation={setShowDeleteConfirmation} />}
+            </>
+          )}
+          {finalSearchResults.length > 0 && searching && (
+            <div className='subjectsOutput-cont'>
+              {finalSearchResults.map((result) => (
+                <motion.div
+                  key={result.subjectId}
+                  className='subject-card'
+                  id='accessibility'
+                  style={{ backgroundColor: bgColor }}
+                  onClick={() => handleSubjectClick(result.subjectId, result.subject)}
+                  whileHover={{ scale: 1.1 }}
+                  whileTap={{ scale: 0.9 }}
+                >
+                  <p>{result.subject}</p>
+                </motion.div>
+              ))}
+            </div>
+          )}
+        </>
+      )}
+    </div>
   );
 };
 

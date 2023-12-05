@@ -52,7 +52,7 @@ useEffect(() => {
   }
 
   return (
-    <div className="text-to-speech-btns">
+    <>
       <motion.div whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.9 }} onClick={handlePlay}>
         <FaPlay
           className={`icon ${activeButton === "play" ? "active" : ""}`}
@@ -73,7 +73,7 @@ useEffect(() => {
           id="accessibility-icon"
         />
       </motion.div>
-    </div>
+    </>
   )
 }
 
