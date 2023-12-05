@@ -209,7 +209,7 @@
 
     #list-btn {
         right: 7vw;
-        top: 80vh;
+        top: 75vh;
     }
 
     .overlay{
@@ -235,7 +235,7 @@
     #list-btn {
         position: fixed;
         right: 7vw;
-        top: 70vh;
+        top: 60vh;
     }
 
     .overlay-bg {
