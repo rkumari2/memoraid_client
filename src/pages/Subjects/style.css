@@ -276,8 +276,8 @@
         position: fixed;
         right: 7vw;
         top: 79vh;
-        height: 35px;
-        width: 35px;
+        height: 30px;
+        width: 30px;
         /* background-color: aqua; */
         padding: 0;
     }
@@ -286,8 +286,8 @@
         position: fixed;
         right: 25vw;
         top: 79vh;
-        height: 35px;
-        width: 35px;
+        height: 30px;
+        width: 30px;
         /* background-color: aqua; */
         padding: 0;
     }
@@ -314,8 +314,13 @@
         padding-right: 10%;
     }
 
-    #plus-icon, #cross-icon {
+    #cross-icon {
         font-size: 30px;
+        margin: 0;
+    }
+
+    #plus-icon {
+        font-size: 25px;
         margin: 0;
     }
 

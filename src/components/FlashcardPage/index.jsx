@@ -89,17 +89,19 @@ const FlashcardPage = () => {
   }
 
   const handleRightAnswer = () => {
-    const updatedRightAnswers = rightAnswers + 1;
-    setRightAnswers(updatedRightAnswers);
-    localStorage.setItem('rightAnswers', updatedRightAnswers.toString());
+    const updatedRightAnswers = rightAnswers + 1
+    setRightAnswers(updatedRightAnswers)
+    setTotalQuestions(totalQuestions + 1)
+    localStorage.setItem('rightAnswers', updatedRightAnswers.toString())
     fetchData(selectedSubjectId);
   };
 
   const handleWrongAnswer = () => {
-    const updatedWrongAnswers = wrongAnswers + 1;
-    setWrongAnswers(updatedWrongAnswers);
-    localStorage.setItem('wrongAnswers', updatedWrongAnswers.toString());
-    fetchData(selectedSubjectId);
+    const updatedWrongAnswers = wrongAnswers + 1
+    setTotalQuestions(totalQuestions + 1)
+    setWrongAnswers(updatedWrongAnswers)
+    localStorage.setItem('wrongAnswers', updatedWrongAnswers.toString())
+    fetchData(selectedSubjectId)
   };
 
   const handleListBtn = async (e) => {
@@ -145,7 +147,7 @@ const FlashcardPage = () => {
     if (totalQuestions === 0) {
       percentage = 0;
     } else {
-      percentage = ((rightAnswers / totalQuestions) * 100).toFixed(1);
+      percentage = ((rightAnswers / totalQuestions) * 100).toFixed(1)
     }
     setFinalPercentage(percentage)
     // console.log('percentage is', finalPercentage)
