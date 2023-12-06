@@ -66,7 +66,7 @@ const Settings = () => {
       <img className='bg-image' src="favicon.png" alt="light bulb graphic" />
       <>
         <div className='settings-cont'>
-          <h1> Accessibility Settings </h1>
+          <h1 style={{lineHeight: '45px', letterSpacing: '0.05rem'}}> Accessibility Settings </h1>
 
           <p className="intro-page-text"> Enhance your learning journey by customising your experience to suit you. </p>
 

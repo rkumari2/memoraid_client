@@ -314,6 +314,10 @@
 
     .flashcards-cont h1 {
         font-size: 30px;
+        padding-left: 20%;
+        padding-right: 20%;
+        text-align: center;
+        /* background-color: aqua; */
     }
     
 }
