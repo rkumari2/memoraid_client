@@ -283,14 +283,13 @@
     }
 
     #list-btn {
-        position: fixed !important;
-        right: 5vw !important;
-        top: 70vh !important;
-        height: 1px !important;
-        width: 1px !important;
+        position: fixed;
+        right: 5vw;
+        top: 70vh;
+        height: 20px;
+        width: 20px;
         /* background-color: aqua; */
-        padding: 0 !important;
-        font-size: 1px !important;
+        padding: 0;
     }
 
     #add-btn {
