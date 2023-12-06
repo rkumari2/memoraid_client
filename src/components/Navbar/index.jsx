@@ -81,7 +81,7 @@ const Navbar = () => {
             </NavLink>
 
             <NavLink className='navlink' style={styles} to='/settings'>
-              <motion.p whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.9 }} > Accessibility Settings</motion.p>
+              <motion.p whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.9 }} >Settings</motion.p>
             </NavLink>
           </div>
 
