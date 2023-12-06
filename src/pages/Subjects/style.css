@@ -276,20 +276,21 @@
         position: fixed;
         right: 5vw;
         top: 79vh;
-        height: 25px;
-        width: 25px;
+        height: 20px;
+        width: 20px;
         /* background-color: aqua; */
         padding: 0;
     }
 
     #list-btn {
-        position: fixed;
-        right: 5vw;
-        top: 72vh;
-        height: 25px;
-        width: 25px;
+        position: fixed !important;
+        right: 5vw !important;
+        top: 70vh !important;
+        height: 1px !important;
+        width: 1px !important;
         /* background-color: aqua; */
-        padding: 0;
+        padding: 0 !important;
+        font-size: 1px !important;
     }
 
     #add-btn {
@@ -320,8 +321,9 @@
     }
 
     #plus-icon {
-        font-size: 25px;
+        font-size: 20px;
         margin: 0;
+        padding: 0;
     }
 
     #cancel-btn {
