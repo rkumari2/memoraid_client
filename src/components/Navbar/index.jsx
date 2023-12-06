@@ -81,7 +81,7 @@ const Navbar = () => {
             </NavLink>
 
             <NavLink className='navlink' style={styles} to='/settings'>
-              <motion.p whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.9 }} > Settings </motion.p>
+              <motion.p whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.9 }} > Accessibility Settings</motion.p>
             </NavLink>
           </div>
 
@@ -123,13 +123,13 @@ const Navbar = () => {
             animate={isOpen ? "open" : "closed"}
             variants={variants}>
               <div id='links'>
-                <NavLink className='navlink' style={styles} to='/' onClick={hideMenu}> HOME </NavLink>
+                <NavLink className='navlink' style={styles} to='/' onClick={hideMenu}> Home </NavLink>
 
-                <NavLink className='navlink' style={styles} to='/subjects' onClick={hideMenu}> TOPICS </NavLink>
+                <NavLink className='navlink' style={styles} to='/subjects' onClick={hideMenu}> Topics </NavLink>
 
-                <NavLink className='navlink' style={styles} to='/progress' onClick={hideMenu}> PROGRESS </NavLink>
+                <NavLink className='navlink' style={styles} to='/progress' onClick={hideMenu}> Progress </NavLink>
 
-                <NavLink className='navlink' style={styles} to='/settings' onClick={hideMenu}> SETTINGS </NavLink>
+                <NavLink className='navlink' style={styles} to='/settings' onClick={hideMenu}> Settings </NavLink>
               </div>
           </motion.div>
 

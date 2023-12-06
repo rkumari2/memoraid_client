@@ -275,7 +275,7 @@
     #add-subject-btn {
         position: fixed;
         right: 5vw;
-        top: 79vh;
+        top: 40vh;
         height: 20px;
         width: 20px;
         /* background-color: aqua; */
@@ -285,7 +285,7 @@
     #list-btn {
         position: fixed;
         right: 5vw;
-        top: 70vh;
+        top: 30vh;
         height: 20px;
         width: 20px;
         /* background-color: aqua; */
